@@ -27,7 +27,7 @@ export default function Header() {
       <nav className="container-custom flex h-16 items-center justify-between" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
-            <span className="text-xl font-heading font-bold text-primary">Limbach Samaaj</span>
+            <span className="text-xl font-heading font-bold text-primary">Limbach Samaj</span>
           </Link>
         </div>
         
