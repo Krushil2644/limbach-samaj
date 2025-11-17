@@ -1,4 +1,4 @@
-# Limbach Samaj Connect
+# Limbach Samaj
 
 A modern, responsive website for **Limbach Samaaj** – a not-for-profit community organization for Limbach families across **Canada**.  
 
