@@ -103,7 +103,7 @@ export default function Home() {
               ))}
             </div>
 
-            {upcomingEvents.length > 0 && (
+            {false && upcomingEvents.length > 0 && (
               <div className="text-center mt-8">
                 <Button asChild variant="outline" size="lg" className="hover-lift">
                   <Link to="/events">
