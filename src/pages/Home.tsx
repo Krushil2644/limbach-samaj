@@ -37,12 +37,14 @@ export default function Home() {
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
               {homeContent.hero.subtitle}
             </p>
+            {false && (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 <Link to="/events">
                   View Events <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
+               )}
               <Button asChild size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm text-white border-white hover:bg-white/20">
                 <Link to="/about">Learn More</Link>
               </Button>
