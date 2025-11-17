@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "name": "Rajesh Patel",
+    "role": "President",
+    "bio": "Leading our organization with dedication to preserving our cultural heritage and building strong community connections across Canada.",
+    "image": "/images/committee/president.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Priya Sharma",
+    "role": "Vice President",
+    "bio": "Committed to youth engagement and organizing meaningful community events that bring families together.",
+    "image": "/images/committee/vice-president.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Amit Desai",
+    "role": "Secretary",
+    "bio": "Ensuring smooth operations and transparent communication within our community organization.",
+    "image": "/images/committee/secretary.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Neha Mehta",
+    "role": "Treasurer",
+    "bio": "Managing our finances with integrity and transparency to support community initiatives and events.",
+    "image": "/images/committee/treasurer.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Vikram Singh",
+    "role": "Events Coordinator",
+    "bio": "Planning and executing memorable cultural events that celebrate our heritage and strengthen community bonds.",
+    "image": "/images/committee/events-coordinator.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Anjali Gupta",
+    "role": "Communications Director",
+    "bio": "Keeping our community informed and connected through effective communication channels and social media.",
+    "image": "/images/committee/communications-director.jpg"
+  }
+]

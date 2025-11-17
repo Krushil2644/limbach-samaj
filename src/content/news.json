@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "title": "Welcome to Our New Website!",
+    "date": "2025-01-15",
+    "excerpt": "We're excited to launch our new website, making it easier to stay connected with our community across Canada.",
+    "content": "Our new website features an improved event calendar, membership information, and easier ways to stay updated with community news. Explore all the new features and let us know what you think!"
+  },
+  {
+    "id": "2",
+    "title": "2025 Annual Cultural Festival Announced",
+    "date": "2025-01-10",
+    "excerpt": "Save the date for June 15, 2025! Our biggest community event of the year is coming to Toronto.",
+    "content": "Mark your calendars for our Annual Cultural Festival on June 15, 2025. This year's festival will feature traditional performances, authentic cuisine, cultural workshops, and activities for all ages. More details coming soon!"
+  },
+  {
+    "id": "3",
+    "title": "Community Survey Results",
+    "date": "2024-12-20",
+    "excerpt": "Thank you to everyone who participated in our 2024 community survey. Your feedback shapes our future initiatives.",
+    "content": "We received over 150 responses to our community survey. The top priorities identified include: more youth programs, regional meet-ups across Canada, and enhanced communication channels. We're working on implementing these suggestions in 2025."
+  },
+  {
+    "id": "4",
+    "title": "New Regional Coordinators Appointed",
+    "date": "2024-11-30",
+    "excerpt": "We're pleased to announce new regional coordinators for BC, Alberta, and Quebec regions.",
+    "content": "To better serve our community members across Canada, we've appointed dedicated regional coordinators. They will help organize local events and ensure better communication with community members in their respective provinces."
+  }
+]

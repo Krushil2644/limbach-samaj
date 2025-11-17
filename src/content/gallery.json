@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "title": "Annual Festival 2024",
+    "imageUrl": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
+    "category": "events"
+  },
+  {
+    "id": "2",
+    "title": "Community Gathering",
+    "imageUrl": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80",
+    "category": "events"
+  },
+  {
+    "id": "3",
+    "title": "Traditional Performance",
+    "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+    "category": "cultural"
+  },
+  {
+    "id": "4",
+    "title": "Youth Activities",
+    "imageUrl": "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=80",
+    "category": "youth"
+  },
+  {
+    "id": "5",
+    "title": "Community Picnic",
+    "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+    "category": "events"
+  },
+  {
+    "id": "6",
+    "title": "Cultural Workshop",
+    "imageUrl": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80",
+    "category": "cultural"
+  }
+]
