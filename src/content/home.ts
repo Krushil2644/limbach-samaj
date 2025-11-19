@@ -1,11 +1,11 @@
 export const homeContent = {
   hero: {
-    title: "Welcome to Limbach Samaaj",
+    title: "Welcome to Limbach Samaj",
     subtitle: "Celebrating our heritage, building our future together across Canada"
   },
   welcome: {
     title: "Building Community, Preserving Heritage",
-    description: "Limbach Samaaj is a registered Canadian not-for-profit organization dedicated to serving Limbach families and community members across the nation. We foster cultural connections, organize meaningful events, and create opportunities for our community to thrive together."
+    description: "Limbach Samaj is a registered Canadian not-for-profit organization dedicated to serving Limbach families and community members across the nation. We foster cultural connections, organize meaningful events, and create opportunities for our community to thrive together."
   },
   features: [
     {
@@ -31,7 +31,7 @@ export const homeContent = {
   },
   cta: {
     title: "Join Our Community",
-    description: "Become part of the Limbach Samaaj family. Connect with fellow community members, participate in cultural events, and help preserve our heritage for future generations.",
+    description: "Become part of the Limbach Samaj family. Connect with fellow community members, participate in cultural events, and help preserve our heritage for future generations.",
     primaryButton: "Learn About Membership",
     secondaryButton: "Contact Us"
   }
