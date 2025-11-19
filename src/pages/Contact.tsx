@@ -12,11 +12,19 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { toast } from "sonner";
 
 const formSchema = z.object({
-  name: z.string().trim().min(2, { message: "Name must be at least 2 characters" }).max(100, { message: "Name must be less than 100 characters" }),
-  email: z.string().trim().email({ message: "Invalid email address" }).max(255, { message: "Email must be less than 255 characters" }),
-  subject: z.string().trim().min(3, { message: "Subject must be at least 3 characters" }).max(200, { message: "Subject must be less than 200 characters" }),
-  message: z.string().trim().min(10, { message: "Message must be at least 10 characters" }).max(2000, { message: "Message must be less than 2000 characters" }),
+  name: z.string().trim().min(2, { message: "Name must be at least 2 characters" }).max(100),
+  email: z.string().trim().email({ message: "Invalid email address" }).max(255),
+
+  phone: z.string()
+    .trim()
+    .min(7, { message: "Phone number must be at least 7 digits" })
+    .max(20, { message: "Phone number is too long" })
+    .optional(),
+
+  subject: z.string().trim().min(3, { message: "Subject must be at least 3 characters" }).max(200),
+  message: z.string().trim().min(10, { message: "Message must be at least 10 characters" }).max(2000),
 });
+
 
 type FormData = z.infer<typeof formSchema>;
 
@@ -28,6 +36,7 @@ export default function Contact() {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       subject: "",
       message: "",
     },
@@ -106,6 +115,26 @@ export default function Contact() {
                         </FormItem>
                       )}
                     />
+
+                    {/* NOTE: Phone Number field added on Feb-2025 for improved contact info */}
+<FormField
+  control={form.control}
+  name="phone"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>Phone Number (optional)</FormLabel>
+      <FormControl>
+        <Input
+          type="tel"
+          placeholder="123-456-7890"
+          {...field}
+        />
+      </FormControl>
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
 
                     <FormField
                       control={form.control}
