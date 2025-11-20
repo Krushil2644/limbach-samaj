@@ -4,7 +4,7 @@ import { Calendar, Users, Heart, ArrowRight } from "lucide-react";
 import EventCard from "@/components/EventCard";
 import SEOHead from "@/components/SEOHead";
 import eventsData from "@/content/events.json";
-import heroImage from "@/assets/hero-community.jpg";
+import heroImage from "@/assets/bg-logo.png";
 import { homeContent } from "@/content/home";
 
 export default function Home() {
