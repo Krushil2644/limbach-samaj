@@ -1,47 +1,29 @@
 [
   {
     "id": "1",
-    "title": "Annual Cultural Festival 2025",
-    "date": "2025-06-15",
-    "location": "Toronto Community Center, Ontario",
-    "description": "Join us for our annual cultural festival celebrating our heritage with traditional music, dance performances, authentic cuisine, and activities for all ages. A wonderful opportunity to connect with community members from across Canada.",
+    "title": "Mataji’s Havan 2025 – Chaitri Navratri Celebration",
+    "date": "2025-03-28",
+    "location": "Limbach Samaj of Canada",
+    "description": "Chaitri Navratri marks the beginning of the Hindu New Year and is dedicated to Goddess Durga. This special Mataji’s Havan is a spiritual gathering to seek the blessings of Maa Limbach, with traditional havan, limited Sah-Yajmaan seva ($251), opportunities for Ahuti participation, and Maha-Prasad served after Aarti.",
     "imageUrl": "/src/assets/event-celebration.jpg",
-    "upcoming": true
+    "upcoming": false
   },
   {
     "id": "2",
     "title": "Community Picnic & Family Day",
-    "date": "2025-07-20",
-    "location": "Riverside Park, Vancouver, BC",
-    "description": "A relaxed outdoor gathering for families to enjoy games, food, and quality time together. Bring your family and friends for a day of fun activities, traditional sports, and delicious homemade food.",
+    "date": "2025-07-01",
+    "location": "To be announced (July 2025)",
+    "description": "A relaxed outdoor gathering in July 2025 for families and friends to enjoy games, traditional sports, team activities, and delicious picnic-style food. A perfect opportunity to connect, celebrate, and create lasting memories together. Exact date and venue will be announced closer to the event.",
     "imageUrl": "/src/assets/event-celebration.jpg",
-    "upcoming": true
+    "upcoming": false
   },
   {
     "id": "3",
-    "title": "Youth Leadership Workshop",
-    "date": "2025-08-10",
-    "location": "Calgary Convention Hall, Alberta",
-    "description": "Empowering the next generation with leadership skills, cultural knowledge, and community values. Interactive sessions led by community leaders and special guest speakers.",
+    "title": "Diwali 2026 Celebration",
+    "date": "2026-11-01",
+    "location": "To be announced",
+    "description": "An annual Diwali celebration bringing families, friends, and generations together to celebrate light, hope, and new beginnings. This event will include cultural programs and shared festive moments. Exact date and venue for Diwali 2026 will be announced closer to the festival.",
     "imageUrl": "/src/assets/event-celebration.jpg",
     "upcoming": true
-  },
-  {
-    "id": "4",
-    "title": "Winter Celebration 2024",
-    "date": "2024-12-15",
-    "location": "Montreal Cultural Center, Quebec",
-    "description": "Our annual winter gathering brought together over 300 community members for an evening of celebration, traditional performances, and community bonding. Thank you to all who attended!",
-    "imageUrl": "/src/assets/event-celebration.jpg",
-    "upcoming": false
-  },
-  {
-    "id": "5",
-    "title": "Spring Festival 2024",
-    "date": "2024-04-20",
-    "location": "Edmonton Community Hall, Alberta",
-    "description": "A beautiful celebration of spring with cultural performances, traditional cuisine, and activities for the whole family. Over 250 attendees enjoyed this memorable event.",
-    "imageUrl": "/src/assets/event-celebration.jpg",
-    "upcoming": false
   }
 ]
