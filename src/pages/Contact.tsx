@@ -6,7 +6,14 @@ import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { toast } from "sonner";
@@ -49,8 +56,6 @@ const formSchema = z.object({
     .max(2000, { message: "Message must be less than 2000 characters" }),
 });
 
-
-
 type FormData = z.infer<typeof formSchema>;
 
 export default function Contact() {
@@ -62,6 +67,7 @@ export default function Contact() {
       name: "",
       email: "",
       phone: "",
+      address: "",
       subject: "",
       message: "",
     },
@@ -69,10 +75,10 @@ export default function Contact() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    
+
     // Simulate form submission (frontend only for now)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     console.log("Form submitted:", data);
     toast.success("Thank you for your message! We'll get back to you soon.");
     form.reset();
@@ -95,7 +101,8 @@ export default function Contact() {
               Contact Us
             </h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-              We'd love to hear from you. Reach out with questions, suggestions, or inquiries
+              We'd love to hear from you. Reach out with questions, suggestions,
+              or inquiries
             </p>
           </div>
         </section>
@@ -106,13 +113,19 @@ export default function Contact() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
               {/* Contact Form */}
               <div>
-                <h2 className="text-3xl font-heading font-bold mb-6">Send Us a Message</h2>
+                <h2 className="text-3xl font-heading font-bold mb-6">
+                  Send Us a Message
+                </h2>
                 <p className="text-muted-foreground mb-8">
-                  Fill out the form below and we'll get back to you as soon as possible.
+                  Fill out the form below and we'll get back to you as soon as
+                  possible.
                 </p>
 
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-6"
+                  >
                     <FormField
                       control={form.control}
                       name="name"
@@ -134,32 +147,54 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Email</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="your.email@example.com" {...field} />
+                            <Input
+                              type="email"
+                              placeholder="your.email@example.com"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
 
-                    {/* NOTE: Phone Number field added on Feb-2025 for improved contact info */}
-<FormField
-  control={form.control}
-  name="phone"
-  render={({ field }) => (
-    <FormItem>
-      <FormLabel>Phone Number (optional)</FormLabel>
-      <FormControl>
-        <Input
-          type="tel"
-          placeholder="123-456-7890"
-          {...field}
-        />
-      </FormControl>
-      <FormMessage />
-    </FormItem>
-  )}
-/>
+                    {/* NOTE: Phone number is now required */}
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone Number *</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="tel"
+                              placeholder="123-456-7890"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
+                    {/* NOTE: Address is now required */}
+                    <FormField
+                      control={form.control}
+                      name="address"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Address *</FormLabel>
+                          <FormControl>
+                            <Input
+                              type="text"
+                              placeholder="Enter your full address"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
                     <FormField
                       control={form.control}
@@ -168,7 +203,10 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Subject</FormLabel>
                           <FormControl>
-                            <Input placeholder="What is this regarding?" {...field} />
+                            <Input
+                              placeholder="What is this regarding?"
+                              {...field}
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -182,7 +220,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Message</FormLabel>
                           <FormControl>
-                            <Textarea 
+                            <Textarea
                               placeholder="Your message..."
                               className="min-h-[150px]"
                               {...field}
@@ -193,7 +231,12 @@ export default function Contact() {
                       )}
                     />
 
-                    <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
                       {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
@@ -202,7 +245,9 @@ export default function Contact() {
 
               {/* Contact Information */}
               <div>
-                <h2 className="text-3xl font-heading font-bold mb-6">Get in Touch</h2>
+                <h2 className="text-3xl font-heading font-bold mb-6">
+                  Get in Touch
+                </h2>
                 <p className="text-muted-foreground mb-8">
                   You can also reach us through the following channels:
                 </p>
@@ -217,8 +262,13 @@ export default function Contact() {
                           </div>
                         </div>
                         <div>
-                          <h3 className="text-lg font-heading font-semibold mb-2">Email</h3>
-                          <a href="mailto:info@limbachsamaj.ca" className="text-primary hover:underline">
+                          <h3 className="text-lg font-heading font-semibold mb-2">
+                            Email
+                          </h3>
+                          <a
+                            href="mailto:info@limbachsamaj.ca"
+                            className="text-primary hover:underline"
+                          >
                             info@limbachsamaj.ca
                           </a>
                           <p className="text-sm text-muted-foreground mt-1">
@@ -238,8 +288,13 @@ export default function Contact() {
                           </div>
                         </div>
                         <div>
-                          <h3 className="text-lg font-heading font-semibold mb-2">Phone</h3>
-                          <a href="tel:+14165550123" className="text-primary hover:underline">
+                          <h3 className="text-lg font-heading font-semibold mb-2">
+                            Phone
+                          </h3>
+                          <a
+                            href="tel:+14165550123"
+                            className="text-primary hover:underline"
+                          >
                             +1 (416) 555-0123
                           </a>
                           <p className="text-sm text-muted-foreground mt-1">
@@ -259,9 +314,12 @@ export default function Contact() {
                           </div>
                         </div>
                         <div>
-                          <h3 className="text-lg font-heading font-semibold mb-2">Location</h3>
+                          <h3 className="text-lg font-heading font-semibold mb-2">
+                            Location
+                          </h3>
                           <p className="text-muted-foreground">
-                            Serving Limbach families and community members across Canada
+                            Serving Limbach families and community members
+                            across Canada
                           </p>
                         </div>
                       </div>
@@ -270,7 +328,9 @@ export default function Contact() {
                 </div>
 
                 <div className="mt-8 p-6 bg-muted/50 rounded-lg">
-                  <h3 className="font-heading font-semibold mb-3">Office Hours</h3>
+                  <h3 className="font-heading font-semibold mb-3">
+                    Office Hours
+                  </h3>
                   <div className="space-y-2 text-sm text-muted-foreground">
                     <div className="flex justify-between">
                       <span>Monday - Friday:</span>
@@ -293,16 +353,16 @@ export default function Contact() {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "Limbach Samaj",
-          "url": "https://limbachsamaj.ca",
-          "contactPoint": {
+          name: "Limbach Samaj",
+          url: "https://limbachsamaj.ca",
+          contactPoint: {
             "@type": "ContactPoint",
-            "telephone": "+1-416-555-0123",
-            "contactType": "Customer Service",
-            "email": "info@limbachsamaj.ca",
-            "areaServed": "CA",
-            "availableLanguage": "English"
-          }
+            telephone: "+1-416-555-0123",
+            contactType: "Customer Service",
+            email: "info@limbachsamaj.ca",
+            areaServed: "CA",
+            availableLanguage: "English",
+          },
         })}
       </script>
     </>
