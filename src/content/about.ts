@@ -1,7 +1,7 @@
 export const aboutContent = {
   hero: {
-    title: "About Limbach Samaaj",
-    subtitle: "Preserving heritage, building community, empowering futures"
+    title: "About Us",
+    subtitle: "Limbach Samaj of Canada is a community-driven, non-profit organization supporting individuals and families from the Hindu community of Gujarat who have made Canada their home. We are proud Canadian-Hindus who value the opportunity to contribute to this country’s cultural, social, and economic fabric. Our organization is built on the belief that the values cherished in Canada such as respect, compassion, inclusion, community service, and integrity are strongly aligned with the timeless principles found in Hindu philosophy. By embracing these shared values, we work to strengthen both our cultural heritage and our Canadian identity"
   },
   mission: {
     title: "Our Mission",
