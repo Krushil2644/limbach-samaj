@@ -31,7 +31,7 @@ export default function Header() {
   <img
     src={logo}
     alt="Limbach Samaj logo"
-    className="h-10 w-auto object-contain"
+    className="h-20 w-20 object-contain border border-red-500"  //className="h-10 w-auto object-contain"
   />
   <span className="text-xl font-bold text-primary hidden sm:inline">
     Limbach Samaj
