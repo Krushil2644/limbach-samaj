@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import logo from "@/assets/limbach-logo.png";
+import logo from "@/assets/logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
