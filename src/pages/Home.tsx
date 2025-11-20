@@ -30,7 +30,7 @@ export default function Home() {
           <div className="absolute inset-0">
             <img
               src={heroImage}
-              alt="Community gathering"
+              alt="TEST IMAGE"  //alt="Community gathering"
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 hero-overlay" />
