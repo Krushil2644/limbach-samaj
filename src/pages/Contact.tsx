@@ -12,18 +12,43 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { toast } from "sonner";
 
 const formSchema = z.object({
-  name: z.string().trim().min(2, { message: "Name must be at least 2 characters" }).max(100),
-  email: z.string().trim().email({ message: "Invalid email address" }).max(255),
+  name: z
+    .string()
+    .trim()
+    .min(2, { message: "Name must be at least 2 characters" })
+    .max(100, { message: "Name must be less than 100 characters" }),
 
-  phone: z.string()
+  email: z
+    .string()
+    .trim()
+    .email({ message: "Enter a valid email address" })
+    .max(255, { message: "Email must be less than 255 characters" }),
+
+  phone: z
+    .string()
     .trim()
     .min(7, { message: "Phone number must be at least 7 digits" })
-    .max(20, { message: "Phone number is too long" })
-    .optional(),
+    .max(20, { message: "Phone number is too long" }),
 
-  subject: z.string().trim().min(3, { message: "Subject must be at least 3 characters" }).max(200),
-  message: z.string().trim().min(10, { message: "Message must be at least 10 characters" }).max(2000),
+  address: z
+    .string()
+    .trim()
+    .min(5, { message: "Address must be at least 5 characters" })
+    .max(200, { message: "Address must be less than 200 characters" }),
+
+  subject: z
+    .string()
+    .trim()
+    .min(3, { message: "Subject must be at least 3 characters" })
+    .max(200, { message: "Subject must be less than 200 characters" }),
+
+  message: z
+    .string()
+    .trim()
+    .min(10, { message: "Message must be at least 10 characters" })
+    .max(2000, { message: "Message must be less than 2000 characters" }),
 });
+
 
 
 type FormData = z.infer<typeof formSchema>;
