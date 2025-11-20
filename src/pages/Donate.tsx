@@ -63,7 +63,7 @@ export default function Donate() {
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-lg text-muted-foreground mb-4">
-                  We're currently setting up a secure online donation system with Stripe integration 
+                  We're currently setting up a secure online donation system 
                   to make supporting our community easier and more convenient.
                 </p>
                 <p className="text-muted-foreground mb-6">
@@ -73,8 +73,8 @@ export default function Donate() {
                 <div className="bg-muted/50 p-4 rounded-lg">
                   <p className="text-sm font-medium mb-2">Tax Receipts</p>
                   <p className="text-sm text-muted-foreground">
-                    As a registered Canadian not-for-profit organization, we can provide tax receipts 
-                    for eligible donations. Details will be available with our online system.
+                    As a registered Canadian not-for-profit organization, we can provide receipts for donations. However, please note that donations are not currently eligible for CRA tax exemption.
+Tax exemption eligibility will be available in the future—stay tuned for updates!
                   </p>
                 </div>
               </CardContent>
