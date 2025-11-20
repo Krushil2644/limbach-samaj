@@ -8,7 +8,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  // { name: "Events", href: "/events" },      to add later.
+  { name: "Events", href: "/events" },
   { name: "Membership", href: "/membership" },
   { name: "Donate", href: "/donate" },
   { name: "Gallery", href: "/gallery" },
