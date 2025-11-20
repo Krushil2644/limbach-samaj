@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import logo from "@/assets/limbach-logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -26,9 +27,16 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container-custom flex h-16 items-center justify-between" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link to="/" className="-m-1.5 p-1.5">
-            <span className="text-xl font-heading font-bold text-primary">Limbach Samaj</span>
-          </Link>
+<Link to="/" className="flex items-center gap-2">
+  <img
+    src={logo}
+    alt="Limbach Samaj logo"
+    className="h-10 w-auto object-contain"
+  />
+  <span className="text-xl font-bold text-primary hidden sm:inline">
+    Limbach Samaj
+  </span>
+</Link>
         </div>
         
         <div className="flex lg:hidden gap-2">
