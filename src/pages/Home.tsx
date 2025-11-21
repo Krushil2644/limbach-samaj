@@ -26,15 +26,17 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              src={heroImage}
-              alt="TEST IMAGE"  //alt="Community gathering"
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 hero-overlay" />
-          </div>
+                {/* Hero Section */}
+        <section
+          className="relative h-[600px] flex items-center justify-center overflow-hidden"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Dark overlay so white text is readable */}
+          <div className="absolute inset-0 bg-black/55" />
 
           <div className="relative z-10 container-custom text-center text-white">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6">
@@ -45,8 +47,7 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* NOTE: Events CTA is temporarily hidden.
-                  Re-enable once /events route and content are finalized. */}
+              {/* Events CTA is still hidden for now */}
               {false && (
                 <Button
                   asChild
@@ -70,6 +71,7 @@ export default function Home() {
             </div>
           </div>
         </section>
+
 
         {/* Welcome Section */}
         <section className="section-spacing">
