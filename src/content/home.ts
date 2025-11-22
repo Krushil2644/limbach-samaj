@@ -1,6 +1,6 @@
 export const homeContent = {
   hero: {
-    title: "Welcome to Limbach Samaj of Canada",
+    title: "Welcome to Limbach Samaj Canada",
     subtitle: "Celebrating our heritage, building our future together across Canada"
   },
   welcome: {
