@@ -278,69 +278,8 @@ export default function Contact() {
                       </div>
                     </CardHeader>
                   </Card>
-
                   <Card>
-                    <CardHeader>
-                      <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0">
-                          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-secondary/10 text-secondary">
-                            <Phone className="h-6 w-6" />
-                          </div>
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-heading font-semibold mb-2">
-                            Phone
-                          </h3>
-                          <a
-                            href="tel:+14165550123"
-                            className="text-primary hover:underline"
-                          >
-                            +1 (416) 555-0123
-                          </a>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            Monday - Friday, 9:00 AM - 5:00 PM EST
-                          </p>
-                        </div>
-                      </div>
-                    </CardHeader>
                   </Card>
-
-                  <Card>
-                    <CardHeader>
-                      <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0">
-                          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent">
-                            <MapPin className="h-6 w-6" />
-                          </div>
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-heading font-semibold mb-2">
-                            Location
-                          </h3>
-                          <p className="text-muted-foreground">
-                            Serving Limbach families and community members
-                            across Canada
-                          </p>
-                        </div>
-                      </div>
-                    </CardHeader>
-                  </Card>
-                </div>
-
-                <div className="mt-8 p-6 bg-muted/50 rounded-lg">
-                  <h3 className="font-heading font-semibold mb-3">
-                    Office Hours
-                  </h3>
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <div className="flex justify-between">
-                      <span>Monday - Friday:</span>
-                      <span>9:00 AM - 5:00 PM EST</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Saturday - Sunday:</span>
-                      <span>Closed</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
