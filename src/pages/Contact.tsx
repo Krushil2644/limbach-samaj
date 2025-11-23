@@ -269,7 +269,7 @@ export default function Contact() {
                             href="mailto:info@limbachsamaj.ca"
                             className="text-primary hover:underline"
                           >
-                            info@limbachsamaj.ca
+                             jaylimbach@gmail.com
                           </a>
                           <p className="text-sm text-muted-foreground mt-1">
                             We typically respond within 24-48 hours
