@@ -15,47 +15,45 @@ export default function Events() {
     <>
       <SEOHead
         title="Events"
-        description="Discover upcoming community events and cultural celebrations hosted by Limbach Samaaj across Canada. Join us for memorable gatherings and activities."
+        description="Discover upcoming community events and cultural celebrations hosted by Limbach Samaj across Canada. Join us for memorable gatherings and activities."
         path="/events"
       />
 
       <main>
         {/* Hero Section */}
-<section
-  className="relative h-[600px] flex items-center justify-center overflow-hidden"
-  style={{
-    backgroundImage: `url(${heroImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
->
-  {/* Dark overlay so white text is readable */}
-  <div className="absolute inset-0 bg-black/55" />
+        <section
+          className="relative h-[600px] flex items-center justify-center overflow-hidden"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Dark overlay so white text is readable */}
+          <div className="absolute inset-0 bg-black/55" />
 
-  <div className="relative z-10 container-custom text-center text-white">
-    <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6">
-      PAGE TITLE HERE
-    </h1>
+          <div className="relative z-10 container-custom text-center text-white">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6">
+              Community Events
+            </h1>
 
-    <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-      Your subtitle or short description here
-    </p>
-  </div>
-</section>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+              Join us for cultural celebrations, family gatherings, and community activities throughout the year.
+            </p>
+          </div>
+        </section>
 
-{/* Events Tabs */}
+        {/* Events Tabs + Intro */}
         <section className="section-spacing">
           {/* Brief Intro Content */}
-<section className="py-8">
-  <div className="container-custom max-w-3xl text-center">
-    <p className="text-lg text-muted-foreground leading-relaxed">
-      Limbach Samaj of Canada organizes meaningful cultural, spiritual, and social events
-      throughout the year to strengthen our community bonds. From religious ceremonies to
-      family gatherings and festive celebrations, our events create opportunities for
-      connection, tradition, and shared joy.
-    </p>
-  </div>
-</section>
+          <div className="container-custom max-w-3xl text-center mb-10">
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Limbach Samaj of Canada organizes meaningful cultural, spiritual, and social events
+              throughout the year to strengthen our community bonds. From religious ceremonies to
+              family gatherings and festive celebrations, our events create opportunities for
+              connection, tradition, and shared joy.
+            </p>
+          </div>
 
           <div className="container-custom">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -106,7 +104,7 @@ export default function Events() {
               Stay Updated
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Don't miss out on our upcoming events! Event details, registration information, and updates 
+              Don&apos;t miss out on our upcoming events! Event details, registration information, and updates 
               are regularly posted here and shared with our members.
             </p>
             <p className="text-muted-foreground">
@@ -122,21 +120,21 @@ export default function Events() {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ItemList",
-          "itemListElement": upcomingEvents.map((event, index) => ({
+          itemListElement: upcomingEvents.map((event, index) => ({
             "@type": "Event",
-            "position": index + 1,
-            "name": event.title,
-            "startDate": event.date,
-            "location": {
+            position: index + 1,
+            name: event.title,
+            startDate: event.date,
+            location: {
               "@type": "Place",
-              "name": event.location
+              name: event.location,
             },
-            "description": event.description,
-            "organizer": {
+            description: event.description,
+            organizer: {
               "@type": "Organization",
-              "name": "Limbach Samaaj"
-            }
-          }))
+              name: "Limbach Samaj",
+            },
+          })),
         })}
       </script>
     </>
