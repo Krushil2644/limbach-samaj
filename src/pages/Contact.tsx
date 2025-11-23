@@ -14,8 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail } from "lucide-react";
 import { toast } from "sonner";
 
 const formSchema = z.object({
@@ -101,193 +100,163 @@ export default function Contact() {
               Contact Us
             </h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-              We'd love to hear from you. Reach out with questions, suggestions,
-              or inquiries
+              We&apos;d love to hear from you. Reach out with questions,
+              suggestions, or inquiries.
             </p>
           </div>
         </section>
 
-        {/* Contact Section */}
+        {/* Contact Section – single centered column */}
         <section className="section-spacing">
-          <div className="container-custom">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              {/* Contact Form */}
-              <div>
-                <h2 className="text-3xl font-heading font-bold mb-6">
-                  Send Us a Message
-                </h2>
-                <p className="text-muted-foreground mb-8">
-                  Fill out the form below and we'll get back to you as soon as
-                  possible.
-                </p>
+          <div className="container-custom max-w-3xl mx-auto">
+            <h2 className="text-3xl font-heading font-bold mb-4 text-center">
+              Send Us a Message
+            </h2>
+            <p className="text-muted-foreground mb-8 text-center">
+              Fill out the form below and we&apos;ll get back to you as soon as
+              possible.
+            </p>
 
-                <Form {...form}>
-                  <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-6"
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your full name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email *</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="email"
+                          placeholder="your.email@example.com"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone Number *</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="tel"
+                          placeholder="123-456-7890"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="address"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Address *</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          placeholder="Enter your full address"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Subject *</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="What is this regarding?"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message *</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Your message..."
+                          className="min-h-[150px]"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            </Form>
+
+            {/* Email at the bottom */}
+            <div className="mt-10 text-center">
+              <div className="inline-flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                <Mail className="h-4 w-4" />
+                <span>
+                  You can also email us at{" "}
+                  <a
+                    href="mailto:jaylimbach@gmail.com"
+                    className="text-primary font-medium hover:underline"
                   >
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Your full name" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="email"
-                              placeholder="your.email@example.com"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    {/* NOTE: Phone number is now required */}
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Phone Number *</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="tel"
-                              placeholder="123-456-7890"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    {/* NOTE: Address is now required */}
-                    <FormField
-                      control={form.control}
-                      name="address"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Address *</FormLabel>
-                          <FormControl>
-                            <Input
-                              type="text"
-                              placeholder="Enter your full address"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Subject</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="What is this regarding?"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Your message..."
-                              className="min-h-[150px]"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </Button>
-                  </form>
-                </Form>
-              </div>
-
-              {/* Contact Information */}
-              <div>
-                <h2 className="text-3xl font-heading font-bold mb-6">
-                  Get in Touch
-                </h2>
-                <p className="text-muted-foreground mb-8">
-                  You can also reach us through the following channels:
-                </p>
-
-                <div className="space-y-6">
-                  <Card>
-                    <CardHeader>
-                      <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0">
-                          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                            <Mail className="h-6 w-6" />
-                          </div>
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-heading font-semibold mb-2">
-                            Email
-                          </h3>
-                          <a
-                            href="mailto:info@limbachsamaj.ca"
-                            className="text-primary hover:underline"
-                          >
-                             jaylimbach@gmail.com
-                          </a>
-                          <p className="text-sm text-muted-foreground mt-1">
-                            We typically respond within 24-48 hours
-                          </p>
-                        </div>
-                      </div>
-                    </CardHeader>
-                  </Card>
-                  <Card>
-                  </Card>
-                </div>
+                    info@limbachsamaj.ca
+                  </a>
+                  .
+                </span>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      {/* Structured Data */}
+      {/* Structured Data – email only */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -296,7 +265,6 @@ export default function Contact() {
           url: "https://limbachsamaj.ca",
           contactPoint: {
             "@type": "ContactPoint",
-            telephone: "+1-416-555-0123",
             contactType: "Customer Service",
             email: "info@limbachsamaj.ca",
             areaServed: "CA",
