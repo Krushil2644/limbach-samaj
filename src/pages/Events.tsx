@@ -3,7 +3,7 @@ import SEOHead from "@/components/SEOHead";
 import EventCard from "@/components/EventCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import eventsData from "@/content/events.json";
-import bgHero from "@/assets/bg-logo.png";
+import bgHero from "@/assets/hero-community.jpg";
 
 export default function Events() {
   const [activeTab, setActiveTab] = useState("upcoming");
@@ -40,9 +40,7 @@ export default function Events() {
     </p>
   </div>
 </section>
-
-
-        {/* Events Tabs */}
+{/* Events Tabs */}
         <section className="section-spacing">
           {/* Brief Intro Content */}
 <section className="py-8">
