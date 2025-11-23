@@ -3,7 +3,7 @@ import SEOHead from "@/components/SEOHead";
 import EventCard from "@/components/EventCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import eventsData from "@/content/events.json";
-import bgHero from "@/assets/hero-community.jpg";
+import heroImage from "@/assets/hero-community.jpg";
 
 export default function Events() {
   const [activeTab, setActiveTab] = useState("upcoming");
@@ -21,25 +21,28 @@ export default function Events() {
 
       <main>
         {/* Hero Section */}
-<section className="relative h-[400px] md:h-[480px] flex items-center justify-center overflow-hidden">
-  <div className="absolute inset-0">
-    <img
-      src={bgHero}
-      alt="Hero Background"
-      className="h-full w-full object-cover"
-    />
-    <div className="absolute inset-0 bg-black/60" />
-  </div>
+<section
+  className="relative h-[600px] flex items-center justify-center overflow-hidden"
+  style={{
+    backgroundImage: `url(${heroImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  {/* Dark overlay so white text is readable */}
+  <div className="absolute inset-0 bg-black/55" />
 
-  <div className="relative z-10 text-center text-white px-4">
-    <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold">
+  <div className="relative z-10 container-custom text-center text-white">
+    <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6">
       PAGE TITLE HERE
     </h1>
-    <p className="mt-4 text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+
+    <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
       Your subtitle or short description here
     </p>
   </div>
 </section>
+
 {/* Events Tabs */}
         <section className="section-spacing">
           {/* Brief Intro Content */}
