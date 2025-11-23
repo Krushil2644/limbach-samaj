@@ -7,9 +7,9 @@ import heroImage from "@/assets/hero-community.jpg";
 
 export default function Events() {
   const [activeTab, setActiveTab] = useState("upcoming");
-  
-  const upcomingEvents = eventsData.filter(event => event.upcoming);
-  const pastEvents = eventsData.filter(event => !event.upcoming);
+
+  const upcomingEvents = eventsData.filter((event) => event.upcoming);
+  const pastEvents = eventsData.filter((event) => !event.upcoming);
 
   return (
     <>
@@ -38,7 +38,8 @@ export default function Events() {
             </h1>
 
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Join us for cultural celebrations, family gatherings, and community activities throughout the year.
+              Join us for cultural celebrations, family gatherings, and community
+              activities throughout the year.
             </p>
           </div>
         </section>
@@ -48,15 +49,20 @@ export default function Events() {
           {/* Brief Intro Content */}
           <div className="container-custom max-w-3xl text-center mb-10">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Limbach Samaj of Canada organizes meaningful cultural, spiritual, and social events
-              throughout the year to strengthen our community bonds. From religious ceremonies to
-              family gatherings and festive celebrations, our events create opportunities for
-              connection, tradition, and shared joy.
+              Limbach Samaj of Canada organizes meaningful cultural, spiritual,
+              and social events throughout the year to strengthen our community
+              bonds. From religious ceremonies to family gatherings and festive
+              celebrations, our events create opportunities for connection,
+              tradition, and shared joy.
             </p>
           </div>
 
           <div className="container-custom">
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <Tabs
+              value={activeTab}
+              onValueChange={setActiveTab}
+              className="w-full"
+            >
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
                 <TabsTrigger value="upcoming">Upcoming Events</TabsTrigger>
                 <TabsTrigger value="past">Past Events</TabsTrigger>
@@ -72,7 +78,8 @@ export default function Events() {
                 ) : (
                   <div className="text-center py-12">
                     <p className="text-lg text-muted-foreground">
-                      No upcoming events at the moment. Check back soon for new announcements!
+                      No upcoming events at the moment. Check back soon for new
+                      announcements!
                     </p>
                   </div>
                 )}
@@ -104,12 +111,13 @@ export default function Events() {
               Stay Updated
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Don&apos;t miss out on our upcoming events! Event details, registration information, and updates 
-              are regularly posted here and shared with our members.
+              Don&apos;t miss out on our upcoming events! Event details,
+              registration information, and updates are regularly posted here and
+              shared with our members.
             </p>
             <p className="text-muted-foreground">
-              For event-specific inquiries or to suggest event ideas, please contact our Events Coordinator 
-              through our contact page.
+              For event-specific inquiries or to suggest event ideas, please
+              contact our Events Coordinator through our contact page.
             </p>
           </div>
         </section>
