@@ -246,7 +246,7 @@ export default function Contact() {
                     href="mailto:jaylimbach@gmail.com"
                     className="text-primary font-medium hover:underline"
                   >
-                    info@limbachsamaj.ca
+                    jaylimbach@gmail.com
                   </a>
                   .
                 </span>
