@@ -7,9 +7,6 @@ export default function Membership() {
     "Access to all community events and cultural celebrations",
     "Networking opportunities with Limbach families across Canada",
     "Regular updates on community news and initiatives",
-    "Voting rights in organizational decisions",
-    "Discounted rates for special events and programs",
-    "Support network for family needs and occasions",
     "Opportunities to volunteer and contribute to the community",
     "Access to community resources and assistance programs"
   ];
