@@ -33,6 +33,18 @@ export default function Events() {
 
         {/* Events Tabs */}
         <section className="section-spacing">
+          {/* Brief Intro Content */}
+<section className="py-8">
+  <div className="container-custom max-w-3xl text-center">
+    <p className="text-lg text-muted-foreground leading-relaxed">
+      Limbach Samaj of Canada organizes meaningful cultural, spiritual, and social events
+      throughout the year to strengthen our community bonds. From religious ceremonies to
+      family gatherings and festive celebrations, our events create opportunities for
+      connection, tradition, and shared joy.
+    </p>
+  </div>
+</section>
+
           <div className="container-custom">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
