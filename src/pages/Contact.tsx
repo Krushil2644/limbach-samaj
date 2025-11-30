@@ -164,7 +164,7 @@ export default function Contact() {
                       <FormControl>
                         <Input
                           type="tel"
-                          placeholder="123-456-7890"
+                          placeholder="tba"
                           {...field}
                         />
                       </FormControl>
