@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { X } from "lucide-react";
 import galleryData from "@/content/gallery.json";
+import { useNavigate } from 'react-router-dom';
+import { siteConfig } from '@/site-config';
 
 export default function Gallery() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!siteConfig.navLinks.membership.visible) {
+      navigate('/');
+    }
+  }, [navigate]);
+  
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
@@ -63,11 +73,11 @@ export default function Gallery() {
               Share Your Photos
             </h2>
             <p className="text-lg text-muted-foreground mb-4">
-              Have photos from our community events that you'd like to share? We'd love to feature 
+              Have photos from our community events that you'd like to share? We'd love to feature
               them in our gallery!
             </p>
             <p className="text-muted-foreground">
-              Please contact us through our contact page to submit photos from Limbach Samaj events 
+              Please contact us through our contact page to submit photos from Limbach Samaj events
               and celebrations.
             </p>
           </div>

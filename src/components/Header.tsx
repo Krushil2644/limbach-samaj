@@ -5,17 +5,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import logo from "@/assets/logo.png";
+import { siteConfig } from '@/site-config';
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
-  { name: "Events", href: "/events" },
-  { name: "Membership", href: "/membership" },
-  { name: "Donate", href: "/donate" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "News", href: "/news" },
-  { name: "Contact", href: "/contact" },
-];
+const navigation = siteConfig.navLinks;
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,7 +26,7 @@ export default function Header() {
     className="h-10 w-10 object-contain border border-white rounded-full"
   />
   <span className="text-xl font-bold text-primary hidden sm:inline">
-    Limbach Samaj
+    {siteConfig.appName}
   </span>
 </Link>
         </div>
@@ -56,20 +48,23 @@ export default function Header() {
         </div>
         
         <div className="hidden lg:flex lg:gap-x-8 lg:items-center">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
-                isActive(item.href)
-                  ? "text-primary"
-                  : "text-muted-foreground"
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
+          {Object.values(navigation)
+            .filter(item => item.visible)
+            .sort((a, b) => a.ordinal - b.ordinal)
+            .map(item => (
+              <Link
+                key={item.name}
+                to={item.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary",
+                  isActive(item.href)
+                    ? "text-primary"
+                    : "text-muted-foreground"
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
           <ThemeToggle />
         </div>
       </nav>
@@ -78,21 +73,24 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden">
           <div className="space-y-1 px-4 pb-3 pt-2">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={cn(
-                  "block rounded-md px-3 py-2 text-base font-medium transition-colors",
-                  isActive(item.href)
-                    ? "bg-primary/10 text-primary"
-                    : "text-foreground hover:bg-muted"
-                )}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {Object.values(navigation)
+              .filter(item => item.visible)
+              .sort((a, b) => a.ordinal - b.ordinal)
+              .map(item => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "block rounded-md px-3 py-2 text-base font-medium transition-colors",
+                    isActive(item.href)
+                      ? "bg-primary/10 text-primary"
+                      : "text-foreground hover:bg-muted"
+                  )}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
           </div>
         </div>
       )}

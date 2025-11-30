@@ -1,8 +1,19 @@
 import SEOHead from "@/components/SEOHead";
 import NewsCard from "@/components/NewsCard";
 import newsData from "@/content/news.json";
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { siteConfig } from '@/site-config';
 
 export default function News() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!siteConfig.navLinks.membership.visible) {
+      navigate('/');
+    }
+  }, [navigate]);
+
   return (
     <>
       <SEOHead
@@ -42,16 +53,16 @@ export default function News() {
               Stay Connected
             </h2>
             <p className="text-lg text-muted-foreground mb-4">
-              Want to receive the latest news and updates directly? We're working on a newsletter 
+              Want to receive the latest news and updates directly? We're working on a newsletter
               subscription system to keep our community informed.
             </p>
             <p className="text-muted-foreground mb-8">
-              In the meantime, check back here regularly for the latest announcements, or follow us 
+              In the meantime, check back here regularly for the latest announcements, or follow us
               on social media to stay updated on community news and events.
             </p>
             <div className="flex justify-center gap-4">
-              <a 
-                href="/contact" 
+              <a
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
                 Contact Us
