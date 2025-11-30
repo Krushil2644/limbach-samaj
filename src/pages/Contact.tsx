@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Mail } from "lucide-react";
 import { toast } from "sonner";
+import { siteConfig } from '@/site-config';
 
 const formSchema = z.object({
   name: z
@@ -94,7 +95,7 @@ export default function Contact() {
 
       <main>
         {/* Hero Section */}
-        <section className="bg-gradient-primary text-white py-20">
+        <section className="bg-gradient-primary py-20">
           <div className="container-custom text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
               Contact Us
@@ -243,10 +244,10 @@ export default function Contact() {
                 <span>
                   You can also email us at{" "}
                   <a
-                    href="mailto:jaylimbach@gmail.com"
+                    href={`mailto:${siteConfig.email}`}
                     className="text-primary font-medium hover:underline"
                   >
-                    jaylimbach@gmail.com
+                    {siteConfig.email}
                   </a>
                   .
                 </span>

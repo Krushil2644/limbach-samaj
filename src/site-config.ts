@@ -42,6 +42,29 @@ export const siteConfig = {
 			name: 'News',
 			href: '/news',
 			visible: false,
+		},
+		contact: {
+			ordinal: 7,
+			name: 'Contact Us',
+			href: '/contact',
+			visible: true,
 		}
-	}
+	},
+	footeLinks: {
+		facebook: {
+			visible: true,
+			link: 'http://facebook.com/#'
+		},
+		twitter: {
+			visible: true,
+			link: 'https://twitter.com'
+		},
+		instagram: {
+			visible: true,
+			link: "https://instagram.com"
+		}
+	},
+	email: "jaylimbach@gmail.com",
+	phone: "+1 (416) 555-0123",
+	location: "Serving communities across Canada"
 }

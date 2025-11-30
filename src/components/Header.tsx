@@ -26,7 +26,7 @@ export default function Header() {
     className="h-10 w-10 object-contain border border-white rounded-full"
   />
   <span className="text-xl font-bold text-primary hidden sm:inline">
-    Limbach Samaj
+    {siteConfig.appName}
   </span>
 </Link>
         </div>

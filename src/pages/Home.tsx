@@ -6,12 +6,14 @@ import SEOHead from "@/components/SEOHead";
 import eventsData from "@/content/events.json";
 import heroImage from "@/assets/hero-community.jpg";
 import { homeContent } from "@/content/home";
+import { siteConfig } from '@/site-config';
 
 export default function Home() {
   console.log(heroImage);
   // NOTE: Toggle this flag to re-enable Events on the home page.
   // When Events feature is ready, set this to true and ensure /events route is active.
   const showUpcomingEvents = false;
+  const membershipVisible = siteConfig.navLinks.membership.visible;
 
   const upcomingEvents = showUpcomingEvents
     ? eventsData.filter((event) => event.upcoming).slice(0, 3)
@@ -169,7 +171,7 @@ export default function Home() {
         {/* CTA Section */}
         <section className="section-spacing">
           <div className="container-custom">
-            <div className="bg-gradient-primary text-white rounded-2xl p-12 md:p-16 text-center hover-lift">
+            <div className="bg-gradient-primary  rounded-2xl p-12 md:p-16 text-center hover-lift">
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">
                 {homeContent.cta.title}
               </h2>
@@ -177,14 +179,11 @@ export default function Home() {
                 {homeContent.cta.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" variant="secondary" className="hover-lift">
-                  <Link to="/membership">{homeContent.cta.primaryButton}</Link>
-                </Button>
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="bg-white/10 backdrop-blur-sm text-white border-white hover:bg-white/20 hover-lift"
+                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 hover-lift"
                 >
                   <Link to="/contact">{homeContent.cta.secondaryButton}</Link>
                 </Button>

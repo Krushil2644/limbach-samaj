@@ -145,22 +145,24 @@ export default function About() {
         </section>
 
         {/* Committee */}
-        <section className="section-spacing bg-muted/30">
-          <div className="container-custom">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-              {aboutContent.committee.title}
-            </h2>
-            <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-              {aboutContent.committee.subtitle}
-            </p>
+        {false &&
+          <section className="section-spacing bg-muted/30">
+            <div className="container-custom">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+                {aboutContent.committee.title}
+              </h2>
+              <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+                {aboutContent.committee.subtitle}
+              </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {teamData.map((member) => (
-                <TeamCard key={member.id} {...member} />
-              ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {teamData.map((member) => (
+                  <TeamCard key={member.id} {...member} />
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        }
       </main>
     </>
   );
