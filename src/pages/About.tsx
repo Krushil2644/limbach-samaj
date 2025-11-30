@@ -1,7 +1,7 @@
 import SEOHead from "@/components/SEOHead";
 import TeamCard from "@/components/TeamCard";
 import teamData from "@/content/team.json";
-import aboutImage from "@/assets/about-unity.jpg";
+import heroImage from "@/assets/hero-community.jpg";
 import { aboutContent } from "@/content/about";
 
 
@@ -15,27 +15,27 @@ export default function About() {
       />
 
       <main>
-       <section
-  className="relative h-[600px] flex items-center justify-center overflow-hidden"
-  style={{
-    backgroundImage: `url(${heroImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
->
-  {/* Dark overlay so white text is readable */}
-  <div className="absolute inset-0 bg-black/55" />
+        <section
+          className="relative h-[600px] flex items-center justify-center overflow-hidden"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {/* Dark overlay so white text is readable */}
+          <div className="absolute inset-0 bg-black/55" />
 
-  <div className="relative z-10 container-custom text-center text-white">
-    <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6">
-     About Us
-    </h1>
+          <div className="relative z-10 container-custom text-center text-white">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6">
+              About Us
+            </h1>
 
-    <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-      Limbach Samaj of Canada is a community-driven, non-profit organization supporting individuals and families from the Hindu community of Gujarat who have made Canada their home.
-    </p>
-  </div>
-</section>
+            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+              Limbach Samaj of Canada is a community-driven, non-profit organization supporting individuals and families from the Hindu community of Gujarat who have made Canada their home.
+            </p>
+          </div>
+        </section>
 
 
         {/* About / Who We Are */}

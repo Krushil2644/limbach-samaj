@@ -8,6 +8,7 @@ import heroImage from "@/assets/hero-community.jpg";
 import { homeContent } from "@/content/home";
 
 export default function Home() {
+  console.log(heroImage);
   // NOTE: Toggle this flag to re-enable Events on the home page.
   // When Events feature is ready, set this to true and ensure /events route is active.
   const showUpcomingEvents = false;
