@@ -65,6 +65,6 @@ export const siteConfig = {
 		}
 	},
 	email: "jaylimbach@gmail.com",
-	phone: "+1 (416) 555-0123",
+	phone: "tba",
 	location: "Serving communities across Canada"
 }
