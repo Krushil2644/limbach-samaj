@@ -1,8 +1,19 @@
 import SEOHead from "@/components/SEOHead";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { siteConfig } from '@/site-config';
 import { Heart, Users, Calendar, Award, Info } from "lucide-react";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Donate() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!siteConfig.navLinks.membership.visible) {
+      navigate('/');
+    }
+  }, [navigate]);
+  
   const impactAreas = [
     {
       icon: Calendar,
