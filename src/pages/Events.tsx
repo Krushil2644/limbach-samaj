@@ -2,8 +2,22 @@ import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import EventCard from "@/components/EventCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import eventsData from "@/content/events.json";
 import heroImage from "@/assets/hero-community.jpg";
+import rawEventsData from "@/content/events.json";
+
+type EventItem = {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  imageUrl: string;
+  upcoming: boolean;
+};
+
+const eventsData: EventItem[] = Array.isArray(rawEventsData)
+  ? (rawEventsData as EventItem[])
+  : [];
 
 export default function Events() {
   const [activeTab, setActiveTab] = useState("upcoming");
@@ -123,28 +137,31 @@ export default function Events() {
         </section>
       </main>
 
-      {/* Structured Data for Events */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          itemListElement: upcomingEvents.map((event, index) => ({
-            "@type": "Event",
-            position: index + 1,
-            name: event.title,
-            startDate: event.date,
-            location: {
-              "@type": "Place",
-              name: event.location,
-            },
-            description: event.description,
-            organizer: {
-              "@type": "Organization",
-              name: "Limbach Samaj",
-            },
-          })),
-        })}
-      </script>
+     <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: upcomingEvents.map((event, index) => ({
+        "@type": "Event",
+        position: index + 1,
+        name: event.title,
+        startDate: event.date,
+        location: {
+          "@type": "Place",
+          name: event.location,
+        },
+        description: event.description,
+        organizer: {
+          "@type": "Organization",
+          name: "Limbach Samaj",
+        },
+      })),
+    }),
+  }}
+/>
+
     </>
   );
 }
