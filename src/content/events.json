@@ -5,7 +5,7 @@
     "date": "2026-03-28",
     "location": "Hindu Heritage Center, Mississauga",
     "description": "Chaitri Navratri marks the beginning of the Hindu New Year and is dedicated to Goddess Durga. This special Mataji’s Havan is a spiritual gathering to seek the blessings of Maa Limbach, with traditional havan, limited Sah-Yajmaan seva , opportunities for Ahuti participation, and Maha-Prasad served after Aarti.",
-    "imageUrl": "/src/assets/events/havan.jpg",
+    "imageUrl": "/events/havan.jpg",
     "upcoming": true
   },
   {
@@ -14,7 +14,7 @@
     "date": "To be announced(July 2026)",
     "location": "To be announced",
     "description": "A relaxed outdoor gathering in July 2026 for families and friends to enjoy games, traditional sports, team activities, and delicious picnic-style food. A perfect opportunity to connect, celebrate, and create lasting memories together. Exact date and venue will be announced closer to the event.",
-    "imageUrl": "/src/assets/events/community-picnic.jpg",
+    "imageUrl": "/events/community-picnic.jpg",
     "upcoming": true
   },
   {
@@ -23,7 +23,7 @@
     "date": "To be announced(November 2026)",
     "location": "To be announced",
     "description": "An annual Diwali celebration bringing families, friends, and generations together to celebrate light, hope, and new beginnings. This event will include cultural programs and shared festive moments. Exact date and venue for Diwali 2026 will be announced closer to the festival.",
-    "imageUrl": "/src/assets/events/diwali-celebration.jpg",
+    "imageUrl": "/events/diwali-celebration.jpg",
     "upcoming": true
   }
 ]
