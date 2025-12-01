@@ -12,8 +12,28 @@ interface EventCardProps {
   upcoming: boolean;
 }
 
-export default function EventCard({ title, date, location, description, imageUrl, upcoming }: EventCardProps) {
-  const formattedDate = format(new Date(date), "MMMM dd, yyyy");
+function safeFormatDate(dateString: string) {
+  const parsed = new Date(dateString);
+
+  // If the date is invalid → return the original string (e.g. "To be announced")
+  if (isNaN(parsed.getTime())) {
+    return dateString;
+  }
+
+  // If valid → format normally
+  return format(parsed, "MMMM dd, yyyy");
+}
+
+export default function EventCard({
+  title,
+  date,
+  location,
+  description,
+  imageUrl,
+  upcoming,
+}: EventCardProps) {
+
+  const formattedDate = safeFormatDate(date);
 
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg">
@@ -24,25 +44,34 @@ export default function EventCard({ title, date, location, description, imageUrl
           className="h-full w-full object-cover transition-transform hover:scale-105"
         />
       </div>
+
       <CardHeader className="space-y-2">
         <div className="flex items-center justify-between">
           <Badge variant={upcoming ? "default" : "secondary"}>
             {upcoming ? "Upcoming" : "Past Event"}
           </Badge>
         </div>
-        <h3 className="text-xl font-heading font-semibold line-clamp-2">{title}</h3>
+        <h3 className="text-xl font-heading font-semibold line-clamp-2">
+          {title}
+        </h3>
       </CardHeader>
+
       <CardContent className="space-y-3">
         <div className="flex items-center text-sm text-muted-foreground">
           <Calendar className="mr-2 h-4 w-4 text-primary" />
           {formattedDate}
         </div>
+
         <div className="flex items-center text-sm text-muted-foreground">
           <MapPin className="mr-2 h-4 w-4 text-primary" />
           {location}
         </div>
-        <p className="text-sm text-muted-foreground line-clamp-3">{description}</p>
+
+        <p className="text-sm text-muted-foreground line-clamp-3">
+          {description}
+        </p>
       </CardContent>
+
       <CardFooter>
         {upcoming && (
           <p className="text-xs text-muted-foreground">
