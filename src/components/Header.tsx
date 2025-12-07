@@ -19,23 +19,23 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container-custom flex h-16 items-center justify-between" aria-label="Global">
         <div className="flex lg:flex-1">
-<Link to="/" className="flex items-center gap-2">
-  <img
-    src={logo}
-    alt="Limbach Samaj logo"
-    className="h-10 w-10 object-contain border border-white rounded-full"
-  />
-  <span className="text-xl font-bold text-primary hidden sm:inline">
-    {siteConfig.appName}
-  </span>
-</Link>
+          <Link to="/" className="flex items-center gap-2">
+            <img
+              src={logo}
+              alt="Limbach Samaj logo"
+              className="h-10 w-10 object-contain border border-white rounded-full"
+            />
+            <span className="text-xl font-bold text-primary hidden sm:inline">
+              {siteConfig.appName}
+            </span>
+          </Link>
         </div>
-        
+
         <div className="flex lg:hidden gap-2">
           <ThemeToggle />
           <Button
             variant="ghost"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+            className="ml-2 inline-flex items-center justify-center rounded-md p-2.5"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className="sr-only">Toggle menu</span>
@@ -46,7 +46,7 @@ export default function Header() {
             )}
           </Button>
         </div>
-        
+
         <div className="hidden lg:flex lg:gap-x-8 lg:items-center">
           {Object.values(navigation)
             .filter(item => item.visible)
