@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SEOHead from "@/components/SEOHead";
+import Hero from "@/components/Hero";
 import EventCard from "@/components/EventCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import heroImage from "@/assets/hero-community.jpg";
@@ -35,28 +36,11 @@ export default function Events() {
 
       <main>
         {/* Hero Section */}
-        <section
-          className="relative h-[600px] flex items-center justify-center overflow-hidden"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          {/* Dark overlay so white text is readable */}
-          <div className="absolute inset-0 bg-black/55" />
-
-          <div className="relative z-10 container-custom text-center text-white">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6">
-              Community Events
-            </h1>
-
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Join us for cultural celebrations, family gatherings, and community
-              activities throughout the year.
-            </p>
-          </div>
-        </section>
+        <Hero
+          image={heroImage}
+          title="Community Events"
+          subtitle="Join us for cultural celebrations, family gatherings, and community activities throughout the year."
+        />
 
         {/* Events Tabs + Intro */}
         <section className="section-spacing">

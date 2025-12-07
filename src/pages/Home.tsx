@@ -3,17 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Users, Heart, ArrowRight } from "lucide-react";
 import EventCard from "@/components/EventCard";
 import SEOHead from "@/components/SEOHead";
+import Hero from "@/components/Hero";
 import eventsData from "@/content/events.json";
 import heroImage from "@/assets/hero-community.jpg";
 import { homeContent } from "@/content/home";
-import { siteConfig } from '@/site-config';
 
 export default function Home() {
-  console.log(heroImage);
   // NOTE: Toggle this flag to re-enable Events on the home page.
   // When Events feature is ready, set this to true and ensure /events route is active.
   const showUpcomingEvents = false;
-  const membershipVisible = siteConfig.navLinks.membership.visible;
 
   const upcomingEvents = showUpcomingEvents
     ? eventsData.filter((event) => event.upcoming).slice(0, 3)
@@ -29,51 +27,15 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-                {/* Hero Section */}
-        <section
-          className="relative h-[600px] flex items-center justify-center overflow-hidden"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+        <Hero
+          image={heroImage}
+          title={homeContent.hero.title}
+          subtitle={homeContent.hero.subtitle}
+          primaryButton={{
+            text: "Learn More",
+            link: "/about",
           }}
-        >
-          {/* Dark overlay so white text is readable */}
-          <div className="absolute inset-0 bg-black/55" />
-
-          <div className="relative z-10 container-custom text-center text-white">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6">
-              {homeContent.hero.title}
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              {homeContent.hero.subtitle}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* Events CTA is still hidden for now */}
-              {false && (
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                >
-                  <Link to="/events">
-                    View Events <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-              )}
-
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="bg-white/10 backdrop-blur-sm text-white border-white hover:bg-white/20"
-              >
-                <Link to="/about">Learn More</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
+        />
 
 
         {/* Welcome Section */}
