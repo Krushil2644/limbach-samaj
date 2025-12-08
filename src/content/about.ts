@@ -1,4 +1,10 @@
 export const aboutContent = {
+  motto: {
+    sanskrit: "Aharnish Sevamahe",
+    devanagari: "अहर्निशर्नि सेवामहे",
+    translation: "Eternally in Service of Mankind at every moment",
+  },
+
   hero: {
     title: "About Us",
     subtitle:
