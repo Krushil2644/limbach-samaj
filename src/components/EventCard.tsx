@@ -1,5 +1,5 @@
-import { Calendar, MapPin } from "lucide-react";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { useState, useEffect } from "react";
+import { Calendar, MapPin, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 
@@ -32,53 +32,196 @@ export default function EventCard({
   imageUrl,
   upcoming,
 }: EventCardProps) {
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const formattedDate = safeFormatDate(date);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
+
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-lg">
-      <div className="aspect-video overflow-hidden">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="h-full w-full object-cover transition-transform hover:scale-105"
-        />
+    <>
+      {/* Event Card */}
+      <div
+        onClick={() => setIsModalOpen(true)}
+        className="group relative bg-card rounded-2xl border border-border/50 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+      >
+        {/* Image */}
+        <div className="relative w-full aspect-video overflow-hidden">
+          <img
+            src={imageUrl}
+            alt={title}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+
+          {/* Badge */}
+          <div className="absolute top-3 right-3">
+            <Badge
+              variant={upcoming ? "default" : "secondary"}
+              className="backdrop-blur-sm shadow-md"
+            >
+              {upcoming ? "Upcoming" : "Past Event"}
+            </Badge>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-5 space-y-3">
+          {/* Title */}
+          <h3 className="text-lg font-heading font-bold line-clamp-2 text-foreground group-hover:text-primary transition-colors">
+            {title}
+          </h3>
+
+          {/* Date and Location */}
+          <div className="space-y-2">
+            <div className="flex items-center text-sm text-muted-foreground">
+              <Calendar className="h-4 w-4 mr-2 text-primary" />
+              <span>{formattedDate}</span>
+            </div>
+            <div className="flex items-center text-sm text-muted-foreground">
+              <MapPin className="h-4 w-4 mr-2 text-primary" />
+              <span className="line-clamp-1">{location}</span>
+            </div>
+          </div>
+
+          {/* Description */}
+          <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+            {description}
+          </p>
+
+          {/* View Details Link */}
+          <div className="pt-2">
+            <span className="text-sm font-medium text-primary group-hover:underline">
+              View Details →
+            </span>
+          </div>
+        </div>
       </div>
 
-      <CardHeader className="space-y-2">
-        <div className="flex items-center justify-between">
-          <Badge variant={upcoming ? "default" : "secondary"}>
-            {upcoming ? "Upcoming" : "Past Event"}
-          </Badge>
+      {/* Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 pt-20 sm:pt-24 bg-background/80 backdrop-blur-sm"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div
+            className="relative bg-card rounded-2xl sm:rounded-3xl border border-border shadow-2xl w-full max-w-2xl max-h-[85vh] sm:max-h-[80vh] overflow-y-auto my-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="sticky top-3 sm:top-4 right-3 sm:right-4 float-right z-10 p-2 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:bg-muted transition-colors"
+            >
+              <X className="h-4 w-4 sm:h-5 sm:w-5" />
+            </button>
+
+            {/* Modal Image */}
+            <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden rounded-t-2xl sm:rounded-t-3xl">
+              <img
+                src={imageUrl}
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+
+              {/* Badge on image */}
+              <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-6">
+                <Badge
+                  variant={upcoming ? "default" : "secondary"}
+                  className="backdrop-blur-sm shadow-lg text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2"
+                >
+                  {upcoming ? "Upcoming Event" : "Past Event"}
+                </Badge>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
+              {/* Title */}
+              <div>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-foreground mb-3 sm:mb-4 pr-8">
+                  {title}
+                </h2>
+                <div className="h-1 w-12 sm:w-16 bg-primary rounded-full" />
+              </div>
+
+              {/* Event Details */}
+              <div className="grid gap-3 sm:gap-4">
+                {/* Date */}
+                <div className="flex items-start gap-2.5 sm:gap-3">
+                  <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary/10 border border-primary/20 flex-shrink-0">
+                    <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm font-semibold text-muted-foreground mb-1">Date & Time</p>
+                    <p className="text-sm sm:text-base font-medium text-foreground">{formattedDate}</p>
+                  </div>
+                </div>
+
+                {/* Location */}
+                <div className="flex items-start gap-2.5 sm:gap-3">
+                  <div className="flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-primary/10 border border-primary/20 flex-shrink-0">
+                    <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm font-semibold text-muted-foreground mb-1">Location</p>
+                    <p className="text-sm sm:text-base font-medium text-foreground">{location}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-border" />
+
+              {/* Description */}
+              <div>
+                <h3 className="text-base sm:text-lg font-heading font-bold text-foreground mb-2 sm:mb-3">About This Event</h3>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  {description}
+                </p>
+              </div>
+
+              {/* Additional Info for upcoming events */}
+              {upcoming && (
+                <>
+                  <div className="border-t border-border" />
+                  <div className="bg-primary/5 border border-primary/20 rounded-xl sm:rounded-2xl p-3 sm:p-4">
+                    <p className="text-xs sm:text-sm text-muted-foreground flex items-start gap-2">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>Registration details and additional information will be shared with members closer to the event date. Please contact us for more details.</span>
+                    </p>
+                  </div>
+                </>
+              )}
+
+              {/* Close button at bottom */}
+              <div className="pt-2">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="w-full px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-primary/10 hover:bg-primary/20 text-primary text-sm sm:text-base font-semibold transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <h3 className="text-xl font-heading font-semibold line-clamp-2">
-          {title}
-        </h3>
-      </CardHeader>
-
-      <CardContent className="space-y-3">
-        <div className="flex items-center text-sm text-muted-foreground">
-          <Calendar className="mr-2 h-4 w-4 text-primary" />
-          {formattedDate}
-        </div>
-
-        <div className="flex items-center text-sm text-muted-foreground">
-          <MapPin className="mr-2 h-4 w-4 text-primary" />
-          {location}
-        </div>
-
-        <p className="text-sm text-muted-foreground line-clamp-3">
-          {description}
-        </p>
-      </CardContent>
-
-      <CardFooter>
-        {upcoming && (
-          <p className="text-xs text-muted-foreground">
-            More details coming soon
-          </p>
-        )}
-      </CardFooter>
-    </Card>
+      )}
+    </>
   );
 }
