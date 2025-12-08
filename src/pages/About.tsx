@@ -23,58 +23,13 @@ export default function About() {
           subtitle="Limbach Samaj of Canada is a community-driven, non-profit organization supporting individuals and families from the Hindu community of Gujarat who have made Canada their home."
         />
 
-        {/* Motto Section */}
-        <section className="relative py-16 md:py-20 overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent backdrop-blur-sm rounded-3xl border border-primary/30 p-8 md:p-12 lg:p-16 text-center shadow-xl">
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-t-3xl" />
-
-                {/* Decorative corner accents */}
-                <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-primary/40 rounded-tl-3xl" />
-                <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-primary/40 rounded-br-3xl" />
-
-                <div className="relative z-10">
-                  {/* Sanskrit/Transliteration */}
-                  <p className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-primary mb-3">
-                    "{aboutContent.motto.sanskrit}"
-                  </p>
-
-                  {/* Devanagari */}
-                  <p className="text-xl md:text-2xl text-primary/80 mb-6">
-                    ({aboutContent.motto.devanagari})
-                  </p>
-
-                  {/* Decorative divider */}
-                  <div className="flex items-center justify-center gap-3 mb-6">
-                    <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/40" />
-                    <div className="w-2 h-2 rounded-full bg-primary/60" />
-                    <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/40" />
-                  </div>
-
-                  {/* Translation */}
-                  <p className="text-lg md:text-xl text-foreground font-medium italic">
-                    "{aboutContent.motto.translation}"
-                  </p>
-                </div>
-
-                {/* Bottom decorative element */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* About / Who We Are */}
+        {/* About Section with Integrated Motto */}
         <section className="relative section-spacing overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/5 to-background" />
 
-          <div className="container-custom max-w-5xl relative z-10">
+          <div className="container-custom max-w-6xl relative z-10">
+            {/* About Us Content with Integrated Motto */}
             <div className="relative bg-card/50 backdrop-blur-sm rounded-3xl border border-border/40 p-8 md:p-12 lg:p-16 shadow-lg">
               {/* Decorative corner accents */}
               <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-primary/20 rounded-tl-3xl" />
@@ -95,10 +50,22 @@ export default function About() {
                 </h2>
 
                 {/* Decorative divider */}
-                <div className="flex items-center gap-3 mb-8">
+                <div className="flex items-center gap-3 mb-10">
                   <div className="h-1 w-16 bg-gradient-to-r from-primary to-primary/40 rounded-full" />
                   <div className="w-2 h-2 rounded-full bg-primary/60" />
                   <div className="h-px flex-1 bg-gradient-to-r from-border/60 to-transparent" />
+                </div>
+
+                {/* Integrated Motto - Highlighted Quote Box */}
+                <div className="relative mb-10 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-primary/5 via-primary/3 to-transparent border-l-4 border-primary/40">
+                  <div className="text-center md:text-left">
+                    <p className="text-lg md:text-xl font-heading font-bold text-primary mb-2">
+                      "{aboutContent.motto.sanskrit}" <span className="text-base md:text-lg text-primary/70">({aboutContent.motto.devanagari})</span>
+                    </p>
+                    <p className="text-sm md:text-base text-muted-foreground italic">
+                      "{aboutContent.motto.translation}"
+                    </p>
+                  </div>
                 </div>
 
                 {/* Paragraphs with enhanced styling */}
