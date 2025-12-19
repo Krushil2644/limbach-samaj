@@ -35,7 +35,7 @@ export const siteConfig = {
       ordinal: 5,
       name: "Gallery",
       href: "/gallery",
-      visible: false,
+      visible: true,
     },
     news: {
       ordinal: 6,

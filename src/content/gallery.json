@@ -1,38 +1,72 @@
 [
   {
-    "id": "1",
-    "title": "Annual Festival 2024",
-    "imageUrl": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
-    "category": "events"
+    "id": "diwali-2010",
+    "title": "Diwali Gathering - 2010 @ Vikram Bhai's Home",
+    "coverImage": "/images/committee/diwali-2010/e0565036-84b4-441d-87d7-4415992fb33c.JPG",
+    "images": [
+      {
+        "url": "/images/committee/diwali-2010/21d15efe-dba7-407a-95fb-d29b2a7d90f5.JPG",
+        "caption": "Diwali gathering"
+      },
+      {
+        "url": "/images/committee/diwali-2010/42a78610-8052-4735-a1e9-1c3e8e72126c.JPG",
+        "caption": "Diwali gathering"
+      },
+      {
+        "url": "/images/committee/diwali-2010/e0565036-84b4-441d-87d7-4415992fb33c.JPG",
+        "caption": "Diwali gathering"
+      }
+    ]
   },
   {
-    "id": "2",
-    "title": "Community Gathering",
-    "imageUrl": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80",
-    "category": "events"
-  },
-  {
-    "id": "3",
-    "title": "Traditional Performance",
-    "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    "category": "cultural"
-  },
-  {
-    "id": "4",
-    "title": "Youth Activities",
-    "imageUrl": "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=80",
-    "category": "youth"
-  },
-  {
-    "id": "5",
-    "title": "Community Picnic",
-    "imageUrl": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
-    "category": "events"
-  },
-  {
-    "id": "6",
-    "title": "Cultural Workshop",
-    "imageUrl": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80",
-    "category": "cultural"
+    "id": "picnic-2025",
+    "title": "Pics from 2025 Picnic",
+    "coverImage": "/images/committee/picnic-2025/0fab02ca-8b5e-42cd-b1e7-55ec39b1a77c.JPG",
+    "images": [
+      {
+        "url": "/images/committee/picnic-2025/0fab02ca-8b5e-42cd-b1e7-55ec39b1a77c.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/236e11f2-5c53-4527-9c35-f13fc3a02a47.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/2eebe4f7-2262-42fd-b00c-335ed0550c1c.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/3febc539-75f3-4455-8820-3384bc3bb692.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/5fa8f5c2-acf6-4deb-b060-ab22e371df3f.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/6f70ef20-bba1-496d-ad8c-66b0756c650a.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/82736310-8e30-4766-b9a1-bd6ab0b9af8a.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/85087326-d074-46a9-bb91-d3c12cf3f96f.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/d53cf1e7-c2d3-4886-95f8-da97109acca8.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/e119eeac-126b-4ee7-b264-9d1e76374b6a.JPG",
+        "caption": "Picnic 2025"
+      },
+      {
+        "url": "/images/committee/picnic-2025/fef3bd0e-6fef-4504-8a91-079197054caa.JPG",
+        "caption": "Picnic 2025"
+      }
+    ]
   }
 ]

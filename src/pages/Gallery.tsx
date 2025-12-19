@@ -1,21 +1,20 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X } from "lucide-react";
 import galleryData from "@/content/gallery.json";
-import { useNavigate } from 'react-router-dom';
-import { siteConfig } from '@/site-config';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function Gallery() {
-  const navigate = useNavigate();
+  type Album = (typeof galleryData)[number];
+  const albums: Album[] = useMemo(() => galleryData, []);
 
-  useEffect(() => {
-    if (!siteConfig.navLinks.membership.visible) {
-      navigate('/');
-    }
-  }, [navigate]);
-  
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
 
   return (
     <>
@@ -41,26 +40,30 @@ export default function Gallery() {
         {/* Gallery Grid */}
         <section className="section-spacing">
           <div className="container-custom">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {galleryData.map((item) => (
-                <div
-                  key={item.id}
-                  className="group relative aspect-square overflow-hidden rounded-lg cursor-pointer bg-muted"
-                  onClick={() => setSelectedImage(item.imageUrl)}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {albums.map((album) => (
+                <button
+                  key={album.id}
+                  className="group relative overflow-hidden rounded-xl bg-card border border-border shadow-sm text-left transition hover:-translate-y-1 hover:shadow-lg"
+                  onClick={() => setSelectedAlbum(album)}
                 >
-                  <img
-                    src={item.imageUrl}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <p className="text-white font-medium">{item.title}</p>
-                      <p className="text-white/80 text-sm capitalize">{item.category}</p>
-                    </div>
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={album.coverImage}
+                      alt={album.title}
+                      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
                   </div>
-                </div>
+                  <div className="p-4">
+                    <p className="text-lg font-heading font-semibold text-foreground">
+                      {album.title}
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {album.images.length} photos
+                    </p>
+                  </div>
+                </button>
               ))}
             </div>
           </div>
@@ -73,34 +76,54 @@ export default function Gallery() {
               Share Your Photos
             </h2>
             <p className="text-lg text-muted-foreground mb-4">
-              Have photos from our community events that you'd like to share? We'd love to feature
-              them in our gallery!
+              Have photos from our community events that you'd like to share?
+              We'd love to feature them in our gallery!
             </p>
             <p className="text-muted-foreground">
-              Please contact us through our contact page to submit photos from Limbach Samaj events
-              and celebrations.
+              Please contact us through our contact page to submit photos from
+              Limbach Samaj events and celebrations.
             </p>
           </div>
         </section>
       </main>
 
       {/* Lightbox Dialog */}
-      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-7xl w-full p-0 overflow-hidden bg-black/95">
-          <button
-            onClick={() => setSelectedImage(null)}
-            className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground z-50"
-          >
-            <X className="h-6 w-6 text-white" />
-            <span className="sr-only">Close</span>
-          </button>
-          {selectedImage && (
-            <div className="flex items-center justify-center p-4">
-              <img
-                src={selectedImage}
-                alt="Gallery image"
-                className="max-h-[90vh] w-auto object-contain"
-              />
+      <Dialog open={!!selectedAlbum} onOpenChange={() => setSelectedAlbum(null)}>
+        <DialogContent className="max-w-5xl w-full p-6 overflow-hidden bg-background">
+          {selectedAlbum && (
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-2xl font-heading font-bold">
+                  {selectedAlbum.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {selectedAlbum.images.length} photos
+                </p>
+              </div>
+
+              <Carousel className="relative">
+                <CarouselContent>
+                  {selectedAlbum.images.map((image, idx) => (
+                    <CarouselItem key={`${selectedAlbum.id}-${idx}`}>
+                      <div className="flex items-center justify-center">
+                        <img
+                          src={image.url}
+                          alt={image.caption ?? selectedAlbum.title}
+                          className="max-h-[70vh] w-full object-contain rounded-lg"
+                          loading="lazy"
+                        />
+                      </div>
+                      {image.caption && (
+                        <p className="mt-2 text-center text-sm text-muted-foreground">
+                          {image.caption}
+                        </p>
+                      )}
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
             </div>
           )}
         </DialogContent>
