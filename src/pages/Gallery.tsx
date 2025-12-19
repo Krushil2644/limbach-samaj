@@ -89,7 +89,7 @@ export default function Gallery() {
 
       {/* Lightbox Dialog */}
       <Dialog open={!!selectedAlbum} onOpenChange={() => setSelectedAlbum(null)}>
-        <DialogContent className="max-w-5xl w-full p-6 overflow-hidden bg-background">
+        <DialogContent className="sm:max-w-5xl w-[calc(100%-1rem)] sm:w-auto max-h-[90vh] p-4 sm:p-6 overflow-hidden bg-background">
           {selectedAlbum && (
             <div className="space-y-4">
               <div>
@@ -109,7 +109,7 @@ export default function Gallery() {
                         <img
                           src={image.url}
                           alt={image.caption ?? selectedAlbum.title}
-                          className="max-h-[70vh] w-full object-contain rounded-lg"
+                          className="max-h-[60vh] sm:max-h-[70vh] max-w-full w-auto object-contain rounded-lg"
                           loading="lazy"
                         />
                       </div>
