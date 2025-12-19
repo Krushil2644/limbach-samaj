@@ -1,9 +1,7 @@
 import SEOHead from "@/components/SEOHead";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { siteConfig } from '@/site-config';
+import { siteConfig } from "@/site-config";
 import { Check, Users, Calendar, Heart, Info } from "lucide-react";
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function Membership() {
   const benefits = [
@@ -11,16 +9,8 @@ export default function Membership() {
     "Networking opportunities with Limbach families across Canada",
     "Regular updates on community news and initiatives",
     "Opportunities to volunteer and contribute to the community",
-    "Access to community resources and assistance programs"
+    "Access to community resources and assistance programs",
   ];
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!siteConfig.navLinks.membership.visible) {
-      navigate('/');
-    }
-  }, [navigate]);
 
   return (
     <>
@@ -38,7 +28,8 @@ export default function Membership() {
               Membership
             </h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-              Join our growing community and connect with Limbach families across Canada
+              Join our growing community and connect with Limbach families
+              across Canada
             </p>
           </div>
         </section>
@@ -59,12 +50,13 @@ export default function Membership() {
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-lg text-muted-foreground mb-4">
-                  We're currently developing an online membership registration system to make joining 
-                  Limbach Samaj easier than ever.
+                  We're currently developing an online membership registration
+                  system to make joining Limbach Samaj easier than ever.
                 </p>
                 <p className="text-muted-foreground">
-                  In the meantime, if you're interested in becoming a member, please contact us directly 
-                  through our contact page or reach out to any committee member.
+                  In the meantime, if you're interested in becoming a member,
+                  please contact us directly through our contact page or reach
+                  out to any committee member.
                 </p>
               </CardContent>
             </Card>
@@ -78,13 +70,16 @@ export default function Membership() {
               Membership Benefits
             </h2>
             <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-              As a member of Limbach Samaj, you'll enjoy numerous benefits and opportunities to 
-              connect with your community
+              As a member of Limbach Samaj, you'll enjoy numerous benefits and
+              opportunities to connect with your community
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start space-x-3 p-4 bg-card rounded-lg border border-border">
+                <div
+                  key={index}
+                  className="flex items-start space-x-3 p-4 bg-card rounded-lg border border-border"
+                >
                   <div className="flex-shrink-0 mt-1">
                     <div className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-primary/10">
                       <Check className="h-4 w-4 text-primary" />
@@ -109,10 +104,12 @@ export default function Membership() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
                   <Users className="h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-heading font-semibold mb-3">Build Connections</h3>
+                <h3 className="text-xl font-heading font-semibold mb-3">
+                  Build Connections
+                </h3>
                 <p className="text-muted-foreground">
-                  Connect with Limbach families from across Canada, build lasting friendships, and 
-                  expand your support network.
+                  Connect with Limbach families from across Canada, build
+                  lasting friendships, and expand your support network.
                 </p>
               </div>
 
@@ -120,10 +117,13 @@ export default function Membership() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/10 text-secondary mb-4">
                   <Calendar className="h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-heading font-semibold mb-3">Cultural Engagement</h3>
+                <h3 className="text-xl font-heading font-semibold mb-3">
+                  Cultural Engagement
+                </h3>
                 <p className="text-muted-foreground">
-                  Participate in cultural celebrations, traditional events, and activities that keep 
-                  our heritage alive for future generations.
+                  Participate in cultural celebrations, traditional events, and
+                  activities that keep our heritage alive for future
+                  generations.
                 </p>
               </div>
 
@@ -131,10 +131,12 @@ export default function Membership() {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
                   <Heart className="h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-heading font-semibold mb-3">Community Support</h3>
+                <h3 className="text-xl font-heading font-semibold mb-3">
+                  Community Support
+                </h3>
                 <p className="text-muted-foreground">
-                  Be part of a caring community that supports members during important life events, 
-                  celebrations, and times of need.
+                  Be part of a caring community that supports members during
+                  important life events, celebrations, and times of need.
                 </p>
               </div>
             </div>
@@ -148,11 +150,12 @@ export default function Membership() {
               Questions About Membership?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We're here to help! If you have questions about membership, benefits, or how to join, 
-              please don't hesitate to reach out to us.
+              We're here to help! If you have questions about membership,
+              benefits, or how to join, please don't hesitate to reach out to
+              us.
             </p>
-            <a 
-              href="/contact" 
+            <a
+              href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
               Contact Us

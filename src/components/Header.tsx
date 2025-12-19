@@ -5,9 +5,21 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import logo from "@/assets/logo.png";
-import { siteConfig } from '@/site-config';
+import { siteConfig } from "@/site-config";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
+type NavItem =
+  (typeof siteConfig.navLinks)[keyof typeof siteConfig.navLinks] & {
+    children?: { name: string; href: string }[];
+  };
+const navigation = siteConfig.navLinks as Record<string, NavItem>;
 
-const navigation = siteConfig.navLinks;
+// const navigation = siteConfig.navLinks;
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,9 +29,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container-custom flex h-16 items-center justify-between" aria-label="Global">
+      <nav
+        className="container-custom flex h-16 items-center justify-between"
+        aria-label="Global"
+      >
         <div className="flex lg:flex-1">
-          <Link to="/" className="group flex items-center gap-3 transition-all duration-300">
+          <Link
+            to="/"
+            className="group flex items-center gap-3 transition-all duration-300"
+          >
             {/* Logo with enhanced styling */}
             <div className="relative">
               {/* Glow effect on hover */}
@@ -64,23 +82,40 @@ export default function Header() {
 
         <div className="hidden lg:flex lg:gap-x-8 lg:items-center">
           {Object.values(navigation)
-            .filter(item => item.visible)
+            .filter((item) => item.visible)
             .sort((a, b) => a.ordinal - b.ordinal)
-            .map(item => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  isActive(item.href)
-                    ? "text-primary"
-                    : "text-muted-foreground"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
-          <ThemeToggle />
+            .map((item) =>
+              item.children?.length ? (
+                <DropdownMenu key={item.name}>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" className="text-sm font-medium">
+                      {item.name}
+                      <ChevronDown className="ml-1 h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start">
+                    {item.children.map((child) => (
+                      <DropdownMenuItem key={child.name} asChild>
+                        <Link to={child.href}>{child.name}</Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={cn(
+                    "text-sm font-medium transition-colors hover:text-primary",
+                    isActive(item.href)
+                      ? "text-primary"
+                      : "text-muted-foreground"
+                  )}
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
         </div>
       </nav>
 
@@ -89,22 +124,33 @@ export default function Header() {
         <div className="lg:hidden">
           <div className="space-y-1 px-4 pb-3 pt-2">
             {Object.values(navigation)
-              .filter(item => item.visible)
+              .filter((item) => item.visible)
               .sort((a, b) => a.ordinal - b.ordinal)
-              .map(item => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={cn(
-                    "block rounded-md px-3 py-2 text-base font-medium transition-colors",
-                    isActive(item.href)
-                      ? "bg-primary/10 text-primary"
-                      : "text-foreground hover:bg-muted"
-                  )}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
+              .map((item) => (
+                <div key={item.name} className="space-y-1">
+                  <Link
+                    to={item.href}
+                    className={cn(
+                      "block rounded-md px-3 py-2 text-base font-medium transition-colors",
+                      isActive(item.href)
+                        ? "bg-primary/10 text-primary"
+                        : "text-foreground hover:bg-muted"
+                    )}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                  {item.children?.map((child) => (
+                    <Link
+                      key={child.name}
+                      to={child.href}
+                      className="block rounded-md px-5 py-2 text-sm text-muted-foreground hover:bg-muted"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {child.name}
+                    </Link>
+                  ))}
+                </div>
               ))}
           </div>
         </div>

@@ -14,6 +14,8 @@ import Donate from "./pages/Donate";
 import Gallery from "./pages/Gallery";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
+import Sponsorship from "./pages/Sponsorship";
+import Volunteer from "./pages/Volunteer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,9 +36,13 @@ const App = () => (
               <Route path="/events" element={<Events />} />
               <Route path="/membership" element={<Membership />} />
               <Route path="/donate" element={<Donate />} />
+              <Route path="/sponsorship" element={<Sponsorship />} />
+              <Route path="/volunteer" element={<Volunteer />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/news" element={<News />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/sponsorship" element={<Sponsorship />} />
+              <Route path="/volunteer" element={<Volunteer />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
@@ -53,24 +59,25 @@ export default App;
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Limbach Samaaj",
-  "url": "https://limbachsamaaj.ca",
-  "logo": "https://limbachsamaaj.ca/logo.png",
-  "description": "Limbach Samaaj represents Limbach families and community members across Canada, fostering cultural heritage and community connections.",
-  "areaServed": {
+  name: "Limbach Samaaj",
+  url: "https://limbachsamaaj.ca",
+  logo: "https://limbachsamaaj.ca/logo.png",
+  description:
+    "Limbach Samaaj represents Limbach families and community members across Canada, fostering cultural heritage and community connections.",
+  areaServed: {
     "@type": "Country",
-    "name": "Canada"
+    name: "Canada",
   },
-  "foundingLocation": {
+  foundingLocation: {
     "@type": "Country",
-    "name": "Canada"
-  }
+    name: "Canada",
+  },
 };
 
 // Add schema to document head
-if (typeof document !== 'undefined') {
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
+if (typeof document !== "undefined") {
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
   script.text = JSON.stringify(organizationSchema);
   document.head.appendChild(script);
 }
