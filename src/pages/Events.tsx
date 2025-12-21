@@ -3,7 +3,6 @@ import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import EventCard from "@/components/EventCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import heroImage from "@/assets/hero-community.jpg";
 import rawEventsData from "@/content/events.json";
 
 type EventItem = {
@@ -37,9 +36,9 @@ export default function Events() {
       <main>
         {/* Hero Section */}
         <Hero
-          image={heroImage}
           title="Community Events"
           subtitle="Join us for cultural celebrations, family gatherings, and community activities throughout the year."
+          compact
         />
 
         {/* Events Tabs + Intro */}

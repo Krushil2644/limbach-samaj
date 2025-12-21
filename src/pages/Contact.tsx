@@ -18,7 +18,6 @@ import {
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { toast } from "sonner";
 import { siteConfig } from '@/site-config';
-import heroImage from "@/assets/hero-community.jpg";
 
 const formSchema = z.object({
   name: z
@@ -98,9 +97,9 @@ export default function Contact() {
       <main>
         {/* Hero Section */}
         <Hero
-          image={heroImage}
           title="Get In Touch"
           subtitle="We'd love to hear from you. Reach out with questions, suggestions, or inquiries about our community."
+          compact
         />
 
         {/* Contact Section */}

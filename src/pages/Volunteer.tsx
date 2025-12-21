@@ -1,7 +1,6 @@
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-community.jpg";
 import { volunteerContent, iconMap } from "@/content/volunteer";
 
 export default function Volunteer() {
@@ -16,9 +15,9 @@ export default function Volunteer() {
       <main>
         {/* Hero Section */}
         <Hero
-          image={heroImage}
           title={volunteerContent.hero.title}
           subtitle={volunteerContent.hero.subtitle}
+          compact
         />
 
         {/* Introduction */}

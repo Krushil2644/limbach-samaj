@@ -2,7 +2,6 @@ import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Check, Building2, Info } from "lucide-react";
-import heroImage from "@/assets/hero-community.jpg";
 import { sponsorshipContent, iconMap } from "@/content/sponsorship";
 
 export default function Sponsorship() {
@@ -18,9 +17,9 @@ export default function Sponsorship() {
       <main>
         {/* Hero Section */}
         <Hero
-          image={heroImage}
           title={sponsorshipContent.hero.title}
           subtitle={sponsorshipContent.hero.subtitle}
+          compact
         />
 
         {/* In Progress Notice */}

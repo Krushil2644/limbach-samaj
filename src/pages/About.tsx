@@ -2,7 +2,6 @@ import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import TeamCard from "@/components/TeamCard";
 import teamData from "@/content/team.json";
-import heroImage from "@/assets/hero-community.jpg";
 import { aboutContent } from "@/content/about";
 
 
@@ -18,9 +17,9 @@ export default function About() {
       <main>
         {/* Hero Section */}
         <Hero
-          image={heroImage}
           title="About Us"
           subtitle="Limbach Samaj of Canada is a community-driven, non-profit organization supporting individuals and families from the Hindu community of Gujarat who have made Canada their home."
+          compact
         />
 
         {/* About Section with Integrated Motto */}

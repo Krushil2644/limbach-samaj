@@ -1,9 +1,8 @@
 import { useMemo, useState } from "react";
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import galleryData from "@/content/gallery.json";
-import heroImage from "@/assets/hero-community.jpg";
 import {
   Carousel,
   CarouselContent,
@@ -29,9 +28,9 @@ export default function Gallery() {
       <main>
         {/* Hero Section */}
         <Hero
-          image={heroImage}
           title="Photo Gallery"
           subtitle="Moments and memories from our community events and celebrations."
+          compact
         />
 
         {/* Gallery Grid */}
@@ -188,9 +187,9 @@ export default function Gallery() {
           {selectedAlbum && (
             <div className="space-y-4">
               <div>
-                <h3 className="text-2xl font-heading font-bold">
+                <DialogTitle className="text-2xl font-heading font-bold">
                   {selectedAlbum.title}
-                </h3>
+                </DialogTitle>
                 <p className="text-sm text-muted-foreground">
                   {selectedAlbum.images.length} photos
                 </p>

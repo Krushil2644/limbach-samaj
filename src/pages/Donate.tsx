@@ -1,7 +1,6 @@
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import { Check, Info, ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-community.jpg";
 import { donateContent, iconMap } from "@/content/donate";
 
 export default function Donate() {
@@ -16,9 +15,9 @@ export default function Donate() {
       <main>
         {/* Hero Section */}
         <Hero
-          image={heroImage}
           title={donateContent.hero.title}
           subtitle={donateContent.hero.subtitle}
+          compact
         />
 
         {/* Coming Soon Notice */}
