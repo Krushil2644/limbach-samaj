@@ -35,6 +35,19 @@ export default function EventCard({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const formattedDate = safeFormatDate(date);
 
+  // Use responsive placeholder image if imageUrl is empty or not provided
+  // Mobile: 640x360, Tablet: 768x432, Desktop: 1200x675
+  const getPlaceholderImage = (size: 'mobile' | 'tablet' | 'desktop') => {
+    const sizes = {
+      mobile: '640x360',
+      tablet: '768x432',
+      desktop: '1200x675'
+    };
+    return `https://placehold.co/${sizes[size]}/e2e8f0/64748b?text=Event+Image`;
+  };
+
+  const displayImageUrl = imageUrl || getPlaceholderImage('desktop');
+
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isModalOpen) {
@@ -59,7 +72,9 @@ export default function EventCard({
         {/* Image */}
         <div className="relative w-full aspect-video overflow-hidden">
           <img
-            src={imageUrl}
+            src={displayImageUrl}
+            srcSet={imageUrl ? undefined : `${getPlaceholderImage('mobile')} 640w, ${getPlaceholderImage('tablet')} 768w, ${getPlaceholderImage('desktop')} 1200w`}
+            sizes={imageUrl ? undefined : "(max-width: 640px) 640px, (max-width: 768px) 768px, 1200px"}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
@@ -80,7 +95,7 @@ export default function EventCard({
         {/* Content */}
         <div className="p-5 space-y-3">
           {/* Title */}
-          <h3 className="text-lg font-heading font-bold line-clamp-2 text-foreground group-hover:text-primary transition-colors">
+          <h3 className="text-lg font-heading font-bold mt-2 line-clamp-2 text-foreground group-hover:text-primary transition-colors">
             {title}
           </h3>
 
@@ -117,39 +132,42 @@ export default function EventCard({
           onClick={() => setIsModalOpen(false)}
         >
           <div
-            className="relative bg-card rounded-2xl sm:rounded-3xl border border-border shadow-2xl w-full max-w-2xl max-h-[85vh] sm:max-h-[80vh] overflow-y-auto my-auto"
+            className="relative bg-card rounded-2xl sm:rounded-3xl border border-border shadow-2xl w-full max-w-2xl max-h-[85vh] sm:max-h-[80vh] overflow-hidden my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
             <button
               onClick={() => setIsModalOpen(false)}
-              className="sticky top-3 sm:top-4 right-3 sm:right-4 float-right z-10 p-2 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:bg-muted transition-colors"
+              className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10 p-2 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:bg-muted transition-colors"
             >
               <X className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
 
-            {/* Modal Image */}
-            <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden rounded-t-2xl sm:rounded-t-3xl">
-              <img
-                src={imageUrl}
-                alt={title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+            <div className="max-h-[85vh] sm:max-h-[80vh] overflow-y-auto">
+              {/* Modal Image */}
+              <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
+                <img
+                  src={displayImageUrl}
+                  srcSet={imageUrl ? undefined : `${getPlaceholderImage('mobile')} 640w, ${getPlaceholderImage('tablet')} 768w, ${getPlaceholderImage('desktop')} 1200w`}
+                  sizes={imageUrl ? undefined : "(max-width: 640px) 640px, (max-width: 768px) 768px, 1200px"}
+                  alt={title}
+                  className="w-full h-full object-cover block"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
 
-              {/* Badge on image */}
-              <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-6">
-                <Badge
-                  variant={upcoming ? "default" : "secondary"}
-                  className="backdrop-blur-sm shadow-lg text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2"
-                >
-                  {upcoming ? "Upcoming Event" : "Past Event"}
-                </Badge>
+                {/* Badge on image */}
+                <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-6">
+                  <Badge
+                    variant={upcoming ? "default" : "secondary"}
+                    className="backdrop-blur-sm shadow-lg text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2"
+                  >
+                    {upcoming ? "Upcoming Event" : "Past Event"}
+                  </Badge>
+                </div>
               </div>
-            </div>
 
-            {/* Modal Content */}
-            <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
+              {/* Modal Content */}
+              <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
               {/* Title */}
               <div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-foreground mb-3 sm:mb-4 pr-8">
@@ -217,6 +235,7 @@ export default function EventCard({
                 >
                   Close
                 </button>
+              </div>
               </div>
             </div>
           </div>

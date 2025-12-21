@@ -70,6 +70,18 @@ export const siteConfig = {
       link: "https://instagram.com",
     },
   },
+  footerQuickLinks: [
+    { name: "About Us", href: "/about", visible: true },
+    { name: "Events", href: "/events", visible: true },
+    { name: "Gallery", href: "/gallery", visible: true },
+    { name: "Contact Us", href: "/contact", visible: true },
+  ],
+  footerGetInvolved: [
+    { name: "Membership", href: "/membership", visible: false },
+    { name: "Volunteer", href: "/volunteer", visible: true },
+    { name: "Sponsorship", href: "/sponsorship", visible: true },
+    { name: "Donate", href: "/donate", visible: true },
+  ],
   email: "jaylimbach@gmail.com",
   phone: "tba",
   location: "Serving communities across Canada",

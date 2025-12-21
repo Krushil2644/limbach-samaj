@@ -23,7 +23,7 @@
     "date": "To be announced(November 2026)",
     "location": "To be announced",
     "description": "An annual Diwali celebration bringing families, friends, and generations together to celebrate light, hope, and new beginnings. This event will include cultural programs and shared festive moments. Exact date and venue for Diwali 2026 will be announced closer to the festival.",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": true
   },
   {
@@ -32,7 +32,7 @@
     "date": "18th Dec, 2010",
     "location": "Hindu Heritage Center, Mississauga",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -41,7 +41,7 @@
     "date": "12th Dec, 2012",
     "location": "Patticoat Park",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -50,7 +50,7 @@
     "date": "22nd Aug, 2015",
     "location": "EldoRado Park, Brampton",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -59,7 +59,7 @@
     "date": "5th Dec, 2015",
     "location": "Guru Mandir, Etobicoke",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -68,7 +68,7 @@
     "date": "24th April, 2016",
     "location": "Bharat Sevashram Sangh",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -77,7 +77,7 @@
     "date": "19th Nov, 2016",
     "location": "Sindhi Guru Mandir",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -86,7 +86,7 @@
     "date": "14th May, 2017",
     "location": "Bharat Sevashram Sangh",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -95,7 +95,7 @@
     "date": "19th Aug, 2017",
     "location": "EldoRado Park, Brampton",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -104,7 +104,7 @@
     "date": "18th Nov, 2017",
     "location": "Guru Mandir, Etobicoke",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -113,7 +113,7 @@
     "date": "18th March, 2018",
     "location": "Bharat Sevashram Sangh",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -122,7 +122,7 @@
     "date": "18th Nov, 2018",
     "location": "Guru Mandir, Etobicoke",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   },
   {
@@ -131,7 +131,7 @@
     "date": "7th April, 2019",
     "location": "Bharat Sevashram Sangh",
     "description": "",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": false
   }
 ]
