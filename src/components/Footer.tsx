@@ -15,7 +15,7 @@ export default function Footer() {
 
       <div className="container-custom relative z-10 py-12 md:py-14">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 mb-10">
           {/* About Section */}
           <div className="space-y-5">
             <div>
@@ -76,89 +76,40 @@ export default function Footer() {
             <h3 className="text-base font-heading font-bold mb-1 text-foreground">Quick Links</h3>
             <div className="h-0.5 w-8 bg-primary/60 rounded-full mb-4" />
             <ul className="space-y-2.5">
-              <li>
-                <Link
-                  to="/about"
-                  className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                >
-                  <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                  About Us
-                </Link>
-              </li>
-              {siteConfig.navLinks.events.visible && (
-                <li>
-                  <Link
-                    to="/events"
-                    className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                  >
-                    <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                    Events
-                  </Link>
-                </li>
-              )}
-              {siteConfig.navLinks.membership.visible && (
-                <li>
-                  <Link
-                    to="/membership"
-                    className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                  >
-                    <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                    Membership
-                  </Link>
-                </li>
-              )}
-              {siteConfig.navLinks.gallery.visible && (
-                <li>
-                  <Link
-                    to="/gallery"
-                    className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                  >
-                    <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                    Gallery
-                  </Link>
-                </li>
-              )}
+              {siteConfig.footerQuickLinks
+                .filter((link) => link.visible)
+                .map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      to={link.href}
+                      className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
+                    >
+                      <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Get Involved */}
           <div>
-            <h3 className="text-base font-heading font-bold mb-1 text-foreground">Resources</h3>
+            <h3 className="text-base font-heading font-bold mb-1 text-foreground">Get Involved</h3>
             <div className="h-0.5 w-8 bg-primary/60 rounded-full mb-4" />
             <ul className="space-y-2.5">
-              {siteConfig.navLinks.news.visible && (
-                <li>
-                  <Link
-                    to="/news"
-                    className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                  >
-                    <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                    News & Updates
-                  </Link>
-                </li>
-              )}
-              {siteConfig.navLinks.donate.visible && (
-                <li>
-                  <Link
-                    to="/donate"
-                    className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                  >
-                    <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                    Donate
-                  </Link>
-                </li>
-              )}
-              {siteConfig.navLinks.contact.visible && (
-                <li>
-                  <Link
-                    to="/contact"
-                    className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                  >
-                    <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                    Contact Us
-                  </Link>
-                </li>
-              )}
+              {siteConfig.footerGetInvolved
+                .filter((link) => link.visible)
+                .map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      to={link.href}
+                      className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
+                    >
+                      <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </div>
 

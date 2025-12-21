@@ -23,7 +23,115 @@
     "date": "To be announced(November 2026)",
     "location": "To be announced",
     "description": "An annual Diwali celebration bringing families, friends, and generations together to celebrate light, hope, and new beginnings. This event will include cultural programs and shared festive moments. Exact date and venue for Diwali 2026 will be announced closer to the festival.",
-    "imageUrl": "/events/diwali-celebration.jpg",
+    "imageUrl": "",
     "upcoming": true
+  },
+  {
+    "id": "4",
+    "title": "Get together",
+    "date": "18th Dec, 2010",
+    "location": "Hindu Heritage Center, Mississauga",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "5",
+    "title": "Samaj Picnic",
+    "date": "12th Dec, 2012",
+    "location": "Patticoat Park",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "6",
+    "title": "Limbach Samaj Picnic",
+    "date": "22nd Aug, 2015",
+    "location": "EldoRado Park, Brampton",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "7",
+    "title": "Diwali Dine & Entertainment",
+    "date": "5th Dec, 2015",
+    "location": "Guru Mandir, Etobicoke",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "8",
+    "title": "Mataji Puja & Yagna",
+    "date": "24th April, 2016",
+    "location": "Bharat Sevashram Sangh",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "9",
+    "title": "Diwali Get Together",
+    "date": "19th Nov, 2016",
+    "location": "Sindhi Guru Mandir",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "10",
+    "title": "Mataji Puja & Yagna",
+    "date": "14th May, 2017",
+    "location": "Bharat Sevashram Sangh",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "11",
+    "title": "Picnic",
+    "date": "19th Aug, 2017",
+    "location": "EldoRado Park, Brampton",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "12",
+    "title": "Diwali Milan",
+    "date": "18th Nov, 2017",
+    "location": "Guru Mandir, Etobicoke",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "13",
+    "title": "Mataji Puja & Yagna",
+    "date": "18th March, 2018",
+    "location": "Bharat Sevashram Sangh",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "14",
+    "title": "Diwali Milan",
+    "date": "18th Nov, 2018",
+    "location": "Guru Mandir, Etobicoke",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "15",
+    "title": "Mataji Puja & Yagna",
+    "date": "7th April, 2019",
+    "location": "Bharat Sevashram Sangh",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
   }
 ]

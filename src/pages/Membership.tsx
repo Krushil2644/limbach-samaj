@@ -2,8 +2,18 @@ import SEOHead from "@/components/SEOHead";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { siteConfig } from "@/site-config";
 import { Check, Users, Calendar, Heart, Info } from "lucide-react";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Membership() {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!siteConfig.navLinks.getInvolved.children.find(item => item.name === "Membership")?.visible) {
+      navigate('/');
+    }
+  }, []);
+
   const benefits = [
     "Access to all community events and cultural celebrations",
     "Networking opportunities with Limbach families across Canada",

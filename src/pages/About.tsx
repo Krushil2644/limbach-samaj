@@ -2,7 +2,6 @@ import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import TeamCard from "@/components/TeamCard";
 import teamData from "@/content/team.json";
-import heroImage from "@/assets/hero-community.jpg";
 import { aboutContent } from "@/content/about";
 
 
@@ -18,9 +17,9 @@ export default function About() {
       <main>
         {/* Hero Section */}
         <Hero
-          image={heroImage}
           title="About Us"
           subtitle="Limbach Samaj of Canada is a community-driven, non-profit organization supporting individuals and families from the Hindu community of Gujarat who have made Canada their home."
+          compact
         />
 
         {/* About Section with Integrated Motto */}
@@ -54,18 +53,6 @@ export default function About() {
                   <div className="h-1 w-16 bg-gradient-to-r from-primary to-primary/40 rounded-full" />
                   <div className="w-2 h-2 rounded-full bg-primary/60" />
                   <div className="h-px flex-1 bg-gradient-to-r from-border/60 to-transparent" />
-                </div>
-
-                {/* Integrated Motto - Highlighted Quote Box */}
-                <div className="relative mb-10 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-primary/5 via-primary/3 to-transparent border-l-4 border-primary/40">
-                  <div className="text-center md:text-left">
-                    <p className="text-lg md:text-xl font-heading font-bold text-primary mb-2">
-                      "{aboutContent.motto.sanskrit}" <span className="text-base md:text-lg text-primary/70">({aboutContent.motto.devanagari})</span>
-                    </p>
-                    <p className="text-sm md:text-base text-muted-foreground italic">
-                      "{aboutContent.motto.translation}"
-                    </p>
-                  </div>
                 </div>
 
                 {/* Paragraphs with enhanced styling */}
