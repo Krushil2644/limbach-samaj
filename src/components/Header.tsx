@@ -13,13 +13,15 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-type NavItem =
-  (typeof siteConfig.navLinks)[keyof typeof siteConfig.navLinks] & {
-    children?: { name: string; href: string }[];
-  };
-const navigation = siteConfig.navLinks as Record<string, NavItem>;
 
-// const navigation = siteConfig.navLinks;
+export type NavItemChildrens = 'Membership' | 'Sponsorship' | 'Donations' | 'Volunteer';
+
+export type NavItem =
+  (typeof siteConfig.navLinks)[keyof typeof siteConfig.navLinks] & {
+    children?: { name: NavItemChildrens; href: string, visible: boolean }[];
+  };
+
+const navigation = siteConfig.navLinks as Record<string, NavItem>;
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -82,7 +84,15 @@ export default function Header() {
 
         <div className="hidden lg:flex lg:gap-x-8 lg:items-center">
           {Object.values(navigation)
-            .filter((item) => item.visible)
+            .filter((item) => {
+              // Filter by visibility
+              if (!item.visible) return false;
+              // If item has children, only show if at least one child is visible
+              if (item.children?.length) {
+                return item.children.some((child) => child.visible);
+              }
+              return true;
+            })
             .sort((a, b) => a.ordinal - b.ordinal)
             .map((item) =>
               item.children?.length ? (
@@ -94,11 +104,13 @@ export default function Header() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
-                    {item.children.map((child) => (
-                      <DropdownMenuItem key={child.name} asChild>
-                        <Link to={child.href}>{child.name}</Link>
-                      </DropdownMenuItem>
-                    ))}
+                    {item.children
+                      .filter((child) => child.visible)
+                      .map((child) => (
+                        <DropdownMenuItem key={child.name} asChild>
+                          <Link to={child.href}>{child.name}</Link>
+                        </DropdownMenuItem>
+                      ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
@@ -116,6 +128,7 @@ export default function Header() {
                 </Link>
               )
             )}
+          <ThemeToggle />
         </div>
       </nav>
 
@@ -124,7 +137,15 @@ export default function Header() {
         <div className="lg:hidden">
           <div className="space-y-1 px-4 pb-3 pt-2">
             {Object.values(navigation)
-              .filter((item) => item.visible)
+              .filter((item) => {
+                // Filter by visibility
+                if (!item.visible) return false;
+                // If item has children, only show if at least one child is visible
+                if (item.children?.length) {
+                  return item.children.some((child) => child.visible);
+                }
+                return true;
+              })
               .sort((a, b) => a.ordinal - b.ordinal)
               .map((item) => (
                 <div key={item.name} className="space-y-1">
@@ -140,16 +161,18 @@ export default function Header() {
                   >
                     {item.name}
                   </Link>
-                  {item.children?.map((child) => (
-                    <Link
-                      key={child.name}
-                      to={child.href}
-                      className="block rounded-md px-5 py-2 text-sm text-muted-foreground hover:bg-muted"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {child.name}
-                    </Link>
-                  ))}
+                  {item.children
+                    ?.filter((child) => child.visible)
+                    .map((child) => (
+                      <Link
+                        key={child.name}
+                        to={child.href}
+                        className="block rounded-md px-5 py-2 text-sm text-muted-foreground hover:bg-muted"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {child.name}
+                      </Link>
+                    ))}
                 </div>
               ))}
           </div>

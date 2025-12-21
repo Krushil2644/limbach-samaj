@@ -9,7 +9,7 @@ export default function News() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!siteConfig.navLinks.membership.visible) {
+    if (!siteConfig.navLinks.news.visible) {
       navigate('/');
     }
   }, [navigate]);

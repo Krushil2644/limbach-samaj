@@ -7,6 +7,7 @@ import Hero from "@/components/Hero";
 import eventsData from "@/content/events.json";
 import heroImage from "@/assets/hero-community.jpg";
 import { homeContent } from "@/content/home";
+import { aboutContent } from "@/content/about";
 
 export default function Home() {
   // NOTE: Toggle this flag to re-enable Events on the home page.
@@ -130,6 +131,76 @@ export default function Home() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+        </section>
+
+        {/* Motto Section - Aharnish Sevamahe */}
+        <section className="relative section-spacing overflow-hidden">
+          {/* Background with enhanced gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-muted/40 via-muted/30 to-muted/40" />
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+
+          <div className="container-custom relative z-10">
+            <div className="max-w-5xl mx-auto">
+              {/* Main motto card */}
+              <div className="relative bg-card/90 backdrop-blur-xl rounded-[2rem] border-2 border-primary/30 p-10 md:p-14 lg:p-20 shadow-2xl overflow-hidden">
+                {/* Animated gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 opacity-80" />
+
+                {/* Decorative elements */}
+                <div className="absolute top-0 left-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 right-0 w-40 h-40 bg-secondary/20 rounded-full blur-3xl" />
+
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-primary to-transparent" />
+
+                {/* Content */}
+                <div className="relative z-10 text-center">
+                  {/* Badge */}
+                  <div className="inline-block mb-6">
+                    <span className="inline-block px-5 py-2.5 rounded-full bg-primary/15 text-primary text-sm font-bold tracking-wider uppercase border border-primary/30">
+                      Our Motto
+                    </span>
+                  </div>
+
+                  {/* Sanskrit text - Main highlight */}
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-4 bg-gradient-to-r from-primary via-primary/90 to-secondary bg-clip-text text-transparent leading-tight">
+                    {aboutContent.motto.sanskrit}
+                  </h2>
+
+                  {/* Devanagari */}
+                  <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-primary/70 mb-8">
+                    {aboutContent.motto.devanagari}
+                  </p>
+
+                  {/* Decorative divider */}
+                  <div className="flex items-center justify-center gap-4 mb-8">
+                    <div className="h-px w-20 bg-gradient-to-r from-transparent to-primary/40" />
+                    <div className="w-3 h-3 rounded-full bg-primary/60 animate-pulse" />
+                    <div className="h-px w-20 bg-gradient-to-l from-transparent to-primary/40" />
+                  </div>
+
+                  {/* Translation */}
+                  <p className="text-xl md:text-2xl lg:text-3xl text-foreground font-medium italic leading-relaxed max-w-3xl mx-auto">
+                    "{aboutContent.motto.translation}"
+                  </p>
+
+                  {/* Bottom CTA */}
+                  <div className="mt-12 pt-8 border-t border-border/40">
+                    <Link
+                      to="/about"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary font-semibold transition-all duration-300 hover:scale-105"
+                    >
+                      Learn More About Us
+                      <ArrowRight className="h-5 w-5" />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent" />
+              </div>
             </div>
           </div>
         </section>

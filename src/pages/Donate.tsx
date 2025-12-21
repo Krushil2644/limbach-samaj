@@ -1,35 +1,10 @@
 import SEOHead from "@/components/SEOHead";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Heart, Users, Calendar, Award, Info } from "lucide-react";
+import Hero from "@/components/Hero";
+import { Check, Info, ArrowRight } from "lucide-react";
+import heroImage from "@/assets/hero-community.jpg";
+import { donateContent, iconMap } from "@/content/donate";
 
 export default function Donate() {
-  const impactAreas = [
-    {
-      icon: Calendar,
-      title: "Cultural Events",
-      description:
-        "Support our annual festivals, celebrations, and community gatherings that bring families together.",
-    },
-    {
-      icon: Users,
-      title: "Youth Programs",
-      description:
-        "Fund educational workshops, leadership programs, and activities for the next generation.",
-    },
-    {
-      icon: Heart,
-      title: "Community Support",
-      description:
-        "Help families in need during difficult times and support community assistance programs.",
-    },
-    {
-      icon: Award,
-      title: "Heritage Preservation",
-      description:
-        "Maintain our cultural traditions, documentation, and educational resources for future generations.",
-    },
-  ];
-
   return (
     <>
       <SEOHead
@@ -40,89 +15,160 @@ export default function Donate() {
 
       <main>
         {/* Hero Section */}
-        <section className="bg-gradient-primary text-white py-20">
-          <div className="container-custom text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-              Support Our Community
-            </h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-              Your generosity helps us serve Limbach families across Canada
-            </p>
+        <Hero
+          image={heroImage}
+          title={donateContent.hero.title}
+          subtitle={donateContent.hero.subtitle}
+        />
+
+        {/* Coming Soon Notice */}
+        <section className="relative section-spacing overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-muted/10 to-muted/20" />
+
+          <div className="container-custom relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative bg-card/80 backdrop-blur-sm rounded-3xl border border-primary/30 p-8 md:p-12 shadow-xl overflow-hidden">
+                {/* Background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-60" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/10 rounded-full blur-3xl" />
+
+                {/* Top accent line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+                <div className="relative z-10">
+                  {/* Icon and Badge */}
+                  <div className="flex flex-col items-center mb-6">
+                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 mb-4">
+                      <Info className="h-10 w-10 text-primary" />
+                    </div>
+                    <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase">
+                      Coming Soon
+                    </span>
+                  </div>
+
+                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-center mb-6 bg-gradient-to-r from-primary via-foreground to-secondary bg-clip-text text-transparent">
+                    {donateContent.comingSoonNotice.title}
+                  </h2>
+
+                  {/* Decorative divider */}
+                  <div className="flex items-center justify-center gap-3 mb-8">
+                    <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
+                    <div className="w-2 h-2 rounded-full bg-primary/40" />
+                    <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center space-y-4 mb-8">
+                    {donateContent.comingSoonNotice.description.map((text, idx) => (
+                      <p
+                        key={idx}
+                        className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto"
+                      >
+                        {text}
+                      </p>
+                    ))}
+                  </div>
+
+                  {/* Tax Receipt Info Card */}
+                  <div className="relative bg-muted/30 backdrop-blur-sm border border-border/50 rounded-2xl p-6 max-w-2xl mx-auto">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10">
+                          <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-heading font-bold mb-2 text-foreground">
+                          {donateContent.comingSoonNotice.taxReceiptInfo.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {donateContent.comingSoonNotice.taxReceiptInfo.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Coming Soon Notice */}
-        <section className="section-spacing">
-          <div className="container-custom">
-            <Card className="max-w-3xl mx-auto border-primary/20 bg-primary/5">
-              <CardHeader>
-                <div className="flex items-center justify-center mb-4">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary">
-                    <Info className="h-8 w-8" />
-                  </div>
-                </div>
-                <h2 className="text-2xl font-heading font-bold text-center">
-                  Online Donation System Coming Soon
-                </h2>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-lg text-muted-foreground mb-4">
-                  We're currently setting up a secure online donation system to
-                  make supporting our community easier and more convenient.
-                </p>
-                <p className="text-muted-foreground mb-6">
-                  In the meantime, if you'd like to make a donation, please
-                  contact us directly for alternative donation methods.
-                </p>
-                <div className="bg-muted/50 p-4 rounded-lg">
-                  <p className="text-sm font-medium mb-2">Tax Receipts</p>
-                  <p className="text-sm text-muted-foreground">
-                    As a registered Canadian not-for-profit organization, we can
-                    provide receipts for donations. However, please note that
-                    donations are not currently eligible for CRA tax exemption.
-                    Tax exemption eligibility will be available in the
-                    future—stay tuned for updates!
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+        {/* Introduction */}
+        <section className="relative section-spacing overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
+
+          <div className="container-custom relative z-10 max-w-4xl text-center">
+            <div className="inline-block mb-4">
+              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide uppercase">
+                {donateContent.intro.badge}
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
+              {donateContent.intro.title}
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              {donateContent.intro.subtitle}
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              {donateContent.intro.description}
+            </p>
           </div>
         </section>
 
         {/* Impact Areas */}
-        <section className="section-spacing bg-muted/30">
-          <div className="container-custom">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-              Your Impact
-            </h2>
-            <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-              Donations to Limbach Samaj support various programs and
-              initiatives that benefit our community across Canada
-            </p>
+        <section className="relative section-spacing overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/20 to-muted/30" />
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {impactAreas.map((area, index) => {
-                const Icon = area.icon;
+          <div className="container-custom relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-block mb-4">
+                <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-semibold tracking-wide uppercase">
+                  {donateContent.impactAreas.badge}
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
+                {donateContent.impactAreas.title}
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                {donateContent.impactAreas.subtitle}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto">
+              {donateContent.impactAreas.areas.map((area, idx) => {
+                const Icon = iconMap[area.icon as keyof typeof iconMap];
+                const colorSchemes = [
+                  { bg: "bg-primary/10", text: "text-primary", border: "border-primary/20" },
+                  { bg: "bg-secondary/10", text: "text-secondary", border: "border-secondary/20" },
+                  { bg: "bg-accent/10", text: "text-accent", border: "border-accent/20" },
+                  { bg: "bg-primary/10", text: "text-primary", border: "border-primary/20" },
+                ];
+                const colors = colorSchemes[idx];
+
                 return (
-                  <Card key={index} className="border-border">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0">
-                          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary">
-                            <Icon className="h-6 w-6" />
-                          </div>
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-heading font-semibold mb-2">
-                            {area.title}
-                          </h3>
-                          <p className="text-muted-foreground">
-                            {area.description}
-                          </p>
-                        </div>
+                  <div
+                    key={idx}
+                    className="group relative bg-card p-8 rounded-3xl border border-border/60 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  >
+                    <div className="text-center">
+                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${colors.bg} ${colors.text} border ${colors.border} mb-4 transition-transform duration-300 group-hover:scale-110`}>
+                        <Icon className="h-8 w-8" />
                       </div>
-                    </CardContent>
-                  </Card>
+                      <h3 className={`text-xl font-heading font-bold mb-3 ${colors.text}`}>
+                        {area.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {area.description}
+                      </p>
+                    </div>
+                  </div>
                 );
               })}
             </div>
@@ -130,51 +176,91 @@ export default function Donate() {
         </section>
 
         {/* Why Support */}
-        <section className="section-spacing">
-          <div className="container-custom max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-8">
-              Why Your Support Matters
-            </h2>
+        <section className="relative section-spacing overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
 
-            <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-muted-foreground mb-4">
-                Limbach Samaj relies on the generosity of community members and
-                supporters to fulfill our mission of serving Limbach families
-                across Canada. Your donations directly fund the programs,
-                events, and services that strengthen our community.
+          <div className="container-custom relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-block mb-4">
+                <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold tracking-wide uppercase">
+                  {donateContent.whySupport.badge}
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
+                {donateContent.whySupport.title}
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                {donateContent.whySupport.subtitle}
               </p>
-              <p className="text-lg text-muted-foreground mb-4">
-                As a not-for-profit organization, we operate with transparency
-                and accountability. Every dollar donated goes toward supporting
-                our community initiatives, cultural preservation efforts, and
-                member services.
-              </p>
-              <p className="text-lg text-muted-foreground">
-                Whether you contribute financially, volunteer your time, or
-                participate in our events, every form of support makes a
-                meaningful difference in building and maintaining our vibrant
-                community.
-              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {donateContent.whySupport.reasons.map((reason, idx) => (
+                <div
+                  key={idx}
+                  className="relative bg-card p-6 rounded-2xl border border-border/50 shadow-sm hover:shadow-md transition-all duration-300"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary">
+                        <Check className="w-5 h-5" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-heading font-bold mb-2 text-foreground">
+                        {reason.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {reason.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Contact CTA */}
-        <section className="section-spacing bg-muted/30">
-          <div className="container-custom max-w-3xl text-center">
-            <h2 className="text-3xl font-heading font-bold mb-6">
-              Questions About Donating?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              If you have questions about donations, tax receipts, or other ways
-              to support our community, we're happy to help.
-            </p>
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              Contact Us
-            </a>
+        {/* CTA */}
+        <section className="relative section-spacing overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
+
+          <div className="container-custom max-w-5xl relative z-10">
+            <div className="relative bg-card/80 backdrop-blur-sm rounded-3xl border border-border/50 p-10 md:p-14 lg:p-16 text-center shadow-xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-50 rounded-3xl" />
+
+              <div className="relative z-10">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 mb-6">
+                  <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-foreground">
+                  {donateContent.cta.title}
+                </h2>
+
+                <div className="flex items-center justify-center gap-3 mb-6">
+                  <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
+                  <div className="w-2 h-2 rounded-full bg-primary/40" />
+                  <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
+                </div>
+
+                <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-muted-foreground leading-relaxed">
+                  {donateContent.cta.description}
+                </p>
+
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-primary text-primary-foreground font-semibold transition-all duration-300 hover:bg-primary/90 hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  {donateContent.cta.buttonText}
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+              </div>
+
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+            </div>
           </div>
         </section>
       </main>

@@ -19,12 +19,6 @@ export const siteConfig = {
       href: "/events",
       visible: true,
     },
-    membership: {
-      ordinal: 3,
-      name: "Membership",
-      href: "/membership",
-      visible: false,
-    },
     donate: {
       ordinal: 4,
       name: "Donate",
@@ -55,10 +49,10 @@ export const siteConfig = {
       href: "#",
       visible: true,
       children: [
-        { name: "Membership", href: "/membership" },
-        { name: "Sponsorship", href: "/sponsorship" },
-        { name: "Donations", href: "/donate" },
-        { name: "Volunteer", href: "/volunteer" },
+        { name: "Membership", href: "/membership", visible: false },
+        { name: "Sponsorship", href: "/sponsorship", visible: true },
+        { name: "Donations", href: "/donate", visible: true },
+        { name: "Volunteer", href: "/volunteer", visible: true },
       ],
     },
   },

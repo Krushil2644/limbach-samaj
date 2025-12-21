@@ -96,17 +96,6 @@ export default function Footer() {
                   </Link>
                 </li>
               )}
-              {siteConfig.navLinks.membership.visible && (
-                <li>
-                  <Link
-                    to="/membership"
-                    className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                  >
-                    <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                    Membership
-                  </Link>
-                </li>
-              )}
               {siteConfig.navLinks.gallery.visible && (
                 <li>
                   <Link
