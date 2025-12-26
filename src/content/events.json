@@ -2,7 +2,7 @@
   {
     "id": "1",
     "title": "Mataji’s Havan 2025 – Chaitri Navratri Celebration",
-    "date": "2026-03-28",
+    "date": "To be announced",
     "location": "Hindu Heritage Center, Mississauga",
     "description": "Chaitri Navratri marks the beginning of the Hindu New Year and is dedicated to Goddess Durga. This special Mataji’s Havan is a spiritual gathering to seek the blessings of Maa Limbach, with traditional havan, limited Sah-Yajmaan seva , opportunities for Ahuti participation, and Maha-Prasad served after Aarti.",
     "imageUrl": "/events/havan.jpg",
@@ -137,7 +137,7 @@
   {
     "id": "16",
     "title": "Diwali & Gratitude Milan",
-    "date": "22 Nov, 2022",
+    "date": "22nd Nov, 2022",
     "location": "Sindhi Guru Mandir",
     "description": "",
     "imageUrl": "",
@@ -146,8 +146,44 @@
   {
     "id": "17",
     "title": "Picnic",
-    "date": "23 July, 2023",
+    "date": "15th July, 2023",
     "location": "1275 Mississauga Vly Blvd, Mississauga",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "18",
+    "title": "Garba",
+    "date": "12th October, 2024",
+    "location": "River Grove Community Center, Mississauga",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "19",
+    "title": "Mataji’s Havan 2025",
+    "date": "5th April, 2025",
+    "location": "Hindu Heritage Center, Mississauga",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "20",
+    "title": "Picnic",
+    "date": "5th July, 2025",
+    "location": "Lions Valley Park, Oakville",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "21",
+    "title": "Garba",
+    "date": "28th September, 2025",
+    "location": "Mississauga Valley Community Center",
     "description": "",
     "imageUrl": "",
     "upcoming": false
