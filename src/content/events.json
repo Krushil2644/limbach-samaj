@@ -133,5 +133,23 @@
     "description": "",
     "imageUrl": "",
     "upcoming": false
+  },
+  {
+    "id": "16",
+    "title": "Diwali & Gratitude Milan",
+    "date": "22 Nov, 2022",
+    "location": "Sindhi Guru Mandir",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
+  },
+  {
+    "id": "17",
+    "title": "Picnic",
+    "date": "23 July, 2023",
+    "location": "1275 Mississauga Vly Blvd, Mississauga",
+    "description": "",
+    "imageUrl": "",
+    "upcoming": false
   }
 ]
