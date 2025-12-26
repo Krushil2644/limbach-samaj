@@ -70,25 +70,27 @@ export default function Donate() {
                   </div>
 
                   {/* Tax Receipt Info Card */}
-                  <div className="relative bg-muted/30 backdrop-blur-sm border border-border/50 rounded-2xl p-6 max-w-2xl mx-auto">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10">
-                          <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
+                  {donateContent.comingSoonNotice.showTaxReceitpInfo && (
+                    <div className="relative bg-muted/30 backdrop-blur-sm border border-border/50 rounded-2xl p-6 max-w-2xl mx-auto">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10">
+                            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-heading font-bold mb-2 text-foreground">
+                            {donateContent.comingSoonNotice.taxReceiptInfo.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {donateContent.comingSoonNotice.taxReceiptInfo.description}
+                          </p>
                         </div>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-heading font-bold mb-2 text-foreground">
-                          {donateContent.comingSoonNotice.taxReceiptInfo.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {donateContent.comingSoonNotice.taxReceiptInfo.description}
-                        </p>
-                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Bottom accent line */}
