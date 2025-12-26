@@ -70,18 +70,6 @@ export default function EventCard({
         className="group relative bg-card rounded-2xl border border-border/50 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
       >
         {/* Image */}
-        {/* <div className="relative w-full aspect-video overflow-hidden">
-          <img
-            src={displayImageUrl}
-            srcSet={imageUrl ? undefined : `${getPlaceholderImage('mobile')} 640w, ${getPlaceholderImage('tablet')} 768w, ${getPlaceholderImage('desktop')} 1200w`}
-            sizes={imageUrl ? undefined : "(max-width: 640px) 640px, (max-width: 768px) 768px, 1200px"}
-            alt={title}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          /> */}
-          {/* Gradient overlay */}
-          {/* <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" /> */}
-
-        {/* </div> */}
         {/* Badge */}
         <div className="absolute top-3 right-3">
           <Badge
@@ -144,21 +132,6 @@ export default function EventCard({
             </button>
 
             <div className="max-h-[85vh] sm:max-h-[80vh] overflow-y-auto">
-              {/* Modal Image */}
-              {/* <div className="relative h-10 sm:h-56 md:h-64 overflow-hidden"> */}
-                {/* <img
-                  src={displayImageUrl}
-                  srcSet={imageUrl ? undefined : `${getPlaceholderImage('mobile')} 640w, ${getPlaceholderImage('tablet')} 768w, ${getPlaceholderImage('desktop')} 1200w`}
-                  sizes={imageUrl ? undefined : "(max-width: 640px) 640px, (max-width: 768px) 768px, 1200px"}
-                  alt={title}
-                  className="w-full h-full object-cover block"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" /> */}
-
-                {/* Badge on image */}
-                
-              {/* </div> */}
-
               <div className="absolute top-5 sm:top-5 left-4 sm:left-6">
                   <Badge
                     variant={upcoming ? "default" : "secondary"}
