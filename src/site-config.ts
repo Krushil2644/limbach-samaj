@@ -52,7 +52,7 @@ export const siteConfig = {
         { name: "Membership", href: "/membership", visible: false },
         { name: "Sponsorship", href: "/sponsorship", visible: true },
         { name: "Donations", href: "/donate", visible: true },
-        { name: "Volunteer", href: "/volunteer", visible: true },
+        { name: "Volunteer", href: "/volunteer", visible: false },
       ],
     },
   },
@@ -78,7 +78,7 @@ export const siteConfig = {
   ],
   footerGetInvolved: [
     { name: "Membership", href: "/membership", visible: false },
-    { name: "Volunteer", href: "/volunteer", visible: true },
+    { name: "Volunteer", href: "/volunteer", visible: false },
     { name: "Sponsorship", href: "/sponsorship", visible: true },
     { name: "Donate", href: "/donate", visible: true },
   ],

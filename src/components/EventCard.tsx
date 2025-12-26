@@ -70,30 +70,30 @@ export default function EventCard({
         className="group relative bg-card rounded-2xl border border-border/50 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
       >
         {/* Image */}
-        <div className="relative w-full aspect-video overflow-hidden">
+        {/* <div className="relative w-full aspect-video overflow-hidden">
           <img
             src={displayImageUrl}
             srcSet={imageUrl ? undefined : `${getPlaceholderImage('mobile')} 640w, ${getPlaceholderImage('tablet')} 768w, ${getPlaceholderImage('desktop')} 1200w`}
             sizes={imageUrl ? undefined : "(max-width: 640px) 640px, (max-width: 768px) 768px, 1200px"}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+          /> */}
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+          {/* <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" /> */}
 
-          {/* Badge */}
-          <div className="absolute top-3 right-3">
-            <Badge
-              variant={upcoming ? "default" : "secondary"}
-              className="backdrop-blur-sm shadow-md"
-            >
-              {upcoming ? "Upcoming" : "Past Event"}
-            </Badge>
-          </div>
+        {/* </div> */}
+        {/* Badge */}
+        <div className="absolute top-3 right-3">
+          <Badge
+            variant={upcoming ? "default" : "secondary"}
+            className="backdrop-blur-sm shadow-md"
+          >
+            {upcoming ? "Upcoming" : "Past Event"}
+          </Badge>
         </div>
 
         {/* Content */}
-        <div className="p-5 space-y-3">
+        <div className="p-5 mt-2 space-y-3">
           {/* Title */}
           <h3 className="text-lg font-heading font-bold mt-2 line-clamp-2 text-foreground group-hover:text-primary transition-colors">
             {title}
@@ -145,18 +145,21 @@ export default function EventCard({
 
             <div className="max-h-[85vh] sm:max-h-[80vh] overflow-y-auto">
               {/* Modal Image */}
-              <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
-                <img
+              {/* <div className="relative h-10 sm:h-56 md:h-64 overflow-hidden"> */}
+                {/* <img
                   src={displayImageUrl}
                   srcSet={imageUrl ? undefined : `${getPlaceholderImage('mobile')} 640w, ${getPlaceholderImage('tablet')} 768w, ${getPlaceholderImage('desktop')} 1200w`}
                   sizes={imageUrl ? undefined : "(max-width: 640px) 640px, (max-width: 768px) 768px, 1200px"}
                   alt={title}
                   className="w-full h-full object-cover block"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" /> */}
 
                 {/* Badge on image */}
-                <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-6">
+                
+              {/* </div> */}
+
+              <div className="absolute top-5 sm:top-5 left-4 sm:left-6">
                   <Badge
                     variant={upcoming ? "default" : "secondary"}
                     className="backdrop-blur-sm shadow-lg text-xs sm:text-sm px-3 sm:px-4 py-1.5 sm:py-2"
@@ -164,10 +167,8 @@ export default function EventCard({
                     {upcoming ? "Upcoming Event" : "Past Event"}
                   </Badge>
                 </div>
-              </div>
-
               {/* Modal Content */}
-              <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
+              <div className="p-4 mt-10 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
               {/* Title */}
               <div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-foreground mb-3 sm:mb-4 pr-8">
