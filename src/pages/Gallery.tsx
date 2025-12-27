@@ -3,13 +3,7 @@ import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import galleryData from "@/content/gallery.json";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Carousel } from "@/components/ui/carousel";
 
 export default function Gallery() {
   type Album = (typeof galleryData)[number];
@@ -195,29 +189,24 @@ export default function Gallery() {
                 </p>
               </div>
 
-              <Carousel className="relative">
-                <CarouselContent>
-                  {selectedAlbum.images.map((image, idx) => (
-                    <CarouselItem key={`${selectedAlbum.id}-${idx}`}>
-                      <div className="flex items-center justify-center">
-                        <img
-                          src={image.url}
-                          alt={image.caption ?? selectedAlbum.title}
-                          className="max-h-[60vh] sm:max-h-[70vh] max-w-full w-auto object-contain rounded-lg"
-                          loading="lazy"
-                        />
-                      </div>
-                      {image.caption && (
-                        <p className="mt-2 text-center text-sm text-muted-foreground">
-                          {image.caption}
-                        </p>
-                      )}
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-              </Carousel>
+              <Carousel
+                images={selectedAlbum.images.map(image => ({
+                  original: image.url,
+                  thumbnail: image.url,
+                  originalAlt: image.caption ?? selectedAlbum.title,
+                  thumbnailAlt: image.caption ?? selectedAlbum.title,
+                  description: image.caption,
+                }))}
+                opts={{
+                  showThumbnails: false,
+                  showFullscreenButton: false,
+                  showPlayButton: true,
+                  showNav: true,
+                  autoPlay: true,
+                  lazyLoad: true,
+                }}
+                className="max-h-[80vh]"
+              />
             </div>
           )}
         </DialogContent>

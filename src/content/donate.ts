@@ -1,3 +1,4 @@
+import { siteConfig } from '@/site-config';
 import { Heart, Users, GraduationCap, Home } from "lucide-react";
 
 export const donateContent = {
@@ -11,7 +12,9 @@ export const donateContent = {
     description: [
       "We're currently developing a secure online donation platform to make supporting our community easier and more convenient.",
       "In the meantime, if you'd like to make a donation, please contact us directly through our contact page or reach out to any committee member. We can provide you with details for bank transfers or other donation methods.",
+      `To donate via E-transfer: ${siteConfig.email}`,
     ],
+    showTaxReceitpInfo: false,
     taxReceiptInfo: {
       title: "Tax Receipts Available",
       description: "Limbach Samaj Canada is a registered charitable organization. All donations are eligible for tax receipts in accordance with CRA guidelines.",

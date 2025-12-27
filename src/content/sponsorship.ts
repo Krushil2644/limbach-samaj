@@ -89,7 +89,6 @@ export const sponsorshipContent = {
       "Recognition at community events and celebrations",
       "Social media mentions and acknowledgments",
       "Networking opportunities with community leaders",
-      "Tax-deductible charitable donation receipts",
       "Opportunity to support meaningful community initiatives",
     ],
   },
