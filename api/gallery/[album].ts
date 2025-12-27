@@ -12,6 +12,7 @@ interface CloudinaryImage {
   bytes: number;
   format: string;
   created_at: string;
+  resource_type: string;
 }
 
 const CLOUDINARY_BASE_URL = `https://api.cloudinary.com/v1_1`;
@@ -74,7 +75,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
       height: resource.height,
       bytes: resource.bytes,
       format: resource.format,
-      created_at: resource.created_at
+      created_at: resource.created_at,
+      resource_type: resource.resource_type
     }));
 
     console.log(`Successfully fetched ${images.length} images from directory: ${directoryPath}`);

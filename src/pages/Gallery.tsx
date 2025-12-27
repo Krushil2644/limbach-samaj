@@ -13,6 +13,7 @@ interface CloudinaryImage {
   bytes: number;
   format: string;
   created_at: string;
+  resource_type: string;
 }
 
 interface CachedAlbumData {
@@ -110,13 +111,31 @@ export default function Gallery() {
   const carouselImages = useMemo(() => {
     if (!selectedAlbum || albumImages.length === 0) return [];
 
-    return albumImages.map(image => ({
-      original: image.secure_url,
-      thumbnail: image.secure_url,
-      originalAlt: selectedAlbum.title,
-      thumbnailAlt: selectedAlbum.title,
-      description: image.public_id,
-    }));
+    return albumImages.map(image => {
+      const isVideo = image.resource_type === 'video';
+      const baseProps = {
+        original: image.secure_url,
+        thumbnail: image.secure_url,
+        originalAlt: selectedAlbum.title,
+        thumbnailAlt: selectedAlbum.title,
+        description: image.public_id,
+      };
+
+      if (isVideo) {
+        return {
+          ...baseProps,
+          type: 'video' as const,
+          videoSrc: image.secure_url,
+          videoPoster: image.secure_url.replace(/\.[^/.]+$/, '.jpg'), // Use JPG thumbnail as poster
+          videoType: `video/${image.format}`,
+        };
+      }
+
+      return {
+        ...baseProps,
+        type: 'image' as const,
+      };
+    });
   }, [albumImages, selectedAlbum]);
 
   return (
@@ -300,7 +319,7 @@ export default function Gallery() {
               </div>
 
               {loadingImages ? (
-                <div className="flex items-center justify-center h-64 w-[50vw]">
+                <div className="flex items-center justify-center min-h-[400px] w-full min-w-[80vw]">
                   <div className="text-center">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
                     <p className="text-muted-foreground">Loading images...</p>

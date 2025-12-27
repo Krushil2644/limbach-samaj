@@ -27,15 +27,21 @@ type CarouselOptions = {
   lazyLoad?: boolean;
 };
 
+type CarouselImage = {
+  original: string;
+  thumbnail?: string;
+  originalAlt?: string;
+  thumbnailAlt?: string;
+  description?: string;
+  type?: 'image' | 'video';
+  videoSrc?: string;
+  videoPoster?: string;
+  videoType?: string;
+};
+
 type CarouselProps = {
   opts?: CarouselOptions;
-  images?: Array<{
-    original: string;
-    thumbnail?: string;
-    originalAlt?: string;
-    thumbnailAlt?: string;
-    description?: string;
-  }>;
+  images?: CarouselImage[];
   orientation?: "horizontal" | "vertical";
   setApi?: (api: CarouselApi) => void;
 };
@@ -113,13 +119,59 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
         thumbnail: img.thumbnail || img.original,
         originalAlt: img.originalAlt || '',
         thumbnailAlt: img.thumbnailAlt || '',
+        // Video properties
+        type: img.type || 'image',
+        videoSrc: img.videoSrc,
+        videoPoster: img.videoPoster,
+        videoType: img.videoType,
       }));
+
+      // Custom render function to handle both images and videos
+      const renderItem = (item: CarouselImage) => {
+        if (item.type === 'video') {
+          return (
+            <div className="image-gallery-image">
+              <video
+                controls
+                poster={item.videoPoster}
+                className="image-gallery-image"
+                style={{ maxHeight: '80vh', maxWidth: '100%' }}
+              >
+                <source src={item.videoSrc || item.original} type={item.videoType || 'video/mp4'} />
+                Your browser does not support the video tag.
+              </video>
+              {item.description && (
+                <div className="image-gallery-description">
+                  {item.description}
+                </div>
+              )}
+            </div>
+          );
+        }
+
+        // Default image rendering
+        return (
+          <div className="image-gallery-image">
+            <img
+              src={item.original}
+              alt={item.originalAlt}
+              style={{ maxHeight: '80vh', maxWidth: '100%' }}
+            />
+            {item.description && (
+              <div className="image-gallery-description">
+                {item.description}
+              </div>
+            )}
+          </div>
+        );
+      };
 
       return (
         <div ref={ref} className={cn("relative", className)} {...props}>
           <ImageGallery
             ref={galleryRef}
             items={galleryImages}
+            renderItem={renderItem}
             onSlide={handleSlide}
             onImageLoad={handleImageLoad}
             showThumbnails={opts?.showThumbnails ?? true}
@@ -138,7 +190,16 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
                 variant="outline"
                 size="icon"
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-10 h-8 w-8 rounded-full bg-background/80 backdrop-blur-sm"
-                onClick={onClick}
+                onClick={() => {
+                  // Pause any playing videos before navigating
+                  const videos = document.querySelectorAll('.image-gallery-image video');
+                  videos.forEach((video: any) => {
+                    if (!video.paused) {
+                      video.pause();
+                    }
+                  });
+                  onClick();
+                }}
                 disabled={disabled}
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -149,7 +210,16 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
                 variant="outline"
                 size="icon"
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-10 h-8 w-8 rounded-full bg-background/80 backdrop-blur-sm"
-                onClick={onClick}
+                onClick={() => {
+                  // Pause any playing videos before navigating
+                  const videos = document.querySelectorAll('.image-gallery-image video');
+                  videos.forEach((video: any) => {
+                    if (!video.paused) {
+                      video.pause();
+                    }
+                  });
+                  onClick();
+                }}
                 disabled={disabled}
               >
                 <ArrowRight className="h-4 w-4" />
