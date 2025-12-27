@@ -3,181 +3,18 @@
     "id": "past-events",
     "title": "Past Events",
     "coverImage": "/gallery/past-events/DSC03956.JPG",
-    "images": [
-      {
-        "url": "/gallery/past-events/21d15efe-dba7-407a-95fb-d29b2a7d90f5.JPG",
-        "caption": "Diwali gathering"
-      },
-      {
-        "url": "/gallery/past-events/42a78610-8052-4735-a1e9-1c3e8e72126c.JPG",
-        "caption": "Diwali gathering"
-      },
-      {
-        "url": "/gallery/past-events/e0565036-84b4-441d-87d7-4415992fb33c.JPG",
-        "caption": "Diwali gathering"
-      },
-      { "url": "/gallery/past-events/DSC03956.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC03958.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC03959.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC03960.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC03964.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC03986.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04011.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04014.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04017.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04028.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04030.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04032.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04040.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04054.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04055.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04058.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04060.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04062.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04063.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04066.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04068.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04071.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04075.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04076.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04078.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/DSC04085.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_20120630_113253.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_20120630_113256.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_20120630_190130.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2927.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2928.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2929.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2931.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2932.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2934.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2936.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2938.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2939.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2943.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2947.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2948.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2950.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2953.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2954.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2959.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2963.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2965.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2970.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2973.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2977.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2978.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2979.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2989.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2990.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2992.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2993.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2995.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2996.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2998.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_2999.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/IMG_3000.JPG", "caption": "past events" },
-      { "url": "/gallery/past-events/pic10.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic18.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic23.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic26.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic29.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic31.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic33.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic34.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic36.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic37.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic44.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic45.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic51.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic8.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/pic9.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic18.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic19.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic2.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic20.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic24.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic26.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic27.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic3.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic30.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic4.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic6.jpg", "caption": "past events" },
-      { "url": "/gallery/past-events/picnic7.jpg", "caption": "past events" }
-    ]
+    "imagesLength": "91"
   },
   {
     "id": "picnic-2025",
     "title": "Pics from 2025 Picnic",
     "coverImage": "/gallery/picnic-2025/f83e303e-cb89-4b15-9c6d-85cda486b06e.jpeg",
-    "images": [
-      {
-        "url": "/gallery/picnic-2025/f83e303e-cb89-4b15-9c6d-85cda486b06e.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/80db3e77-ed50-4998-8af4-e02121d5e9f6.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/f36b8cbe-e893-44a3-bba4-685d3bebb4e2.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/43a41aac-61ff-424a-984e-a73cf58cca1a.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/d022ceab-148f-4e00-9ad4-06f15e6d896a.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/4d24871e-79ae-4204-b683-023f2b0b3951.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/d6b8c027-a860-4e66-ac0b-ee267d749e17.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/99a1a975-4158-4ffd-9809-675996605c3a.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/ba3cb5f2-5d12-45e7-9a1c-bf36d531c240.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/8706016b-1e28-4223-8182-057a8f7a7069.jpeg",
-        "caption": "Picnic 2025"
-      },
-      {
-        "url": "/gallery/picnic-2025/09fe079b-c070-4655-80a9-dda536f05163.jpeg",
-        "caption": "Picnic 2025"
-      }
-    ]
+    "imagesLength": "11"
   },
   {
     "id": "mataji-havan-2025",
     "title": "Mataji Havan - 2025",
     "coverImage": "/gallery/mataji-havan-2025/d816b97d-43ee-464e-ad27-d8587a1ed8b7.jpeg",
-    "images": [
-      {
-        "url": "/gallery/mataji-havan-2025/d816b97d-43ee-464e-ad27-d8587a1ed8b7.jpeg",
-        "caption": "Mataji Havan 2025"
-      },
-      {
-        "url": "/gallery/mataji-havan-2025/399a10f6-747f-41ed-95b6-9d512b138017.jpeg",
-        "caption": "Mataji Havan 2025"
-      },
-      {
-        "url": "/gallery/mataji-havan-2025/fe3e6b6d-30a6-4a35-8b78-9fdd8e4aa288.jpeg",
-        "caption": "Mataji Havan 2025"
-      },
-      {
-        "url": "/gallery/mataji-havan-2025/3e6570f6-1b4c-4f3e-86e1-23869c58fa8e.jpeg",
-        "caption": "Mataji Havan 2025"
-      }
-    ]
+    "imagesLength": "4"
   }
 ]

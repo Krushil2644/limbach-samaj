@@ -1,15 +1,123 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import galleryData from "@/content/gallery.json";
 import { Carousel } from "@/components/ui/carousel";
 
+interface CloudinaryImage {
+  public_id: string;
+  secure_url: string;
+  width: number;
+  height: number;
+  bytes: number;
+  format: string;
+  created_at: string;
+}
+
+interface CachedAlbumData {
+  images: CloudinaryImage[];
+  timestamp: number;
+  error?: string;
+}
+
 export default function Gallery() {
   type Album = (typeof galleryData)[number];
   const albums: Album[] = useMemo(() => galleryData, []);
 
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
+  const [albumImages, setAlbumImages] = useState<CloudinaryImage[]>([]);
+  const [loadingImages, setLoadingImages] = useState(false);
+  const [imageError, setImageError] = useState<string | null>(null);
+
+  // Cache for album images to avoid refetching
+  const imageCache = useRef<Map<string, CachedAlbumData>>(new Map());
+  const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+  useEffect(() => {
+    if (selectedAlbum) {
+      fetchAlbumImages(selectedAlbum.id);
+    } else {
+      setAlbumImages([]);
+      setImageError(null);
+    }
+  }, [selectedAlbum]);
+
+  const fetchAlbumImages = async (albumId: string) => {
+    // Check cache first
+    const cached = imageCache.current.get(albumId);
+    const now = Date.now();
+
+    if (cached && (now - cached.timestamp) < CACHE_DURATION) {
+      setAlbumImages(cached.images);
+      setImageError(cached.error || null);
+      setLoadingImages(false);
+      return;
+    }
+
+    setLoadingImages(true);
+    setImageError(null);
+
+    try {
+      const response = await fetch(`/api/gallery/${albumId}`);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to fetch images');
+      }
+
+      const images = data.images && Array.isArray(data.images) ? data.images : [];
+
+      // Cache the result
+      imageCache.current.set(albumId, {
+        images,
+        timestamp: now
+      });
+
+      setAlbumImages(images);
+    } catch (error) {
+      console.error('Error fetching album images:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Failed to load images';
+
+      // Cache the error as well
+      imageCache.current.set(albumId, {
+        images: [],
+        timestamp: now,
+        error: errorMessage
+      });
+
+      setImageError(errorMessage);
+      setAlbumImages([]);
+    } finally {
+      setLoadingImages(false);
+    }
+  };
+
+  // Debug: Log cache statistics
+  useEffect(() => {
+    const logCacheStats = () => {
+      const stats = {
+        totalCached: imageCache.current.size,
+        albums: Array.from(imageCache.current.keys())
+      };
+    };
+
+    // Log stats on mount and when cache changes
+    logCacheStats();
+  }, []);
+
+  // Memoize the carousel images to prevent unnecessary re-renders
+  const carouselImages = useMemo(() => {
+    if (!selectedAlbum || albumImages.length === 0) return [];
+
+    return albumImages.map(image => ({
+      original: image.secure_url,
+      thumbnail: image.secure_url,
+      originalAlt: selectedAlbum.title,
+      thumbnailAlt: selectedAlbum.title,
+      description: image.public_id,
+    }));
+  }, [albumImages, selectedAlbum]);
 
   return (
     <>
@@ -71,7 +179,7 @@ export default function Gallery() {
                       {album.title}
                     </p>
                     <p className="text-sm text-muted-foreground mt-1">
-                      {album.images.length} photos
+                      {album.imagesLength} photos
                     </p>
                     <div className="pt-2">
                       <span className="text-sm font-medium text-primary group-hover:underline">
@@ -177,36 +285,56 @@ export default function Gallery() {
 
       {/* Lightbox Dialog */}
       <Dialog open={!!selectedAlbum} onOpenChange={() => setSelectedAlbum(null)}>
-        <DialogContent className="sm:max-w-5xl w-[calc(100%-1rem)] sm:w-auto max-h-[90vh] p-4 sm:p-6 overflow-hidden bg-background">
+        <DialogContent className="sm:max-w-5xl w-[calc(100%-1rem)] sm:w-auto max-h-[80vh] p-4 sm:p-6 overflow-hidden bg-background">
           {selectedAlbum && (
             <div className="space-y-4">
               <div>
-                <DialogTitle className="text-2xl font-heading font-bold">
-                  {selectedAlbum.title}
-                </DialogTitle>
+                <div className="flex items-center justify-between">
+                  <DialogTitle className="text-2xl font-heading font-bold">
+                    {selectedAlbum.title}
+                  </DialogTitle>
+                </div>
                 <p className="text-sm text-muted-foreground">
-                  {selectedAlbum.images.length} photos
+                  {loadingImages ? 'Loading photos...' : `${albumImages.length} photos`}
                 </p>
               </div>
 
-              <Carousel
-                images={selectedAlbum.images.map(image => ({
-                  original: image.url,
-                  thumbnail: image.url,
-                  originalAlt: image.caption ?? selectedAlbum.title,
-                  thumbnailAlt: image.caption ?? selectedAlbum.title,
-                  description: image.caption,
-                }))}
-                opts={{
-                  showThumbnails: false,
-                  showFullscreenButton: false,
-                  showPlayButton: true,
-                  showNav: true,
-                  autoPlay: true,
-                  lazyLoad: true,
-                }}
-                className="max-h-[80vh]"
-              />
+              {loadingImages ? (
+                <div className="flex items-center justify-center h-64 w-[50vw]">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p className="text-muted-foreground">Loading images...</p>
+                  </div>
+                </div>
+              ) : imageError ? (
+                <div className="flex items-center justify-center h-64">
+                  <div className="text-center">
+                    <div className="text-red-500 mb-4">
+                      <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                      </svg>
+                    </div>
+                    <p className="text-muted-foreground">{imageError}</p>
+                  </div>
+                </div>
+              ) : albumImages.length > 0 ? (
+                <Carousel
+                  images={carouselImages}
+                  opts={{
+                    showThumbnails: false,
+                    showFullscreenButton: false,
+                    showPlayButton: false,
+                    showNav: true,
+                    autoPlay: false,
+                    lazyLoad: true,
+                  }}
+                  className="max-h-[80vh]"
+                />
+              ) : (
+                <div className="flex items-center justify-center h-64">
+                  <p className="text-muted-foreground">No images found in this album.</p>
+                </div>
+              )}
             </div>
           )}
         </DialogContent>

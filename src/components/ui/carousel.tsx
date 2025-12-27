@@ -113,7 +113,6 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
         thumbnail: img.thumbnail || img.original,
         originalAlt: img.originalAlt || '',
         thumbnailAlt: img.thumbnailAlt || '',
-        description: img.description || '',
       }));
 
       return (
