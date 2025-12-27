@@ -80,11 +80,7 @@ export const donateContent = {
       {
         title: "Transparent Operations",
         description: "Clear reporting on how donations are used to benefit the community",
-      },
-      {
-        title: "Tax Benefits",
-        description: "Receive official tax receipts for your charitable contributions",
-      },
+      }
     ],
   },
 
