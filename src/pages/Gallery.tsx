@@ -1,15 +1,39 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import galleryData from "@/content/gallery.json";
 import { Carousel } from "@/components/ui/carousel";
+import galleryData from "@/content/gallery.json";
+import { cloudinaryClient, type CloudinaryImage } from "@/lib/cloudinary";
 
 export default function Gallery() {
   type Album = (typeof galleryData)[number];
   const albums: Album[] = useMemo(() => galleryData, []);
 
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
+  const [selectedAlbumImages, setSelectedAlbumImages] = useState<CloudinaryImage[] | null>(null);
+  const [loadingImages, setLoadingImages] = useState(false);
+
+  useEffect(() => {
+    if (selectedAlbum) {
+      setLoadingImages(true);
+      const fetchImages = async () => {
+        try {
+          const images = await cloudinaryClient.fetchImagesByDirectory(`Limbach-Samaj-Assets/${selectedAlbum.id}`);
+          setSelectedAlbumImages(images);
+        } catch (error) {
+          console.error('Failed to fetch images:', error);
+          setSelectedAlbumImages([]);
+        } finally {
+          setLoadingImages(false);
+        }
+      };
+      fetchImages();
+    } else {
+      setSelectedAlbumImages(null);
+      setLoadingImages(false);
+    }
+  }, [selectedAlbum]);
 
   return (
     <>
@@ -185,28 +209,41 @@ export default function Gallery() {
                   {selectedAlbum.title}
                 </DialogTitle>
                 <p className="text-sm text-muted-foreground">
-                  {selectedAlbum.images.length} photos
+                  {loadingImages ? 'Loading photos...' : `${selectedAlbumImages?.length || 0} photos`}
                 </p>
               </div>
 
-              <Carousel
-                images={selectedAlbum.images.map(image => ({
-                  original: image.url,
-                  thumbnail: image.url,
-                  originalAlt: image.caption ?? selectedAlbum.title,
-                  thumbnailAlt: image.caption ?? selectedAlbum.title,
-                  description: image.caption,
-                }))}
-                opts={{
-                  showThumbnails: false,
-                  showFullscreenButton: false,
-                  showPlayButton: true,
-                  showNav: true,
-                  autoPlay: true,
-                  lazyLoad: true,
-                }}
-                className="max-h-[80vh]"
-              />
+              {loadingImages ? (
+                <div className="flex items-center justify-center h-64">
+                  <div className="text-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+                    <p className="text-muted-foreground">Loading images...</p>
+                  </div>
+                </div>
+              ) : selectedAlbumImages && selectedAlbumImages.length > 0 ? (
+                <Carousel
+                  images={selectedAlbumImages.map(image => ({
+                    original: image.secure_url,
+                    thumbnail: image.secure_url,
+                    originalAlt: selectedAlbum.title,
+                    thumbnailAlt: selectedAlbum.title,
+                    description: image.public_id,
+                  }))}
+                  opts={{
+                    showThumbnails: false,
+                    showFullscreenButton: false,
+                    showPlayButton: true,
+                    showNav: true,
+                    autoPlay: true,
+                    lazyLoad: true,
+                  }}
+                  className="max-h-[80vh]"
+                />
+              ) : (
+                <div className="flex items-center justify-center h-64">
+                  <p className="text-muted-foreground">No images found in this album.</p>
+                </div>
+              )}
             </div>
           )}
         </DialogContent>
