@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [react(), vercel(), vitePluginVercelApi()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./src")
     },
   },
   vercel: {},
