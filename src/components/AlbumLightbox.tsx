@@ -85,12 +85,15 @@ export function AlbumLightbox({
             </div>
 
             {loadingImages ? (
-  <div className="w-full min-h-[60vh] flex items-center justify-center">
-    <div className="flex flex-col items-center gap-3 text-center">
-      <div className="h-10 w-10 animate-spin rounded-full border-4 border-muted border-t-primary" />
-      <p className="text-sm text-muted-foreground">Loading images...</p>
-    </div>
-  </div>
+            <div className="relative w-full min-h-[60vh]">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="flex flex-col items-center gap-3 text-center">
+                  <div className="h-10 w-10 animate-spin rounded-full border-4 border-muted border-t-primary" />
+                  <p className=text-sm text-muted-foreground">Loading Images...</p>
+                </div>
+              </div>
+            </div>
+            
             ) : imageError ? (
               <div className="flex items-center justify-center h-64">
                 <div className="text-center">
