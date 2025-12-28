@@ -1,5 +1,6 @@
 export const siteConfig = {
-  appName: "Limbach Samaj",
+  appName: "Limbach Samaj of Canada",
+  shortName: "Limbach Samaj",
   navLinks: {
     home: {
       ordinal: 0,

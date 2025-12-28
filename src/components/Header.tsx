@@ -57,7 +57,7 @@ export default function Header() {
             {/* Brand name with gradient */}
             <div className="hidden sm:flex flex-col">
               <span className="text-xl font-heading font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent group-hover:from-primary group-hover:to-primary transition-all duration-300">
-                {siteConfig.appName}
+                {siteConfig.shortName}
               </span>
               <span className="text-[10px] font-medium text-muted-foreground tracking-wider uppercase">
                 Community
