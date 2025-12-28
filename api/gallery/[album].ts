@@ -37,8 +37,9 @@ export default async function handler(request: VercelRequest, response: VercelRe
     // Remove leading and trailing quotes from API credentials if present
     const cleanApiKey = apiKey.replace(/^["']|["']$/g, '');
     const cleanApiSecret = apiSecret.replace(/^["']|["']$/g, '');
+    const cleanAssetPathPrefix = assetPathPrefix.replace(/^["']|["']$/g, '');
 
-    const directoryPath = `${assetPathPrefix}/${albumName}`;
+    const directoryPath = `${cleanAssetPathPrefix}/${albumName}`;
 
     const maxResults = 100;
 
