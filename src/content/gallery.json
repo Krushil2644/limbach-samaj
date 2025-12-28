@@ -3,24 +3,24 @@
     "id": "past-events",
     "title": "Past Events",
     "coverImage": "/gallery/past-events/DSC03956.JPG",
-    "imagesLength": "91"
+    "imagesLength": 91
   },
   {
     "id": "picnic-2025",
     "title": "Pics from 2025 Picnic",
     "coverImage": "/gallery/picnic-2025/f83e303e-cb89-4b15-9c6d-85cda486b06e.jpeg",
-    "imagesLength": "11"
+    "imagesLength": 11
   },
   {
     "id": "mataji-havan-2025",
     "title": "Mataji Havan - 2025",
     "coverImage": "/gallery/mataji-havan-2025/d816b97d-43ee-464e-ad27-d8587a1ed8b7.jpeg",
-    "imagesLength": "4"
+    "imagesLength": 4
   },
   {
     "id": "garba-2025",
     "title": "Garba 2025",
     "coverImage": "/gallery/garba-2025/asdasd-2123123da-123123assd-123123.jpeg",
-    "imagesLength": "4"
+    "imagesLength": 4
   }
 ]
