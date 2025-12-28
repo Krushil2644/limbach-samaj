@@ -68,7 +68,7 @@ export function AlbumLightbox({
 
   return (
     <Dialog open={!!selectedAlbum} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-5xl w-[calc(100%-1rem)] sm:w-auto max-h-[80vh] p-4 sm:p-6 overflow-hidden bg-background">
+      <DialogContent className="w-[calc(100%-1rem)] sm:w-auto max-w-3xl p-4 sm:p-6 overflow-hidden bg-background">
         {selectedAlbum && (
           <div className="space-y-4">
             <div>
@@ -85,12 +85,10 @@ export function AlbumLightbox({
             </div>
 
             {loadingImages ? (
-            <div className="relative w-full min-h-[60vh]">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex flex-col items-center gap-3 text-center">
-                  <div className="h-10 w-10 animate-spin rounded-full border-4 border-muted border-t-primary" />
-                  <p className="text-sm text-muted-foreground">Loading Images...</p>
-                </div>
+            <div className="w-full flex items-center justify-center">
+              <div className="w-[min(92vw,520px)] aspect-[4/3] rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm flex flex-col items-center justify-center gap-4">
+                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary" />
+                <p className="text-sm text-muted-foreground">Loading images...</p>
               </div>
             </div>
             
