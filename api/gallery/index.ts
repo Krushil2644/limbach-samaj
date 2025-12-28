@@ -20,9 +20,10 @@ export default async function handler(request: VercelRequest, response: VercelRe
 		// Remove leading and trailing quotes from API credentials if present
 		const cleanApiKey = apiKey.replace(/^["']|["']$/g, '');
 		const cleanApiSecret = apiSecret.replace(/^["']|["']$/g, '');
+		const cleanAssetPathPrefix = assetPathPrefix.replace(/^["']|["']$/g, '');
 
 		// Get subfolders under the asset path prefix
-		const foldersUrl = `${CLOUDINARY_BASE_URL}/${cloudName}/folders/${assetPathPrefix}`;
+		const foldersUrl = `${CLOUDINARY_BASE_URL}/${cloudName}/folders/${cleanAssetPathPrefix}`;
 		const foldersResponse = await fetch(foldersUrl, {
 			method: 'GET',
 			headers: {
