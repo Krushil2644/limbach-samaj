@@ -1,17 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { config } from '../../src/lib/config';
 
 const CLOUDINARY_BASE_URL = `https://api.cloudinary.com/v1_1`;
 const CLOUDINARY_SEARCH_ENDPOINT = `resources/search`;
 
 export default async function handler(request: VercelRequest, response: VercelResponse) {
 	try {
-		const assetPathPrefix = process.env.CLOUDINARY_ASSET_PREFIX;
-		const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-		const apiSecret = process.env.CLOUDINARY_API_SECRET;
-		const apiKey = process.env.CLOUDINARY_API_KEY;
+		const assetPathPrefix = config.cloudinary.assetPrefix;
+		const cloudName = config.cloudinary.cloudName;
+		const apiSecret = config.cloudinary.apiSecret;
+		const apiKey = config.cloudinary.apiKey;
 
 		if (!assetPathPrefix || !cloudName || !apiKey || !apiSecret) {
 			throw new Error('Missing required env variables!');
