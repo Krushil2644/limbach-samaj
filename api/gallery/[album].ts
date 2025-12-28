@@ -34,6 +34,10 @@ export default async function handler(request: VercelRequest, response: VercelRe
       throw new Error('Missing required env variables!');
     }
 
+    // Remove leading and trailing quotes from API credentials if present
+    const cleanApiKey = apiKey.replace(/^["']|["']$/g, '');
+    const cleanApiSecret = apiSecret.replace(/^["']|["']$/g, '');
+
     const directoryPath = `${assetPathPrefix}/${albumName}`;
 
     const maxResults = 100;
@@ -49,7 +53,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
     const cloudinaryResponse = await fetch(`${searchUrl}?${searchParams}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Basic ${btoa(`${apiKey}:${apiSecret}`)}`,
+        'Authorization': `Basic ${btoa(`${cleanApiKey}:${cleanApiSecret}`)}`,
         'Content-Type': 'application/json',
       },
     });
