@@ -27,7 +27,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
 		const foldersResponse = await fetch(foldersUrl, {
 			method: 'GET',
 			headers: {
-				'Authorization': `Basic ${btoa(`${cleanApiKey}:${cleanApiSecret}`)}`,
+				Authorization: `Basic ${Buffer.from(`${cleanApiKey}:${cleanApiSecret}`).toString("base64")}`,
 				'Content-Type': 'application/json',
 			},
 		});
