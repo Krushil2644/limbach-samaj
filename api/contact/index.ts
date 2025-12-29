@@ -224,10 +224,10 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
     // Email options
     const mailOptions = {
-      from: `"${contactData.name}" <${process.env.SMTP_USERNAME}>`,
+      from: `Limbach Samaj of Canada - Website`,
       to: process.env.SMTP_USERNAME,
       replyTo: contactData.email,
-      subject: `Contact Form: ${contactData.subject}`,
+      subject: `Website Contact Form: ${contactData.subject}`,
       html: emailHTML,
       // Also send plain text version
       text: `
