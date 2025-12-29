@@ -1,5 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { config } from '../../src/lib/config';
 import nodemailer from 'nodemailer';
 
 interface ContactFormData {
@@ -181,13 +180,13 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
   try {
     // Validate required environment variables
-    if (!config.smtp.username || !config.smtp.password) {
-      console.error('SMTP configuration missing');
-      return response.status(500).json({
-        error: 'Server configuration error',
-        ok: false
-      });
-    }
+    if (!process.env.SMTP_USERNAME || !process.env.SMTP_PASSWORD) {
+    console.error("SMTP configuration missing");
+    return response.status(500).json({
+      error: "Server configuration error",
+      ok: false,
+    });
+  }
 
     // Validate request body
     const validation = validateContactData(request.body);
@@ -207,8 +206,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
       port: config.smtp.port,
       secure: config.smtp.port === 465, // true for 465, false for other ports
       auth: {
-        user: config.smtp.username,
-        pass: config.smtp.password
+        user: process.env.SMTP_USERNAME,
+        pass: process.env.SMTP_PASSWORD
       }
     });
 
@@ -220,8 +219,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
     // Email options
     const mailOptions = {
-      from: `"${contactData.name}" <${config.smtp.username}>`,
-      to: config.smtp.username,
+      from: `"${contactData.name}" <${process.env.SMTP_USERNAME}>`,
+      to: process.env.SMTP_USERNAME,
       replyTo: contactData.email,
       subject: `Contact Form: ${contactData.subject}`,
       html: emailHTML,
