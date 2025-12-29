@@ -50,18 +50,13 @@ export default function Gallery() {
   useEffect(() => {
     const fetchAlbumCounts = async () => {
       try {
-        setLoadingCounts(true);
-
-        // CHANGED: correct endpoint for counts
-        const response = await fetch("/api/gallery/counts");
+        const response = await fetch('/api/gallery');
         const data = await response.json();
-
-        // CHANGED: proper error handling + correct response key
-        if (!response.ok) throw new Error(data.error || "Failed to fetch counts");
-        setAlbumCounts(data.counts || {});
+        if (data.albums) {
+          setAlbumCounts(data.albums);
+        }
       } catch (error) {
-        console.error("Error fetching album counts:", error);
-        setAlbumCounts({});
+        console.error('Error fetching album counts:', error);
       } finally {
         setLoadingCounts(false);
       }
@@ -84,14 +79,10 @@ export default function Gallery() {
     const cached = imageCache.current.get(albumId);
     const now = Date.now();
 
-    if (cached && now - cached.timestamp < CACHE_DURATION) {
+    if (cached && (now - cached.timestamp) < CACHE_DURATION) {
       setAlbumImages(cached.images);
       setImageError(cached.error || null);
       setLoadingImages(false);
-
-      // OPTIONAL : keep card count synced
-      setAlbumCounts((prev) => ({ ...prev, [albumId]: cached.images.length }));
-
       return;
     }
 
@@ -103,7 +94,7 @@ export default function Gallery() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to fetch images");
+        throw new Error(data.error || 'Failed to fetch images');
       }
 
       const images = data.images && Array.isArray(data.images) ? data.images : [];
@@ -111,22 +102,19 @@ export default function Gallery() {
       // Cache the result
       imageCache.current.set(albumId, {
         images,
-        timestamp: now,
+        timestamp: now
       });
 
       setAlbumImages(images);
-
-      //  OPTIONAL : keep card count synced
-      setAlbumCounts((prev) => ({ ...prev, [albumId]: images.length }));
     } catch (error) {
-      console.error("Error fetching album images:", error);
-      const errorMessage = error instanceof Error ? error.message : "Failed to load images";
+      console.error('Error fetching album images:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Failed to load images';
 
       // Cache the error as well
       imageCache.current.set(albumId, {
         images: [],
         timestamp: now,
-        error: errorMessage,
+        error: errorMessage
       });
 
       setImageError(errorMessage);
@@ -156,13 +144,7 @@ export default function Gallery() {
         <section className="relative section-spacing overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
-          <div
-            className="absolute inset-0 opacity-[0.02]"
-            style={{
-              backgroundImage: "radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)",
-              backgroundSize: "32px 32px",
-            }}
-          />
+          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
 
           <div className="container-custom relative z-10">
             {/* Section Header */}
@@ -182,7 +164,12 @@ export default function Gallery() {
             </div>
 
             {/* Gallery Grid */}
-            <AlbumGrid albums={albums} albumCounts={albumCounts} onSelectAlbum={setSelectedAlbum} />
+            <AlbumGrid 
+              albums={albums} 
+              albumCounts={albumCounts} 
+              onSelectAlbum={setSelectedAlbum}
+              loading={loadingCounts}
+            />
           </div>
         </section>
 
