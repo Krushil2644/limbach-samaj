@@ -77,13 +77,43 @@ export default function Contact() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
 
-    // Simulate form submission (frontend only for now)
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phoneNumber: data.phone, // API expects phoneNumber
+          address: data.address,
+          subject: data.subject,
+          message: data.message,
+        }),
+      });
 
-    console.log("Form submitted:", data);
-    toast.success("Thank you for your message! We'll get back to you soon.");
-    form.reset();
-    setIsSubmitting(false);
+      const result = await response.json();
+
+      if (response.ok && result.ok) {
+        toast.success(result.message || "Thank you for your message! We'll get back to you soon.");
+        form.reset();
+      } else {
+        // Handle validation errors
+        if (result.details && Array.isArray(result.details)) {
+          result.details.forEach((error: string) => {
+            toast.error(error);
+          });
+        } else {
+          toast.error(result.error || "Failed to send message. Please try again.");
+        }
+      }
+    } catch (error) {
+      console.error('Contact form submission error:', error);
+      toast.error("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

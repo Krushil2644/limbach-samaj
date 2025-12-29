@@ -1,8 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import dotenv from 'dotenv';
-
-// Load environment variables
-dotenv.config();
+import { config } from '../../src/lib/config';
 
 interface CloudinaryImage {
   public_id: string;
@@ -21,10 +18,10 @@ const CLOUDINARY_SEARCH_ENDPOINT = `resources/search`;
 export default async function handler(request: VercelRequest, response: VercelResponse) {
   try {
     const albumName = request.query?.album;
-    const assetPathPrefix = process.env.CLOUDINARY_ASSET_PREFIX;
-    const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-    const apiSecret = process.env.CLOUDINARY_API_SECRET;
-    const apiKey = process.env.CLOUDINARY_API_KEY;
+    const assetPathPrefix = config.cloudinary.assetPrefix;
+    const cloudName = config.cloudinary.cloudName;
+    const apiSecret = config.cloudinary.apiSecret;
+    const apiKey = config.cloudinary.apiKey;
 
     if (!albumName) {
       throw new Error('No album name passed');
