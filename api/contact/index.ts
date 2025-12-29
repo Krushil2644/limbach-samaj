@@ -1,5 +1,4 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { config } from '../../src/lib/config';
 import nodemailer from 'nodemailer';
 
 interface ContactFormData {
@@ -181,7 +180,13 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
   try {
     // Validate required environment variables
-    if (!config.smtp.username || !config.smtp.password) {
+    if (
+      !process.env.SMTP_HOST ||
+      !process.env.SMTP_PORT ||
+      !process.env.SMTP_USERNAME ||
+      !process.env.SMTP_PASSWORD
+    ) 
+    {
       console.error('SMTP configuration missing');
       return response.status(500).json({
         error: 'Server configuration error',
@@ -203,12 +208,11 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
     // Create transporter
     const transport = nodemailer.createTransport({
-      host: config.smtp.host,
-      port: config.smtp.port,
-      secure: config.smtp.port === 465, // true for 465, false for other ports
+      host: 'smtp.gmail.com',
+      port: 587,
       auth: {
-        user: config.smtp.username,
-        pass: config.smtp.password
+        user: process.env.SMTP_USERNAME,
+        pass: process.env.SMTP_PASSWORD
       }
     });
 
@@ -220,10 +224,10 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
     // Email options
     const mailOptions = {
-      from: `"${contactData.name}" <${config.smtp.username}>`,
-      to: config.smtp.username,
+      from: `Limbach Samaj of Canada - Website`,
+      to: process.env.SMTP_USERNAME,
       replyTo: contactData.email,
-      subject: `Contact Form: ${contactData.subject}`,
+      subject: `Website Contact Form: ${contactData.subject}`,
       html: emailHTML,
       // Also send plain text version
       text: `
