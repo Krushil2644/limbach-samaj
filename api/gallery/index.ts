@@ -53,7 +53,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
 			const searchResponse = await fetch(`${searchUrl}?${searchParams}`, {
 				method: 'GET',
 				headers: {
-					'Authorization': `Basic ${btoa(`${cleanApiKey}:${cleanApiSecret}`)}`,
+					Authorization: `Basic ${Buffer.from(`${cleanApiKey}:${cleanApiSecret}`).toString("base64")}`,
 					'Content-Type': 'application/json',
 				},
 			});
