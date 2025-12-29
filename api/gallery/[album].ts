@@ -54,7 +54,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
     const cloudinaryResponse = await fetch(`${searchUrl}?${searchParams}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Basic ${btoa(`${cleanApiKey}:${cleanApiSecret}`)}`,
+        Authorization: `Basic ${Buffer.from(`${cleanApiKey}:${cleanApiSecret}`).toString("base64")}`,
         'Content-Type': 'application/json',
       },
     });
@@ -69,7 +69,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
 
     if (!result.resources || !Array.isArray(result.resources)) {
       console.warn(`No resources found in directory: ${directoryPath}`);
-      return [];
+      return response.status(200).json({ images: [], done: true });
     }
 
     // Transform the response to our standardized format
