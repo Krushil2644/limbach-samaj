@@ -181,8 +181,6 @@ export default async function handler(request: VercelRequest, response: VercelRe
   try {
     // Validate required environment variables
     if (
-      !process.env.SMTP_HOST ||
-      !process.env.SMTP_PORT ||
       !process.env.SMTP_USERNAME ||
       !process.env.SMTP_PASSWORD
     ) 
