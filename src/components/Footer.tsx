@@ -133,6 +133,7 @@ export default function Footer() {
                 </div>
               </li>
 
+        {siteConfig.showFooterPhone && ( //temporary hidden
               <li className="group relative bg-card/40 backdrop-blur-sm rounded-xl border border-border/40 p-3 hover:border-secondary/20 hover:bg-card/60 transition-all duration-300">
                 <div className="flex items-start gap-3">
                   <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-secondary/10 border border-secondary/20 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
@@ -144,6 +145,7 @@ export default function Footer() {
                   </div>
                 </div>
               </li>
+        )}
 
               <li className="group relative bg-card/40 backdrop-blur-sm rounded-xl border border-border/40 p-3 hover:border-accent/20 hover:bg-card/60 transition-all duration-300">
                 <div className="flex items-start gap-3">
