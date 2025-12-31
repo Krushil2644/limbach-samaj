@@ -121,7 +121,7 @@ function createEmailHTML(data: ContactFormData): string {
       <div class="container">
         <div class="header">
           <h1>📬 New Contact Form Submission</h1>
-          <p>Limbach Samaj Community</p>
+          <p>Limbach Samaj Of Canada</p>
         </div>
 
         <div class="field">
