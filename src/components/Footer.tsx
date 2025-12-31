@@ -29,6 +29,7 @@ export default function Footer() {
             </div>
 
             {/* Social Links with enhanced styling */}
+            {siteConfig.showFooterSocialLinks && (  //temporary hidden
             <div>
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2.5">
                 Connect With Us
@@ -69,6 +70,8 @@ export default function Footer() {
                 )}
               </div>
             </div>
+            )}
+            
           </div>
 
           {/* Quick Links */}
