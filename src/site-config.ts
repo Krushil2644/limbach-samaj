@@ -71,6 +71,7 @@ export const siteConfig = {
       link: "https://instagram.com",
     },
   },
+  showFooterSocialLinks: false,  //temporary hidden social links
   footerQuickLinks: [
     { name: "About Us", href: "/about", visible: true },
     { name: "Events", href: "/events", visible: true },
