@@ -28,7 +28,10 @@ export default function Footer() {
               </p>
             </div>
 
+            
             {/* Social Links with enhanced styling */}
+            {/* Temporirally removed all social media links, untill we have official social media pages */}
+            {/*
             <div>
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2.5">
                 Connect With Us
@@ -70,7 +73,8 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
+         */}
+          
           {/* Quick Links */}
           <div>
             <h3 className="text-base font-heading font-bold mb-1 text-foreground">Quick Links</h3>
