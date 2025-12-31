@@ -86,5 +86,6 @@ export const siteConfig = {
   ],
   email: "jaylimbach@gmail.com",
   phone: "tba",
+  showFooterPhone: false,  // temporary hidden
   location: "Serving communities across Canada",
 };
