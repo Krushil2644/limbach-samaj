@@ -266,11 +266,14 @@ export default function Events() {
     __html: JSON.stringify({
       "@context": "https://schema.org",
       "@type": "ItemList",
-      itemListElement: upcomingEvents.map((event, index) => ({
+      itemListElement: upcomingEvents
+        .filter((e) => (e as any).startDateISO)
+        .map((event, index) => ({
         "@type": "Event",
         position: index + 1,
         name: event.title,
-        startDate: event.date,
+        startDate: (event as any).startDateISO || undefined,
+        endDate: (event as any).endDateISO || undefined,
         location: {
           "@type": "Place",
           name: event.location,
