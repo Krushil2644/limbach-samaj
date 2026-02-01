@@ -3,7 +3,8 @@ import { Users, Calendar, Award, Globe, Heart } from "lucide-react";
 export const sponsorshipContent = {
   hero: {
     title: "Partnership Opportunities",
-    subtitle: "Support our community and make a meaningful impact through sponsorship",
+    subtitle:
+      "Support our community and make a meaningful impact through sponsorship",
   },
 
   inProgressNotice: {
@@ -17,22 +18,26 @@ export const sponsorshipContent = {
   whySponsor: {
     badge: "Make an Impact",
     title: "Why Sponsor Limbach Samaj?",
-    subtitle: "Your sponsorship helps us create meaningful programs and support our growing community",
+    subtitle:
+      "Your sponsorship helps us create meaningful programs and support our growing community",
     impactAreas: [
       {
         icon: "Users",
         title: "Community Programs",
-        description: "Support senior engagement activities, cultural workshops, and community gatherings",
+        description:
+          "Support senior engagement activities, cultural workshops, and community gatherings",
       },
       {
         icon: "Heart",
         title: "Newcomer Support",
-        description: "Help new immigrants settle and integrate into Canadian life with confidence",
+        description:
+          "Help new immigrants settle and integrate into Canadian life with confidence",
       },
       {
         icon: "Globe",
         title: "Cultural Preservation",
-        description: "Preserve our heritage through events, education, and intergenerational connections",
+        description:
+          "Preserve our heritage through events, education, and intergenerational connections",
       },
     ],
   },
@@ -40,7 +45,8 @@ export const sponsorshipContent = {
   sponsorshipTiers: {
     badge: "Sponsorship Levels",
     title: "Partnership Tiers",
-    subtitle: "Choose a sponsorship level that aligns with your organization's goals",
+    subtitle:
+      "Choose a sponsorship level that aligns with your organization's goals",
     tiers: [
       {
         name: "Community Partner",
@@ -95,8 +101,36 @@ export const sponsorshipContent = {
 
   cta: {
     title: "Interested in Sponsoring?",
-    description: "We'd love to discuss custom sponsorship opportunities that align with your organization's goals and values. Get in touch with us today!",
+    description:
+      "We'd love to discuss custom sponsorship opportunities that align with your organization's goals and values. Get in touch with us today!",
     buttonText: "Contact Us About Sponsorship",
+  },
+
+  eventSponsorships: {
+    badge: "Event Sponsorship",
+    title: "Mataji Havan Sponsorships",
+    subtitle: "Honoring our community supporters for the Mataji Havan event.",
+    tabs: {
+      eventSponsorship: {
+        label: "Event Sponsorship",
+        items: [
+          {
+            imageSrc:
+              "/images/sponsors/ea608793-d7eb-4473-8c09-649d31bd724a.JPG",
+            imageAlt: "In loving memory of Smitaben Parekh",
+            memoryLine: "In the loving memory of",
+            honoreeName: "Smitaben Parekh",
+            sponsorsLine:
+              "Nailesh Parekh | Harsh Parekh | Purva Parekh (Hamilton)",
+            variant: "memorial",
+          },
+        ],
+      },
+      eventSponsors: {
+        label: "Event sponsors",
+        note: "Other Havan sponsors will appear here.",
+      },
+    },
   },
 };
 

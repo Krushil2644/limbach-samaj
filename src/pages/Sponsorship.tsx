@@ -1,7 +1,9 @@
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
-import { Check, Building2, Info, ArrowRight } from "lucide-react";
+import { Check, Building2, ArrowRight } from "lucide-react";
 import { sponsorshipContent, iconMap } from "@/content/sponsorship";
+import SponsorImageRow from "@/components/SponsorImageRow";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Sponsorship() {
 
@@ -21,60 +23,57 @@ export default function Sponsorship() {
           compact
         />
 
-        {/* In Progress Notice */}
+        {/* Event Sponsorships */}
         <section className="relative section-spacing overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-muted/20 via-muted/10 to-muted/20" />
-
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
           <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <div className="relative bg-card/80 backdrop-blur-sm rounded-3xl border border-accent/30 p-8 md:p-12 shadow-xl overflow-hidden">
-                {/* Background decoration */}
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 opacity-60" />
-                <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 rounded-full blur-3xl" />
-
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-
-                <div className="relative z-10">
-                  {/* Icon and Badge */}
-                  <div className="flex flex-col items-center mb-6">
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-accent/10 border border-accent/20 mb-4">
-                      <Info className="h-10 w-10 text-accent" />
-                    </div>
-                    <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-xs font-semibold tracking-wide uppercase">
-                      In Progress
-                    </span>
-                  </div>
-
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-center mb-6 bg-gradient-to-r from-accent via-foreground to-accent bg-clip-text text-transparent">
-                    {sponsorshipContent.inProgressNotice.title}
-                  </h2>
-
-                  {/* Decorative divider */}
-                  <div className="flex items-center justify-center gap-3 mb-8">
-                    <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
-                    <div className="w-2 h-2 rounded-full bg-accent/40" />
-                    <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
-                  </div>
-
-                  {/* Description */}
-                  <div className="text-center space-y-4">
-                    {sponsorshipContent.inProgressNotice.description.map((text, idx) => (
-                      <p
-                        key={idx}
-                        className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto"
-                      >
-                        {text}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Bottom accent line */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+            <div className="text-center mb-12">
+              <div className="inline-block mb-4">
+                <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-semibold tracking-wide uppercase">
+                  {sponsorshipContent.eventSponsorships.badge}
+                </span>
               </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
+                {sponsorshipContent.eventSponsorships.title}
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
+                {sponsorshipContent.eventSponsorships.subtitle}
+              </p>
             </div>
+
+            <Tabs defaultValue="event-sponsorship" className="w-full">
+              <div className="flex justify-center mb-10">
+                <TabsList className="inline-flex h-12 items-center justify-center rounded-2xl bg-muted/50 backdrop-blur-sm p-1.5 border border-border/40 shadow-sm">
+                  <TabsTrigger
+                    value="event-sponsorship"
+                    className="rounded-xl px-6 py-2.5 text-sm font-semibold transition-all data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-md"
+                  >
+                    {sponsorshipContent.eventSponsorships.tabs.eventSponsorship.label}
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="event-sponsors"
+                    className="rounded-xl px-6 py-2.5 text-sm font-semibold transition-all data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-md"
+                  >
+                    {sponsorshipContent.eventSponsorships.tabs.eventSponsors.label}
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+
+              <TabsContent value="event-sponsorship" className="mt-0">
+                <SponsorImageRow items={sponsorshipContent.eventSponsorships.tabs.eventSponsorship.items} />
+              </TabsContent>
+
+              <TabsContent value="event-sponsors" className="mt-0">
+                <div className="relative bg-card/60 backdrop-blur-sm rounded-3xl border border-border/40 p-10 md:p-12 text-center shadow-sm">
+                  <h3 className="text-xl md:text-2xl font-heading font-semibold mb-3">
+                    {sponsorshipContent.eventSponsorships.tabs.eventSponsors.label}
+                  </h3>
+                  <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+                    {sponsorshipContent.eventSponsorships.tabs.eventSponsors.note}
+                  </p>
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
         </section>
 
