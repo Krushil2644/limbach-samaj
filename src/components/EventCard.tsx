@@ -159,11 +159,11 @@ export default function EventCard({
       {/* Modal */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 pt-20 sm:pt-24 bg-background/80 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 md:p-6 pt-20 sm:pt-24 bg-background/80 backdrop-blur-sm pb-[env(safe-area-inset-bottom)]"
           onClick={() => setIsModalOpen(false)}
         >
           <div
-            className="relative bg-card rounded-2xl sm:rounded-3xl border border-border shadow-2xl w-full max-w-2xl max-h-[85vh] sm:max-h-[80vh] overflow-hidden my-auto"
+            className="relative bg-card rounded-2xl sm:rounded-3xl border border-border shadow-2xl w-[92vw] max-w-2xl max-h-[85svh] sm:max-h-[80svh] overflow-hidden my-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
@@ -174,7 +174,7 @@ export default function EventCard({
               <X className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
 
-            <div className="max-h-[85vh] sm:max-h-[80vh] overflow-y-auto">
+            <div className="max-h-[85svh] sm:max-h-[80svh] overflow-y-auto">
               <div className="absolute top-5 sm:top-5 left-4 sm:left-6">
                 <Badge
                   variant={upcoming ? "default" : "secondary"}
