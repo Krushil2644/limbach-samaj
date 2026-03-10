@@ -1,4 +1,5 @@
 import { Users, Calendar, Award, Globe, Heart } from "lucide-react";
+import type { SponsorItem } from "@/components/SponsorImageRow";
 
 export const sponsorshipContent = {
   hero: {
@@ -124,7 +125,16 @@ export const sponsorshipContent = {
               "Nailesh Parekh | Harsh Parekh | Purva Parekh (Hamilton)",
             variant: "memorial",
           },
-        ],
+          {
+            imageSrc:
+              "/images/sponsors/000016dc-00c0-4eb5-bf5b-54610e607a08.JPG",
+            imageAlt: "With The Divine Blessings Of Mataji",
+            memoryLine: "With The Divine Blessings of Mataji",
+            honoreeName: "Rashmikaben Vijaybhai Parekh",
+            sponsorsLine: "Family",
+            variant: "memorial",
+          },
+        ] as SponsorItem[],
       },
       eventSponsors: {
         label: "Event sponsors",

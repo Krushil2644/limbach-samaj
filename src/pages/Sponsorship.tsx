@@ -6,7 +6,6 @@ import SponsorImageRow from "@/components/SponsorImageRow";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Sponsorship() {
-
   return (
     <>
       <SEOHead
@@ -48,28 +47,45 @@ export default function Sponsorship() {
                     value="event-sponsorship"
                     className="rounded-xl px-6 py-2.5 text-sm font-semibold transition-all data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-md"
                   >
-                    {sponsorshipContent.eventSponsorships.tabs.eventSponsorship.label}
+                    {
+                      sponsorshipContent.eventSponsorships.tabs.eventSponsorship
+                        .label
+                    }
                   </TabsTrigger>
                   <TabsTrigger
                     value="event-sponsors"
                     className="rounded-xl px-6 py-2.5 text-sm font-semibold transition-all data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-md"
                   >
-                    {sponsorshipContent.eventSponsorships.tabs.eventSponsors.label}
+                    {
+                      sponsorshipContent.eventSponsorships.tabs.eventSponsors
+                        .label
+                    }
                   </TabsTrigger>
                 </TabsList>
               </div>
 
               <TabsContent value="event-sponsorship" className="mt-0">
-                <SponsorImageRow items={sponsorshipContent.eventSponsorships.tabs.eventSponsorship.items} />
+                <SponsorImageRow
+                  items={
+                    sponsorshipContent.eventSponsorships.tabs.eventSponsorship
+                      .items
+                  }
+                />
               </TabsContent>
 
               <TabsContent value="event-sponsors" className="mt-0">
                 <div className="relative bg-card/60 backdrop-blur-sm rounded-3xl border border-border/40 p-10 md:p-12 text-center shadow-sm">
                   <h3 className="text-xl md:text-2xl font-heading font-semibold mb-3">
-                    {sponsorshipContent.eventSponsorships.tabs.eventSponsors.label}
+                    {
+                      sponsorshipContent.eventSponsorships.tabs.eventSponsors
+                        .label
+                    }
                   </h3>
                   <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-                    {sponsorshipContent.eventSponsorships.tabs.eventSponsors.note}
+                    {
+                      sponsorshipContent.eventSponsorships.tabs.eventSponsors
+                        .note
+                    }
                   </p>
                 </div>
               </TabsContent>
@@ -136,10 +152,14 @@ export default function Sponsorship() {
                     className={`group relative bg-card/80 backdrop-blur-sm p-8 rounded-3xl border border-border/60 ${scheme.hover} transition-all duration-500 hover:shadow-2xl ${scheme.glow} hover:-translate-y-2`}
                   >
                     {/* Top decorative line */}
-                    <div className={`absolute top-0 left-8 right-8 h-1 ${scheme.accent} rounded-b-full transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500`} />
+                    <div
+                      className={`absolute top-0 left-8 right-8 h-1 ${scheme.accent} rounded-b-full transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500`}
+                    />
 
                     <div className="text-center">
-                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${scheme.badge} border mb-4 transition-transform duration-300 group-hover:scale-110`}>
+                      <div
+                        className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${scheme.badge} border mb-4 transition-transform duration-300 group-hover:scale-110`}
+                      >
                         <Icon className="h-8 w-8" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-heading font-bold mb-4 text-foreground transition-colors duration-300 group-hover:text-foreground">
@@ -151,7 +171,9 @@ export default function Sponsorship() {
                     </div>
 
                     {/* Bottom right decorative element */}
-                    <div className={`absolute bottom-6 right-6 w-16 h-16 ${scheme.accent} opacity-5 rounded-full blur-2xl group-hover:opacity-20 transition-opacity duration-500`} />
+                    <div
+                      className={`absolute bottom-6 right-6 w-16 h-16 ${scheme.accent} opacity-5 rounded-full blur-2xl group-hover:opacity-20 transition-opacity duration-500`}
+                    />
                   </div>
                 );
               })}
@@ -163,7 +185,14 @@ export default function Sponsorship() {
         <section className="relative section-spacing overflow-hidden">
           {/* Background with subtle pattern */}
           <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/20 to-muted/30" />
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' }} />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)",
+              backgroundSize: "24px 24px",
+            }}
+          />
 
           <div className="container-custom relative z-10">
             <div className="text-center mb-16">
@@ -200,23 +229,33 @@ export default function Sponsorship() {
                     className="group relative bg-card/80 backdrop-blur-sm rounded-3xl border border-border/60 p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                   >
                     {/* Gradient overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${colorMap[tier.color]} to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500`} />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${colorMap[tier.color]} to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500`}
+                    />
 
                     {/* Top accent line */}
-                    <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-${tier.color} via-${tier.color}/60 to-transparent rounded-t-3xl`} />
+                    <div
+                      className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-${tier.color} via-${tier.color}/60 to-transparent rounded-t-3xl`}
+                    />
 
                     <div className="relative z-10">
-                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-${tier.color}/10 border border-${tier.color}/20 text-${tier.color} mb-6 transition-transform duration-300 group-hover:scale-110`}>
+                      <div
+                        className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-${tier.color}/10 border border-${tier.color}/20 text-${tier.color} mb-6 transition-transform duration-300 group-hover:scale-110`}
+                      >
                         <Icon className="h-8 w-8" />
                       </div>
 
-                      <h3 className={`text-2xl md:text-3xl font-heading font-bold mb-4 text-${tier.color}`}>
+                      <h3
+                        className={`text-2xl md:text-3xl font-heading font-bold mb-4 text-${tier.color}`}
+                      >
                         {tier.name}
                       </h3>
 
                       {/* Divider */}
                       <div className="flex items-center gap-2 mb-6">
-                        <div className={`h-1 w-12 bg-${tier.color}/40 rounded-full`} />
+                        <div
+                          className={`h-1 w-12 bg-${tier.color}/40 rounded-full`}
+                        />
                         <div className="h-px flex-1 bg-border/40" />
                       </div>
 
@@ -226,20 +265,31 @@ export default function Sponsorship() {
 
                       <div className="space-y-3">
                         {tier.features.map((feature, featureIdx) => (
-                          <div key={featureIdx} className="flex items-start space-x-3">
+                          <div
+                            key={featureIdx}
+                            className="flex items-start space-x-3"
+                          >
                             <div className="flex-shrink-0 mt-0.5">
-                              <div className={`inline-flex items-center justify-center w-5 h-5 rounded-full bg-${tier.color}/10`}>
-                                <Check className={`h-3 w-3 text-${tier.color}`} />
+                              <div
+                                className={`inline-flex items-center justify-center w-5 h-5 rounded-full bg-${tier.color}/10`}
+                              >
+                                <Check
+                                  className={`h-3 w-3 text-${tier.color}`}
+                                />
                               </div>
                             </div>
-                            <p className="text-sm text-foreground leading-relaxed">{feature}</p>
+                            <p className="text-sm text-foreground leading-relaxed">
+                              {feature}
+                            </p>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     {/* Bottom decorative element */}
-                    <div className={`absolute bottom-6 right-6 w-20 h-20 bg-${tier.color}/5 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500`} />
+                    <div
+                      className={`absolute bottom-6 right-6 w-20 h-20 bg-${tier.color}/5 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500`}
+                    />
                   </div>
                 );
               })}
@@ -284,7 +334,9 @@ export default function Sponsorship() {
                         <Check className="h-5 w-5" />
                       </div>
                     </div>
-                    <p className="text-base text-foreground leading-relaxed pt-2">{benefit}</p>
+                    <p className="text-base text-foreground leading-relaxed pt-2">
+                      {benefit}
+                    </p>
                   </div>
                 </div>
               ))}

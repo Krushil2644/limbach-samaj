@@ -1,4 +1,4 @@
-type SponsorItem = {
+export type SponsorItem = {
   imageSrc: string;
   imageAlt: string;
   title?: string;
