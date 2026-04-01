@@ -1,6 +1,7 @@
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import TeamCard from "@/components/TeamCard";
+import DirectorCard from "@/components/DirectorCard";
 import teamData from "@/content/team.json";
 import { aboutContent } from "@/content/about";
 
@@ -372,6 +373,63 @@ export default function About() {
             {/* Bottom decorative line */}
             <div className="mt-20 flex justify-center">
               <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full" />
+            </div>
+          </div>
+        </section>
+
+        {/* Board of Directors */}
+        <section className="relative section-spacing overflow-hidden">
+          {/* Background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
+
+          <div className="container-custom relative z-10">
+            {/* Section header */}
+            <div className="text-center mb-16">
+              <div className="inline-block mb-4">
+                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide uppercase">
+                  Our Leadership
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 text-foreground">
+                {aboutContent.directors.title}
+              </h2>
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
+                <div className="w-2 h-2 rounded-full bg-primary/60" />
+                <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
+              </div>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                {aboutContent.directors.subtitle}
+              </p>
+            </div>
+
+            {/* Director Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+              {aboutContent.directors.members.map((director, idx) => (
+                <DirectorCard
+                  key={director.name}
+                  name={director.name}
+                  initials={director.initials}
+                  location={director.location}
+                  colorIndex={idx}
+                  image={director.image || undefined}
+                />
+              ))}
+            </div>
+
+            {/* Footer note */}
+            <div className="mt-14 flex flex-col items-center gap-3">
+              <div className="w-32 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+              <p className="text-sm text-muted-foreground/70 text-center">
+                Limbach Samaj of Canada · Incorporated{" "}
+                <span className="text-muted-foreground font-medium">
+                  {aboutContent.directors.incorporatedDate}
+                </span>{" "}
+                · OCN:{" "}
+                <span className="text-muted-foreground font-medium">
+                  {aboutContent.directors.ocn}
+                </span>
+              </p>
             </div>
           </div>
         </section>

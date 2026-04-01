@@ -92,4 +92,50 @@ export const aboutContent = {
     subtitle:
       "Dedicated volunteers working to serve our community with passion and commitment.",
   },
+
+  directors: {
+    title: "Board of Directors",
+    subtitle:
+      "The founding directors who established Limbach Samaj of Canada and guide our organization with dedication and vision.",
+    incorporatedDate: "November 26, 2025",
+    ocn: "1001424948",
+    members: [
+      {
+        name: "Pareshkumar Keshavlal Limbachia",
+        initials: "PL",
+        location: "Brampton, Ontario",
+        image: "",
+      },
+      {
+        name: "Sandipkumar Laxmikant Limbchiya",
+        initials: "SL",
+        location: "Whitby, Ontario",
+        image: "",
+      },
+      {
+        name: "Naileshkumar K. Parekh",
+        initials: "NP",
+        location: "Hamilton, Ontario",
+        image: "",
+      },
+      {
+        name: "Sureshkumar Parekh",
+        initials: "SP",
+        location: "Etobicoke, Ontario",
+        image: "",
+      },
+      {
+        name: "Yogesh Parekh",
+        initials: "YP",
+        location: "Ajax, Ontario",
+        image: "",
+      },
+      {
+        name: "Nitesh Gunvantlal Vaidya",
+        initials: "NV",
+        location: "Scarborough, Ontario",
+        image: "",
+      },
+    ],
+  },
 };
