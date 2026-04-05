@@ -10,6 +10,7 @@ interface EventCardProps {
   description: string;
   additionalInfo?: string[];
   imageUrl: string;
+  youtubeUrl?: string;
   upcoming: boolean;
 }
 
@@ -32,6 +33,7 @@ export default function EventCard({
   description,
   additionalInfo,
   imageUrl,
+  youtubeUrl,
   upcoming,
 }: EventCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -239,8 +241,33 @@ export default function EventCard({
                   </p>
                 </div>
 
-                {/* Additional Info for upcoming events */}
-                {upcoming && (
+                {/* YouTube Recording */}
+                {youtubeUrl && (
+                  <>
+                    <div className="border-t border-border" />
+                    <div>
+                      <h3 className="text-base sm:text-lg font-heading font-bold text-foreground mb-3 sm:mb-4">
+                        Event Recording
+                      </h3>
+                      <div className="flex justify-center">
+                        <a
+                          href={youtubeUrl.replace("/embed/", "/watch?v=")}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition-colors"
+                        >
+                          <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                          </svg>
+                          Watch on YouTube
+                        </a>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {/* Additional Info */}
+                {additionalInfo && additionalInfo.length > 0 && (
                   <>
                     <div className="border-t border-border" />
                     <div className="bg-primary/5 border border-primary/20 rounded-xl sm:rounded-2xl p-3 sm:p-4">
@@ -264,27 +291,19 @@ export default function EventCard({
                           </span>
                         </div>
                         <div className="mt-2">
-                          {additionalInfo && additionalInfo.length > 0 ? (
-                            <ul className="list-disc pl-4 space-y-1">
-                          {additionalInfo.map((info, index) => (
-                            <li key={index}>
-                              {index === 0 ? (
-                                <strong className="font-semibold text-foreground">
-                                  {renderEmphasis(info)}
-                                </strong>
-                              ) : (
-                                renderEmphasis(info)
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                          ) : (
-                            <span>
-                              Registration details and additional information
-                              will be shared with members closer to the event
-                              date. Please contact us for more details.
-                            </span>
-                          )}
+                          <ul className="list-disc pl-4 space-y-1">
+                            {additionalInfo.map((info, index) => (
+                              <li key={index}>
+                                {index === 0 ? (
+                                  <strong className="font-semibold text-foreground">
+                                    {renderEmphasis(info)}
+                                  </strong>
+                                ) : (
+                                  renderEmphasis(info)
+                                )}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
                     </div>

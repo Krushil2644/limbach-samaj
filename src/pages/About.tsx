@@ -411,6 +411,7 @@ export default function About() {
                   name={director.name}
                   initials={director.initials}
                   location={director.location}
+                  phone={director.phone}
                   colorIndex={idx}
                   image={director.image || undefined}
                 />

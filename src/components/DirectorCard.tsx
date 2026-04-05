@@ -2,6 +2,7 @@ interface DirectorCardProps {
   name: string;
   initials: string;
   location: string;
+  phone: string;
   colorIndex: number;
   image?: string;
 }
@@ -42,7 +43,7 @@ const colorSchemes = [
   },
 ];
 
-export default function DirectorCard({ name, initials, location, colorIndex, image }: DirectorCardProps) {
+export default function DirectorCard({ name, initials, location, phone, colorIndex, image }: DirectorCardProps) {
   const scheme = colorSchemes[colorIndex % colorSchemes.length];
 
   return (
@@ -95,7 +96,7 @@ export default function DirectorCard({ name, initials, location, colorIndex, ima
         </div>
 
         {/* Location */}
-        <div className="flex items-center gap-1.5 text-sm text-muted-foreground group-hover:text-foreground/70 transition-colors duration-300">
+        <div className="flex items-center gap-1.5 text-sm text-muted-foreground group-hover:text-foreground/70 transition-colors duration-300 mb-2">
           <svg
             className="w-3.5 h-3.5 shrink-0 opacity-70"
             fill="none"
@@ -117,6 +118,27 @@ export default function DirectorCard({ name, initials, location, colorIndex, ima
           </svg>
           <span>{location}</span>
         </div>
+
+        {/* Phone */}
+        <a
+          href={`tel:${phone.replace(/-/g, "")}`}
+          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+        >
+          <svg
+            className="w-3.5 h-3.5 shrink-0 opacity-70"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            />
+          </svg>
+          <span>{phone}</span>
+        </a>
       </div>
     </div>
   );
