@@ -11,6 +11,7 @@ interface EventCardProps {
   additionalInfo?: string[];
   imageUrl: string;
   youtubeUrl?: string;
+  mapUrl?: string;
   upcoming: boolean;
 }
 
@@ -34,6 +35,7 @@ export default function EventCard({
   additionalInfo,
   imageUrl,
   youtubeUrl,
+  mapUrl,
   upcoming,
 }: EventCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -140,7 +142,19 @@ export default function EventCard({
             </div>
             <div className="flex items-center text-sm text-muted-foreground">
               <MapPin className="h-4 w-4 mr-2 text-primary" />
-              <span className="line-clamp-1">{location}</span>
+              {mapUrl ? (
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="line-clamp-1 underline underline-offset-2 hover:text-primary transition-colors"
+                >
+                  {location}
+                </a>
+              ) : (
+                <span className="line-clamp-1">{location}</span>
+              )}
             </div>
           </div>
 
@@ -221,9 +235,20 @@ export default function EventCard({
                       <p className="text-xs sm:text-sm font-semibold text-muted-foreground mb-1">
                         Location
                       </p>
-                      <p className="text-sm sm:text-base font-medium text-foreground">
-                        {location}
-                      </p>
+                      {mapUrl ? (
+                        <a
+                          href={mapUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-sm sm:text-base font-medium text-primary underline underline-offset-2 hover:opacity-80 transition-opacity"
+                        >
+                          {location}
+                        </a>
+                      ) : (
+                        <p className="text-sm sm:text-base font-medium text-foreground">
+                          {location}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -22,9 +22,19 @@
   {
     "id": "2",
     "title": "Community Picnic & Family Day",
-    "date": "To be announced(July 2026)",
-    "location": "To be announced",
-    "description": "A relaxed outdoor gathering in July 2026 for families and friends to enjoy games, traditional sports, team activities, and delicious picnic-style food. A perfect opportunity to connect, celebrate, and create lasting memories together. Exact date and venue will be announced closer to the event.",
+    "date": "Sunday, July 19, 2026 - 9:30 AM to 5:00 PM ET",
+    "startDateISO": "2026-07-19T09:30:00-04:00",
+    "endDateISO": "2026-07-19T17:00:00-04:00",
+    "location": "Coronation Park, Oakville – Picnic Area 2 (with Shelter)",
+    "mapUrl": "https://maps.app.goo.gl/Fs7CGkaaADeMzUTV8",
+    "description": "A relaxed outdoor gathering for families and friends to enjoy games, traditional sports, team activities, and delicious picnic-style food. A perfect opportunity to connect, celebrate, and create lasting memories together. Join us at Coronation Park, Oakville – Picnic Area 2 (with Shelter).",
+    "additionalInfo": [
+      "Our 2026 Picnic Grand Sponsors",
+      "Nilkumar Sharma",
+      "Sandipbhai Limbachiya",
+      "Jwalantbhai Mistry",
+      "Priteshkumar V Sharma"
+    ],
     "imageUrl": "/events/community-picnic.jpg",
     "upcoming": true
   },
