@@ -1,5 +1,4 @@
 import { Users, Calendar, Award, Globe, Heart } from "lucide-react";
-import type { SponsorItem } from "@/components/SponsorImageRow";
 
 export const sponsorshipContent = {
   hero: {
@@ -109,39 +108,22 @@ export const sponsorshipContent = {
 
   eventSponsorships: {
     badge: "Event Sponsorship",
-    title: "Mataji Havan Sponsorships",
-    subtitle: "Honoring our community supporters for the Mataji Havan event.",
-    tabs: {
-      eventSponsorship: {
-        label: "Event Sponsorship",
-        items: [
-          {
-            imageSrc:
-              "/images/sponsors/ea608793-d7eb-4473-8c09-649d31bd724a.JPG",
-            imageAlt: "In loving memory of Smitaben Parekh",
-            memoryLine: "In the loving memory of",
-            honoreeName: "Smitaben Parekh",
-            sponsorsLine:
-              "Nailesh Parekh | Harsh Parekh | Purva Parekh (Hamilton)",
-            variant: "memorial",
-          },
-          {
-            imageSrc:
-              "/images/sponsors/000016dc-00c0-4eb5-bf5b-54610e607a08.JPG",
-            imageAlt: "With The Divine Blessings Of Mataji",
-            memoryLine: "With The Divine Blessings of Mataji",
-            honoreeName: "Rashmikaben Vijaybhai Parekh",
-            sponsorsLine: "Family",
-            variant: "memorial",
-          },
-        ] as SponsorItem[],
-      },
-      eventSponsors: {
-        label: "Event sponsors",
-        note: "Other Havan sponsors will appear here.",
-      },
-    },
+    title: "Community Picnic 2026 Sponsors",
+    subtitle:
+      "With heartfelt gratitude to our Grand Sponsors for the 2026 Community Picnic.",
+    sponsorsHeading: "Our 2026 Picnic Grand Sponsors",
+    sponsors: [
+      { name: "Nilkumar Sharma"},
+      { name: "Sandipbhai Limbachiya" },
+      { name: "Jwalantbhai Mistry" },
+      { name: "Priteshkumar V Sharma" },
+    ] as PicnicSponsor[],
   },
+};
+
+export type PicnicSponsor = {
+  name: string;
+  note?: string;
 };
 
 // Icon map to convert string names to actual icon components

@@ -1,9 +1,7 @@
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
-import { Check, Building2, ArrowRight } from "lucide-react";
+import { Check, Building2, Award } from "lucide-react";
 import { sponsorshipContent, iconMap } from "@/content/sponsorship";
-import SponsorImageRow from "@/components/SponsorImageRow";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Sponsorship() {
   return (
@@ -40,56 +38,35 @@ export default function Sponsorship() {
               </p>
             </div>
 
-            <Tabs defaultValue="event-sponsorship" className="w-full">
-              <div className="flex justify-center mb-10">
-                <TabsList className="inline-flex h-12 items-center justify-center rounded-2xl bg-muted/50 backdrop-blur-sm p-1.5 border border-border/40 shadow-sm">
-                  <TabsTrigger
-                    value="event-sponsorship"
-                    className="rounded-xl px-6 py-2.5 text-sm font-semibold transition-all data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-md"
-                  >
-                    {
-                      sponsorshipContent.eventSponsorships.tabs.eventSponsorship
-                        .label
-                    }
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="event-sponsors"
-                    className="rounded-xl px-6 py-2.5 text-sm font-semibold transition-all data-[state=active]:bg-secondary data-[state=active]:text-secondary-foreground data-[state=active]:shadow-md"
-                  >
-                    {
-                      sponsorshipContent.eventSponsorships.tabs.eventSponsors
-                        .label
-                    }
-                  </TabsTrigger>
-                </TabsList>
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-center text-lg md:text-xl font-heading font-semibold text-foreground mb-8">
+                {sponsorshipContent.eventSponsorships.sponsorsHeading}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {sponsorshipContent.eventSponsorships.sponsors.map(
+                  (sponsor, idx) => (
+                    <div
+                      key={idx}
+                      className="group relative flex items-center gap-4 bg-card/80 backdrop-blur-sm rounded-2xl border border-border/50 p-6 shadow-sm hover:shadow-lg hover:border-secondary/40 transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <div className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 transition-transform duration-300 group-hover:scale-110">
+                        <Award className="h-6 w-6" />
+                      </div>
+                      <div className="text-left">
+                        <p className="text-lg md:text-xl font-heading font-bold text-foreground">
+                          {sponsor.name}
+                        </p>
+                        {sponsor.note ? (
+                          <p className="text-sm md:text-base text-muted-foreground">
+                            {sponsor.note}
+                          </p>
+                        ) : null}
+                      </div>
+                    </div>
+                  ),
+                )}
               </div>
-
-              <TabsContent value="event-sponsorship" className="mt-0">
-                <SponsorImageRow
-                  items={
-                    sponsorshipContent.eventSponsorships.tabs.eventSponsorship
-                      .items
-                  }
-                />
-              </TabsContent>
-
-              <TabsContent value="event-sponsors" className="mt-0">
-                <div className="relative bg-card/60 backdrop-blur-sm rounded-3xl border border-border/40 p-10 md:p-12 text-center shadow-sm">
-                  <h3 className="text-xl md:text-2xl font-heading font-semibold mb-3">
-                    {
-                      sponsorshipContent.eventSponsorships.tabs.eventSponsors
-                        .label
-                    }
-                  </h3>
-                  <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-                    {
-                      sponsorshipContent.eventSponsorships.tabs.eventSponsors
-                        .note
-                    }
-                  </p>
-                </div>
-              </TabsContent>
-            </Tabs>
+            </div>
           </div>
         </section>
 
