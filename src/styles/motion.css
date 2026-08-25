@@ -9,7 +9,7 @@
  * animate. Content is never gated on motion.
  */
 
-@layer utilities {
+@layer base {
   /* Exponential ease-out. No bounce, no elastic. */
   :root {
     /* Stronger than the built-in easings, which lack punch. */
@@ -31,7 +31,9 @@
     --z-modal: 400;
     --z-toast: 500;
   }
+}
 
+@layer utilities {
   /* ---- Scroll-linked reveal ------------------------------------------ */
 
   @supports (animation-timeline: view()) {
@@ -228,3 +230,4 @@
       transform: none !important;
     }
   }
+}
