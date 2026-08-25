@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { siteConfig } from "@/site-config";
 
 interface SEOHeadProps {
@@ -7,27 +7,16 @@ interface SEOHeadProps {
   path?: string;
   image?: string;
   type?: string;
+  /** Keep the page out of search results (hidden or placeholder content). */
   noindex?: boolean;
+  /** Extra JSON-LD to emit into the document head. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 /** Resolve a possibly-relative asset path to an absolute URL. */
 function absoluteUrl(pathOrUrl: string) {
   if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
   return `${siteConfig.siteUrl}${pathOrUrl.startsWith("/") ? "" : "/"}${pathOrUrl}`;
-}
-
-function upsertMeta(
-  key: "name" | "property",
-  value: string,
-  content: string,
-) {
-  let element = document.head.querySelector(`meta[${key}="${value}"]`);
-  if (!element) {
-    element = document.createElement("meta");
-    element.setAttribute(key, value);
-    document.head.appendChild(element);
-  }
-  element.setAttribute("content", content);
 }
 
 export default function SEOHead({
@@ -37,46 +26,44 @@ export default function SEOHead({
   image = siteConfig.ogImage,
   type = "website",
   noindex = false,
+  jsonLd,
 }: SEOHeadProps) {
-  // The home page title reads better without the redundant "Home | " prefix.
+  // The home page reads better without a redundant "Home | " prefix.
   const fullTitle =
     path === "/" ? siteConfig.appName : `${title} | ${siteConfig.shortName}`;
   const url = `${siteConfig.siteUrl}${path}`;
-  // og:image must be an absolute URL — relative paths are ignored by most
-  // crawlers, which is why previews were rendering without an image.
+  // og:image must be absolute — relative paths are ignored by crawlers.
   const imageUrl = absoluteUrl(image);
+  const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
-  useEffect(() => {
-    document.title = fullTitle;
+  return (
+    <Helmet prioritizeSeoTags>
+      <title>{fullTitle}</title>
+      <link rel="canonical" href={url} />
+      <meta name="description" content={description} />
+      <meta
+        name="robots"
+        content={noindex ? "noindex, nofollow" : "index, follow"}
+      />
 
-    upsertMeta("name", "description", description);
-    upsertMeta(
-      "name",
-      "robots",
-      noindex ? "noindex, nofollow" : "index, follow",
-    );
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content={type} />
+      <meta property="og:url" content={url} />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:site_name" content={siteConfig.appName} />
+      <meta property="og:locale" content="en_CA" />
 
-    upsertMeta("property", "og:title", fullTitle);
-    upsertMeta("property", "og:description", description);
-    upsertMeta("property", "og:type", type);
-    upsertMeta("property", "og:url", url);
-    upsertMeta("property", "og:image", imageUrl);
-    upsertMeta("property", "og:site_name", siteConfig.appName);
-    upsertMeta("property", "og:locale", "en_CA");
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={imageUrl} />
 
-    upsertMeta("name", "twitter:card", "summary_large_image");
-    upsertMeta("name", "twitter:title", fullTitle);
-    upsertMeta("name", "twitter:description", description);
-    upsertMeta("name", "twitter:image", imageUrl);
-
-    let canonical = document.head.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", url);
-  }, [fullTitle, description, url, imageUrl, type, noindex]);
-
-  return null;
+      {blocks.map((block, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(block)}
+        </script>
+      ))}
+    </Helmet>
+  );
 }

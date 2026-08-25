@@ -5,7 +5,7 @@ import vercel from 'vite-plugin-vercel';
 import vitePluginVercelApi from 'vite-plugin-vercel-api'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode, isSsrBuild }) => ({
   server: {
     host: "::",
     port: 8080,
@@ -16,7 +16,9 @@ export default defineConfig(({ mode }) => ({
     CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
     CLOUDINARY_ASSET_PREFIX: process.env.CLOUDINARY_ASSET_PREFIX
   },
-  plugins: [react(), vercel(), vitePluginVercelApi()],
+  // The Vercel plugins own .vercel/output; running them for the SSR pass
+  // leaks entry-server.js into the public static directory.
+  plugins: isSsrBuild ? [react()] : [react(), vercel(), vitePluginVercelApi()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src")
@@ -26,7 +28,9 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
+        // Manual chunking is a client-only concern; applying it to the SSR
+        // build fails because React is external there.
+        manualChunks: isSsrBuild ? undefined : {
           // React and core libraries
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
 
