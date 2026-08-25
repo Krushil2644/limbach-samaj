@@ -60,7 +60,9 @@
     "imageUrl": "",
     "upcoming": true,
     "price": 15,
-    "priceCurrency": "CAD"
+    "priceCurrency": "CAD",
+    "registrationDeadlineISO": "2026-09-30",
+    "capacity": 130
   },
   {
     "id": "3",
@@ -83,7 +85,9 @@
     "imageUrl": "",
     "upcoming": true,
     "price": 21,
-    "priceCurrency": "CAD"
+    "priceCurrency": "CAD",
+    "registrationDeadlineISO": "2026-11-14",
+    "capacity": 200
   },
   {
     "id": "4",
