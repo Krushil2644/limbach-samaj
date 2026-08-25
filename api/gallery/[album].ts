@@ -4,9 +4,22 @@ import dotenv from 'dotenv';
 // Load environment variables
 dotenv.config();
 
+/** Delivery transformations — Cloudinary resizes and re-encodes on the fly. */
+const DISPLAY_TRANSFORM = 'c_limit,w_1600,q_auto,f_auto';
+const THUMB_TRANSFORM = 'c_fill,g_auto,w_320,h_320,q_auto,f_auto';
+
+/** Insert a transformation into a Cloudinary delivery URL. */
+function withTransform(secureUrl: string, transform: string): string {
+  return secureUrl.replace('/upload/', `/upload/${transform}/`);
+}
+
 interface CloudinaryImage {
   public_id: string;
   secure_url: string;
+  /** Resized for on-screen viewing; originals run to 20 MB. */
+  display_url: string;
+  /** Small square for the filmstrip. */
+  thumbnail_url: string;
   width: number;
   height: number;
   bytes: number;
@@ -76,6 +89,15 @@ export default async function handler(request: VercelRequest, response: VercelRe
     const images: CloudinaryImage[] = result.resources.map((resource: any) => ({
       public_id: resource.public_id,
       secure_url: resource.secure_url,
+      // Videos are served as-is; the transformations above are image-only.
+      display_url:
+        resource.resource_type === 'image'
+          ? withTransform(resource.secure_url, DISPLAY_TRANSFORM)
+          : resource.secure_url,
+      thumbnail_url:
+        resource.resource_type === 'image'
+          ? withTransform(resource.secure_url, THUMB_TRANSFORM)
+          : resource.secure_url,
       width: resource.width,
       height: resource.height,
       bytes: resource.bytes,

@@ -100,7 +100,7 @@ export const siteConfig = {
     { name: "Sponsorship", href: "/sponsorship", visible: true },
     { name: "Donate", href: "/donate", visible: true },
   ],
-  email: "jaylimbach@gmail.com",
+  email: "support@limbachsamajcanada.ca",
   location: "Brampton, ON, Canada",
   // Structured-data address. City-level only — the Samaj has no
   // public street address.

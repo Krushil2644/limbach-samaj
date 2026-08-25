@@ -11,7 +11,6 @@ interface Album {
 
 interface AlbumGridProps {
   albums: Album[];
-  albumCounts: Record<string, number>;
   onSelectAlbum: (album: Album) => void;
   loading?: boolean;
 }
@@ -31,7 +30,7 @@ function AlbumCardSkeleton() {
   );
 }
 
-export function AlbumGrid({ albums, albumCounts, onSelectAlbum, loading = false }: AlbumGridProps) {
+export function AlbumGrid({ albums, onSelectAlbum, loading = false }: AlbumGridProps) {
   if (loading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
@@ -48,7 +47,7 @@ export function AlbumGrid({ albums, albumCounts, onSelectAlbum, loading = false 
         <AlbumCard
           key={album.id}
           album={album}
-          imageCount={albumCounts[album.id] ?? album.imagesLength}
+          imageCount={album.imagesLength}
           onClick={() => onSelectAlbum(album)}
         />
       ))}

@@ -5,6 +5,8 @@ import { Carousel } from "@/components/ui/carousel";
 interface CloudinaryImage {
   public_id: string;
   secure_url: string;
+  display_url?: string;
+  thumbnail_url?: string;
   width: number;
   height: number;
   bytes: number;
@@ -42,8 +44,9 @@ export function AlbumLightbox({
     return albumImages.map((image) => {
       const isVideo = image.resource_type === "video";
       const baseProps = {
-        original: image.secure_url,
-        thumbnail: image.secure_url,
+        // Fall back to the original if the API predates these fields.
+        original: image.display_url ?? image.secure_url,
+        thumbnail: image.thumbnail_url ?? image.secure_url,
         originalAlt: selectedAlbum.title,
         thumbnailAlt: selectedAlbum.title,
         description: image.public_id,

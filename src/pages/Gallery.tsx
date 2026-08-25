@@ -13,6 +13,14 @@ interface Album {
   imagesLength: number;
 }
 
+interface RemoteAlbum {
+  id: string;
+  title: string;
+  coverImage: string | null;
+  imagesLength: number;
+  updatedAt: string | null;
+}
+
 interface CloudinaryImage {
   public_id: string;
   secure_url: string;
@@ -30,39 +38,60 @@ interface CachedAlbumData {
   error?: string;
 }
 
+/**
+ * Albums are discovered from Cloudinary at runtime, so uploading a new folder
+ * (e.g. picnic-2026) publishes an album with no code change. gallery.json is
+ * only a title override and an offline fallback.
+ */
+function mergeWithOverrides(remote: RemoteAlbum[]): Album[] {
+  const overrides = new Map(galleryData.map((album) => [album.id, album]));
+
+  return remote.map((album) => {
+    const override = overrides.get(album.id);
+    return {
+      id: album.id,
+      // A hand-written title always wins over the folder-name guess.
+      title: override?.title ?? album.title,
+      // Prefer Cloudinary's resized cover; fall back to the committed image.
+      coverImage: album.coverImage ?? override?.coverImage ?? "",
+      imagesLength: album.imagesLength,
+    };
+  });
+}
+
 export default function Gallery() {
-  const albums: Album[] = useMemo(() => galleryData, []);
+  const fallbackAlbums: Album[] = useMemo(() => galleryData, []);
+  const [albums, setAlbums] = useState<Album[]>(fallbackAlbums);
 
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
   const [albumImages, setAlbumImages] = useState<CloudinaryImage[]>([]);
   const [loadingImages, setLoadingImages] = useState(false);
   const [imageError, setImageError] = useState<string | null>(null);
 
-  // State for album counts from API
-  const [albumCounts, setAlbumCounts] = useState<Record<string, number>>({});
-  const [loadingCounts, setLoadingCounts] = useState(true);
+  const [loadingAlbums, setLoadingAlbums] = useState(true);
 
   // Cache for album images to avoid refetching
   const imageCache = useRef<Map<string, CachedAlbumData>>(new Map());
   const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
-  // Fetch album counts on mount
+  // Discover albums from Cloudinary on mount.
   useEffect(() => {
-    const fetchAlbumCounts = async () => {
+    const fetchAlbums = async () => {
       try {
         const response = await fetch('/api/gallery');
         const data = await response.json();
-        if (data.albums) {
-          setAlbumCounts(data.albums);
+        if (Array.isArray(data.albums) && data.albums.length > 0) {
+          setAlbums(mergeWithOverrides(data.albums));
         }
       } catch (error) {
-        console.error('Error fetching album counts:', error);
+        // Keep the committed album list rather than showing an empty gallery.
+        console.error('Error fetching albums:', error);
       } finally {
-        setLoadingCounts(false);
+        setLoadingAlbums(false);
       }
     };
 
-    fetchAlbumCounts();
+    fetchAlbums();
   }, []);
 
   useEffect(() => {
@@ -164,11 +193,10 @@ export default function Gallery() {
             </div>
 
             {/* Gallery Grid */}
-            <AlbumGrid 
-              albums={albums} 
-              albumCounts={albumCounts} 
+            <AlbumGrid
+              albums={albums}
               onSelectAlbum={setSelectedAlbum}
-              loading={loadingCounts}
+              loading={loadingAlbums}
             />
           </div>
         </section>
