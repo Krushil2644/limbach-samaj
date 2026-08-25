@@ -29,7 +29,7 @@ function AlbumSkeleton({ featured }: { featured?: boolean }) {
  * hold ninety photographs and others hold two.
  */
 export function AlbumGrid({ albums, onSelectAlbum, loading = false }: AlbumGridProps) {
-  if (loading) {
+  if (loading && albums.length === 0) {
     return (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-6">
         {[0, 1].map((i) => (

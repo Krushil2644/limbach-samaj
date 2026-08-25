@@ -30,6 +30,7 @@
     --z-overlay: 300;
     --z-modal: 400;
     --z-toast: 500;
+    --z-tooltip: 600;
   }
 }
 
@@ -71,6 +72,14 @@
       opacity: 1;
       transform: none;
       filter: blur(0);
+    }
+  }
+
+  /* Sweep for loading placeholders. Signals "arriving", where a static
+     grey box reads as "broken". */
+  @keyframes shimmer {
+    to {
+      transform: translateX(100%);
     }
   }
 
@@ -231,3 +240,59 @@
     }
   }
 }
+
+/*
+ * react-image-gallery sizes itself to its thumbnail strip. Inside a grid or
+ * flex parent that means the whole gallery grows to ~100px x photo count,
+ * pushing the next-image button thousands of pixels off-screen. Pin every
+ * level to the available width and let the strip scroll inside it.
+ */
+.image-gallery,
+.image-gallery-content,
+.image-gallery-slide-wrapper,
+.image-gallery-thumbnails-wrapper,
+.image-gallery-thumbnails {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.image-gallery-thumbnails {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+/*
+ * Albums mix portrait and landscape. Centre every photograph in a fixed
+ * viewing area and contain it, so a tall image is never cropped and a wide
+ * one never sits flush to one edge.
+ */
+.image-gallery-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-gallery-slide .image-gallery-image,
+.image-gallery-slide video {
+  display: block;
+  margin-inline: auto;
+  max-height: min(68vh, 620px);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Keeps the frame a constant height so navigating between a portrait and a
+   landscape shot does not resize the dialog under the cursor. */
+.image-gallery-swipe,
+.image-gallery-slides {
+  min-height: min(68vh, 620px);
+}
+
+.image-gallery-slides {
+  display: flex;
+  align-items: center;
+}
+

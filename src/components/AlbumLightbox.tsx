@@ -20,6 +20,7 @@ interface Album {
   title: string;
   coverImage: string;
   imagesLength: number;
+  imageCount?: number;
 }
 
 interface AlbumLightboxProps {
@@ -39,6 +40,12 @@ function summarise(items: { resource_type?: string }[]): string {
   return `${photoLabel} · ${videos} ${videos === 1 ? "video" : "videos"}`;
 }
 
+/** The album's own count, known before any image has loaded. */
+function expectedCount(album: Album): string {
+  const photos = album.imageCount ?? album.imagesLength;
+  return `${photos} ${photos === 1 ? "photo" : "photos"}`;
+}
+
 export function AlbumLightbox({
   selectedAlbum,
   albumImages,
@@ -46,7 +53,6 @@ export function AlbumLightbox({
   imageError,
   onClose,
 }: AlbumLightboxProps) {
-  // Memoize the carousel images to prevent unnecessary re-renders
   const carouselImages = useMemo(() => {
     if (!selectedAlbum || albumImages.length === 0) return [];
 
@@ -66,74 +72,82 @@ export function AlbumLightbox({
           ...baseProps,
           type: "video" as const,
           videoSrc: image.secure_url,
-          videoPoster: image.secure_url.replace(/\.[^/.]+$/, ".jpg"), // Use JPG thumbnail as poster
+          videoPoster: image.secure_url.replace(/\.[^/.]+$/, ".jpg"),
           videoType: `video/${image.format}`,
         };
       }
 
-      return {
-        ...baseProps,
-        type: "image" as const,
-      };
+      return { ...baseProps, type: "image" as const };
     });
   }, [albumImages, selectedAlbum]);
 
   return (
     <Dialog open={!!selectedAlbum} onOpenChange={onClose}>
-      <DialogContent className="w-[calc(100%-1rem)] sm:w-auto max-w-3xl p-4 sm:p-6 overflow-hidden bg-background">
+      {/* Photographs read better against a dark surface, and a wider panel
+          means the images are actually viewable rather than thumbnail-sized. */}
+      <DialogContent className="flex max-h-[90svh] w-[calc(100%-1.5rem)] max-w-5xl flex-col overflow-hidden border-white/10 bg-[hsl(20_18%_9%)] p-0 text-[hsl(40_18%_92%)]">
         {selectedAlbum && (
-          <div className="space-y-4">
-            <div>
-              <div className="flex items-center justify-between">
-                <DialogTitle className="text-2xl font-heading font-bold">
+          <>
+            <div className="flex shrink-0 items-start justify-between gap-4 border-b border-white/10 px-5 py-4 md:px-6">
+              <div className="min-w-0">
+                <DialogTitle className="truncate font-heading text-lg font-bold md:text-xl">
                   {selectedAlbum.title}
                 </DialogTitle>
+                <p className="mt-0.5 text-sm text-[hsl(40_12%_65%)]">
+                  {loadingImages
+                    ? // The count is known from the album itself, so the
+                      // header never reads "Loading…" with no context.
+                      `Loading ${expectedCount(selectedAlbum)}…`
+                    : summarise(albumImages)}
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground">
-                {loadingImages ? "Loading…" : summarise(albumImages)}
-              </p>
             </div>
 
-            {loadingImages ? (
-            <div className="w-full flex items-center justify-center">
-              <div className="w-[min(92vw,520px)] aspect-[4/3] rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm flex flex-col items-center justify-center gap-4">
-                <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary" />
-                <p className="text-sm text-muted-foreground">Loading images...</p>
-              </div>
-            </div>
-            
-            ) : imageError ? (
-              <div className="flex h-56 items-center justify-center">
-                <div className="text-center">
-                  <p className="font-heading text-base font-bold text-foreground">
+            <div className="min-w-0 flex-1 overflow-y-auto p-3 md:p-5">
+              {loadingImages ? (
+                // A shaped placeholder at the same aspect ratio as the
+                // photographs, so the panel does not jump when they arrive.
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-lg bg-white/[0.04]"
+                >
+                  <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.6s_infinite] bg-gradient-to-r from-transparent via-white/[0.07] to-transparent" />
+                  <p className="relative text-sm text-[hsl(40_12%_60%)]">
+                    Loading photographs…
+                  </p>
+                </div>
+              ) : imageError ? (
+                <div className="flex aspect-[4/3] w-full flex-col items-center justify-center rounded-lg bg-white/[0.04] text-center">
+                  <p className="font-heading text-base font-bold">
                     These photos could not be loaded
                   </p>
-                  <p className="measure-tight mt-1.5 text-sm text-muted-foreground">
+                  <p className="mt-1.5 text-sm text-[hsl(40_12%_65%)]">
                     Please try again in a moment.
                   </p>
                 </div>
-              </div>
-            ) : albumImages.length > 0 ? (
-              <Carousel
-                images={carouselImages}
-                opts={{
-                  showThumbnails: false,
-                  showFullscreenButton: false,
-                  showPlayButton: false,
-                  showNav: true,
-                  autoPlay: false,
-                  lazyLoad: true,
-                }}
-                className="max-h-[80vh]"
-              />
-            ) : (
-              <div className="flex items-center justify-center h-64">
-                <p className="text-muted-foreground">
-                  No images found in this album.
-                </p>
-              </div>
-            )}
-          </div>
+              ) : albumImages.length > 0 ? (
+                <Carousel
+                  images={carouselImages}
+                  opts={{
+                    showThumbnails: albumImages.length > 1,
+                    showFullscreenButton: true,
+                    showPlayButton: false,
+                    showNav: albumImages.length > 1,
+                    autoPlay: false,
+                    lazyLoad: true,
+                  }}
+                  className="max-h-[74vh]"
+                />
+              ) : (
+                <div className="flex aspect-[4/3] w-full items-center justify-center rounded-lg bg-white/[0.04]">
+                  <p className="text-sm text-[hsl(40_12%_65%)]">
+                    This album is empty.
+                  </p>
+                </div>
+              )}
+            </div>
+          </>
         )}
       </DialogContent>
     </Dialog>
