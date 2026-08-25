@@ -40,9 +40,21 @@ export const donateContent = {
   },
 
   /**
-   * Only rendered when siteConfig.charityNumber is set. A Canadian
-   * non-profit cannot issue official donation receipts; only a CRA-
-   * registered charity can, and the registration number is the proof.
+   * Shown when siteConfig.charityNumber is empty — i.e. right now. Saying
+   * nothing about receipts lets a donor assume one is coming; the Samaj is
+   * an incorporated non-profit but not yet a CRA-registered charity, so it
+   * cannot issue them.
+   */
+  noTaxReceipt: {
+    title: "Tax receipts",
+    description:
+      "Limbach Samaj of Canada is an incorporated non-profit but is not yet a registered charity with the Canada Revenue Agency, so we are unable to issue official donation receipts. Your gift still goes entirely toward the community's gatherings and support.",
+  },
+
+  /**
+   * Replaces the notice above once siteConfig.charityNumber is set. Only a
+   * CRA-registered charity may issue official receipts, and the
+   * registration number is the proof.
    */
   taxReceipt: {
     title: "Tax receipts",

@@ -6,7 +6,7 @@ import { donateContent, iconMap } from "@/content/donate";
 import { siteConfig } from "@/site-config";
 
 export default function Donate() {
-  const { hero, give, taxReceipt, impactAreas, sponsorshipPointer, cta } =
+  const { hero, give, taxReceipt, noTaxReceipt, impactAreas, sponsorshipPointer, cta } =
     donateContent;
 
   // Never advertise receipts without the registration number backing it.
@@ -87,6 +87,17 @@ export default function Donate() {
                     </li>
                   ))}
                 </ol>
+
+                {!showTaxReceipt && (
+                  <div className="enter mt-8 rounded-2xl border border-border bg-muted/40 p-6">
+                    <h3 className="font-heading text-base font-bold text-foreground">
+                      {noTaxReceipt.title}
+                    </h3>
+                    <p className="measure mt-2 text-base leading-relaxed text-muted-foreground">
+                      {noTaxReceipt.description}
+                    </p>
+                  </div>
+                )}
 
                 {showTaxReceipt && (
                   <div className="enter mt-8 rounded-2xl border border-border bg-muted/40 p-6">

@@ -122,10 +122,18 @@ export const siteConfig = {
   ],
   email: "support@limbachsamajcanada.ca",
   /**
-   * CRA charity registration number, e.g. "123456789RR0001". Leave empty
-   * until confirmed — the donate page and the Organization schema only
-   * advertise tax receipts when this is set, so an unverified claim can
-   * never go live by accident.
+   * Ontario Corporation Number, from the Ontario Business Registry. Proves
+   * the Samaj is an incorporated non-profit corporation. It does NOT permit
+   * issuing official donation receipts — that requires separate charity
+   * registration with the CRA.
+   */
+  corporationNumber: "1001424948",
+  /**
+   * CRA charity registration number, format "123456789RR0001": a 9-digit
+   * business number, then RR, then a 4-digit reference. Only this permits
+   * issuing official donation receipts, so the donate page's tax-receipt
+   * section stays hidden until it is set. An Ontario Corporation Number is
+   * not a substitute and must not be put here.
    */
   charityNumber: "",
   location: "Brampton, ON, Canada",

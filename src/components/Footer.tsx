@@ -110,7 +110,16 @@ export default function Footer() {
             &copy; {currentYear} {siteConfig.appName}
           </p>
           <p className="text-sm text-muted-foreground">
-            Registered Canadian not-for-profit
+            Non-profit corporation
+            {siteConfig.corporationNumber && (
+              <>
+                {" "}
+                &middot; Ontario Corporation No.{" "}
+                <span className="tabular-nums">
+                  {siteConfig.corporationNumber}
+                </span>
+              </>
+            )}
           </p>
         </div>
       </div>
