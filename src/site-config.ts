@@ -1,6 +1,13 @@
 export const siteConfig = {
   appName: "Limbach Samaj of Canada",
   shortName: "Limbach Samaj",
+  // Canonical origin for the live site. The apex domain 308-redirects to www,
+  // so www is the canonical host. Everything that builds an absolute URL
+  // (canonical tags, og:url, sitemap, JSON-LD) must use this.
+  siteUrl: "https://www.limbachsamajcanada.ca",
+  // Social preview image. Replace with a purpose-built 1200x630 image when
+  // one is available; the logo is square and gets cropped by most platforms.
+  ogImage: "/logo.png",
   navLinks: {
     home: {
       ordinal: 0,

@@ -58,7 +58,9 @@
       "For sponsorship / business advertisement at the event location, please contact Ravibhai on 647-835-7377"
     ],
     "imageUrl": "",
-    "upcoming": true
+    "upcoming": true,
+    "price": 15,
+    "priceCurrency": "CAD"
   },
   {
     "id": "3",
@@ -79,7 +81,9 @@
       "Sponsorship & donations: any amount of general donation is highly appreciated. Grand Sponsorship is $101/-, and a business advertisement at the event location as well as on our Samaj website is $151/-"
     ],
     "imageUrl": "",
-    "upcoming": true
+    "upcoming": true,
+    "price": 21,
+    "priceCurrency": "CAD"
   },
   {
     "id": "4",

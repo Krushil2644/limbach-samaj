@@ -4,15 +4,22 @@ import Hero from "@/components/Hero";
 import EventCard from "@/components/EventCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import rawEventsData from "@/content/events.json";
+import { siteConfig } from "@/site-config";
 
 type EventItem = {
   id: string;
   title: string;
   date: string;
   startDateISO?: string;
+  endDateISO?: string;
   location: string;
+  mapUrl?: string;
   description: string;
+  additionalInfo?: string[];
+  youtubeUrl?: string;
   imageUrl: string;
+  price?: number;
+  priceCurrency?: string;
   upcoming: boolean;
 };
 
@@ -267,33 +274,58 @@ export default function Events() {
         </section>
       </main>
 
-     <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      itemListElement: upcomingEvents
-        .filter((e) => (e as any).startDateISO)
-        .map((event, index) => ({
-        "@type": "Event",
-        position: index + 1,
-        name: event.title,
-        startDate: (event as any).startDateISO || undefined,
-        endDate: (event as any).endDateISO || undefined,
-        location: {
-          "@type": "Place",
-          name: event.location,
-        },
-        description: event.description,
-        organizer: {
-          "@type": "Organization",
-          name: "Limbach Samaj",
-        },
-      })),
-    }),
-  }}
-/>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            itemListElement: upcomingEvents
+              .filter((event) => event.startDateISO)
+              .map((event, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                item: {
+                  "@type": "Event",
+                  name: event.title,
+                  startDate: event.startDateISO,
+                  ...(event.endDateISO ? { endDate: event.endDateISO } : {}),
+                  eventStatus: "https://schema.org/EventScheduled",
+                  eventAttendanceMode:
+                    "https://schema.org/OfflineEventAttendanceMode",
+                  url: `${siteConfig.siteUrl}/events`,
+                  image: `${siteConfig.siteUrl}${siteConfig.ogImage}`,
+                  description: event.description,
+                  location: {
+                    "@type": "Place",
+                    name: event.location.split(",")[0],
+                    // Google requires an address on Event.location for rich
+                    // results; the location string already carries the full
+                    // civic address.
+                    address: event.location,
+                  },
+                  ...(event.price !== undefined
+                    ? {
+                        offers: {
+                          "@type": "Offer",
+                          price: event.price,
+                          priceCurrency: event.priceCurrency ?? "CAD",
+                          availability: "https://schema.org/InStock",
+                          url: `${siteConfig.siteUrl}/events`,
+                          validFrom: event.startDateISO,
+                        },
+                      }
+                    : {}),
+                  organizer: {
+                    "@type": "Organization",
+                    name: siteConfig.appName,
+                    url: siteConfig.siteUrl,
+                  },
+                },
+              })),
+          }),
+        }}
+      />
 
     </>
   );

@@ -385,12 +385,12 @@ export default function Contact() {
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Limbach Samaj",
-          url: "https://limbachsamaj.ca",
+          name: siteConfig.appName,
+          url: siteConfig.siteUrl,
           contactPoint: {
             "@type": "ContactPoint",
             contactType: "Customer Service",
-            email: "info@limbachsamaj.ca",
+            email: siteConfig.email,
             areaServed: "CA",
             availableLanguage: "English",
           },
