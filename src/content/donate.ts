@@ -1,100 +1,103 @@
-import { siteConfig } from '@/site-config';
+import { siteConfig } from "@/site-config";
 import { Heart, Users, GraduationCap, Home } from "lucide-react";
 
+/**
+ * Donations, not sponsorship.
+ *
+ * The split with /sponsorship is by what the giver receives: a sponsor is
+ * named on the site or gets a banner at the venue; a donor receives nothing
+ * but the work happening. Keep the two pages from restating each other —
+ * they previously shared a "coming soon" notice, a "where the money goes"
+ * section and the same e-transfer address.
+ */
 export const donateContent = {
   hero: {
-    title: "Support Our Community",
-    subtitle: "Your generosity helps us preserve our heritage and support our community",
+    title: "Donate",
+    subtitle:
+      "Every gathering on this site is paid for by ticket sales, sponsorship, and donations from members.",
   },
 
-  comingSoonNotice: {
-    title: "Online Donation System Coming Soon",
-    description: [
-      "We're currently developing a secure online donation platform to make supporting our community easier and more convenient.",
-      "In the meantime, if you'd like to make a donation, please contact us directly through our contact page or reach out to any committee member. We can provide you with details for bank transfers or other donation methods.",
-      `To donate via E-transfer: ${siteConfig.email}`,
+  give: {
+    title: "How to donate",
+    intro:
+      "Donations of any amount are welcome and appreciated. There is no minimum, and no obligation to attend anything.",
+    steps: [
+      {
+        title: "Send an e-transfer",
+        body: `Send any amount to ${siteConfig.email}.`,
+      },
+      {
+        title: "Add a note",
+        body: "In the e-transfer message, write that the payment is a donation, and include your name and phone number so it can be acknowledged and recorded.",
+      },
+      {
+        title: "That's it",
+        body: "Someone from the Samaj will confirm receipt. You do not need to fill in a form.",
+      },
     ],
-    showTaxReceitpInfo: false,
-    taxReceiptInfo: {
-      title: "Tax Receipts Available",
-      description: "Limbach Samaj Canada is a registered charitable organization. All donations are eligible for tax receipts in accordance with CRA guidelines.",
-    },
+    onlineNotice:
+      "A secure online donation page is in development. Until then, e-transfer is the way to give.",
   },
 
-  intro: {
-    badge: "Make a Difference",
-    title: "Why Your Support Matters",
-    subtitle: "Your donations help us build a stronger, more connected community",
-    description: "Every contribution, big or small, makes a real difference in the lives of our community members. Your support enables us to organize cultural events, support newcomers, preserve our heritage, and provide assistance to those in need.",
+  /**
+   * Only rendered when siteConfig.charityNumber is set. A Canadian
+   * non-profit cannot issue official donation receipts; only a CRA-
+   * registered charity can, and the registration number is the proof.
+   */
+  taxReceipt: {
+    title: "Tax receipts",
+    description:
+      "Limbach Samaj of Canada is a registered charity. Donations are eligible for official receipts in accordance with CRA guidelines.",
+    numberLabel: "Charity registration number",
+    requestNote:
+      "Include your mailing address in the e-transfer note if you would like a receipt issued.",
   },
 
   impactAreas: {
-    badge: "Our Impact",
-    title: "Where Your Donation Goes",
-    subtitle: "Your contributions support vital programs and initiatives that strengthen our community",
+    title: "Where your donation goes",
+    subtitle:
+      "The Samaj is run by volunteers. Donations pay for the events themselves rather than for staff or offices.",
     areas: [
       {
         icon: "Heart",
-        title: "Cultural Events",
-        description: "Fund traditional celebrations, festivals, and gatherings that keep our heritage alive",
-      },
-      {
-        icon: "GraduationCap",
-        title: "Youth Programs",
-        description: "Support educational initiatives and activities for the next generation",
+        title: "Cultural events",
+        description:
+          "Hall rental, food, and the cost of running Navratri Garba, Mataji Havan, Diwali Snehmilan, and the summer picnic.",
       },
       {
         icon: "Users",
-        title: "Community Support",
-        description: "Provide assistance to members in need and support newcomer settlement",
+        title: "Community support",
+        description:
+          "Assistance to members during births, weddings, illness and loss, and help for families new to Canada.",
+      },
+      {
+        icon: "GraduationCap",
+        title: "Youth and seniors",
+        description:
+          "Activities for the next generation, and senior engagement programs run alongside our gatherings.",
       },
       {
         icon: "Home",
-        title: "Heritage Preservation",
-        description: "Maintain our cultural traditions and pass them on to future generations",
+        title: "Heritage",
+        description:
+          "Worship and the festivals that carry the community's traditions forward.",
       },
     ],
   },
 
-  whySupport: {
-    badge: "Your Impact",
-    title: "Why Support Limbach Samaj?",
-    subtitle: "Your donations create lasting change in our community",
-    reasons: [
-      {
-        title: "Direct Community Impact",
-        description: "100% of donations go directly to community programs and initiatives",
-      },
-      {
-        title: "Cultural Preservation",
-        description: "Help preserve our rich cultural heritage for future generations",
-      },
-      {
-        title: "Support Those in Need",
-        description: "Provide assistance to community members during important life events",
-      },
-      {
-        title: "Build Connections",
-        description: "Fund events and programs that bring our community together",
-      },
-      {
-        title: "Transparent Operations",
-        description: "Clear reporting on how donations are used to benefit the community",
-      }
-    ],
+  sponsorshipPointer: {
+    title: "Looking to sponsor instead?",
+    description:
+      "Sponsorship and business advertising come with named recognition at the event and on this website, at set amounts per event.",
+    linkText: "See sponsorship options",
   },
 
   cta: {
-    title: "Ready to Make a Difference?",
-    description: "Your support helps us continue our mission of building a strong, connected community. Contact us today to learn more about donation options and how your contribution can make an impact.",
-    buttonText: "Contact Us to Donate",
+    title: "Questions about giving?",
+    description:
+      "If you would like to discuss a larger gift, a donation in memory of someone, or anything else, please get in touch.",
+    buttonText: "Contact us",
   },
 };
 
-// Icon map to convert string names to actual icon components
-export const iconMap = {
-  Heart,
-  Users,
-  GraduationCap,
-  Home,
-} as const;
+export const iconMap = { Heart, Users, GraduationCap, Home } as const;

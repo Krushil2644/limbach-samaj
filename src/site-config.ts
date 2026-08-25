@@ -121,6 +121,13 @@ export const siteConfig = {
     { name: "Donate", href: "/donate", visible: true },
   ],
   email: "support@limbachsamajcanada.ca",
+  /**
+   * CRA charity registration number, e.g. "123456789RR0001". Leave empty
+   * until confirmed — the donate page and the Organization schema only
+   * advertise tax receipts when this is set, so an unverified claim can
+   * never go live by accident.
+   */
+  charityNumber: "",
   location: "Brampton, ON, Canada",
   // Structured-data address. City-level only — the Samaj has no
   // public street address.

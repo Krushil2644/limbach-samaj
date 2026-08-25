@@ -8,6 +8,7 @@ import { sponsorshipContent, iconMap } from "@/content/sponsorship";
 export default function Sponsorship() {
   const { hero, offers, currentSponsors, whySponsor, inDevelopment, cta } =
     sponsorshipContent;
+  const { donatePointer } = offers;
 
   return (
     <>
@@ -89,6 +90,17 @@ export default function Sponsorship() {
                     </div>
                   ))}
                 </dl>
+
+                <p className="enter mt-7 border-t border-border pt-6 text-base text-muted-foreground">
+                  {donatePointer.text}{" "}
+                  <Link
+                    to={donatePointer.link}
+                    className="link-underline font-semibold text-primary-ink"
+                  >
+                    {donatePointer.linkText}
+                  </Link>
+                  .
+                </p>
               </div>
             </div>
           </div>

@@ -39,14 +39,12 @@ export const sponsorshipContent = {
         description: "Named as a Grand Sponsor for the event.",
         offeredAt: "Diwali Snehmilan 2026",
       },
-      {
-        amount: "Any amount",
-        name: "Donation",
-        description:
-          "General donations are always welcome and go toward the cost of running our gatherings.",
-        offeredAt: "Any time",
-      },
     ],
+    donatePointer: {
+      text: "Giving without recognition in return?",
+      linkText: "Make a donation instead",
+      link: "/donate",
+    },
     howTo: {
       title: "How to sponsor",
       steps: [
