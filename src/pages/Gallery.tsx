@@ -11,6 +11,7 @@ interface Album {
   title: string;
   coverImage: string;
   imagesLength: number;
+  imageCount?: number;
 }
 
 interface RemoteAlbum {
@@ -18,6 +19,7 @@ interface RemoteAlbum {
   title: string;
   coverImage: string | null;
   imagesLength: number;
+  imageCount?: number;
   updatedAt: string | null;
 }
 
@@ -55,6 +57,7 @@ function mergeWithOverrides(remote: RemoteAlbum[]): Album[] {
       // Prefer Cloudinary's resized cover; fall back to the committed image.
       coverImage: album.coverImage ?? override?.coverImage ?? "",
       imagesLength: album.imagesLength,
+      imageCount: album.imageCount,
     };
   });
 }
@@ -170,34 +173,41 @@ export default function Gallery() {
         />
 
         {/* Gallery Grid */}
-        <section className="relative section-spacing overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
-          <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-
-          <div className="container-custom relative z-10">
-            {/* Section Header */}
-            <div className="text-center mb-16">
-              <div className="inline-block mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide uppercase">
-                  Our Memories
-                </span>
+        <section aria-labelledby="albums" className="pb-16 pt-4 md:pb-20 md:pt-6">
+          <div className="container-custom">
+            <div
+              className="enter flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+              style={{ "--enter-delay": 0 } as React.CSSProperties}
+            >
+              <div>
+                <h2
+                  id="albums"
+                  className="display-lg font-heading font-bold text-foreground"
+                >
+                  Photo albums
+                </h2>
+                <p className="measure mt-4 text-lg leading-relaxed text-muted-foreground">
+                  Every photograph here was taken at one of our own gatherings.
+                  The archive goes back to 2010.
+                </p>
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
-                Photo Albums
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-                Explore our collection of cherished moments from community events,
-                cultural celebrations, and gatherings that bring us together.
-              </p>
+              {albums.length > 0 && (
+                <p className="shrink-0 text-base text-muted-foreground">
+                  {albums.length} albums
+                </p>
+              )}
             </div>
 
-            {/* Gallery Grid */}
+            <div
+              className="enter mt-10 md:mt-12"
+              style={{ "--enter-delay": 1 } as React.CSSProperties}
+            >
             <AlbumGrid
               albums={albums}
               onSelectAlbum={setSelectedAlbum}
               loading={loadingAlbums}
             />
+            </div>
           </div>
         </section>
 

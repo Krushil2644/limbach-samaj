@@ -21,6 +21,8 @@ export interface GalleryAlbum {
   coverImage: string | null;
   /** Total assets in the folder, images and video. */
   imagesLength: number;
+  /** Images only. The difference from imagesLength is video. */
+  imageCount: number;
   /** Newest asset's upload time, used to order albums newest-first. */
   updatedAt: string | null;
 }
@@ -111,6 +113,9 @@ export default async function handler(request: VercelRequest, response: VercelRe
 							? withTransform(cover.secure_url, COVER_TRANSFORM)
 							: null,
 						imagesLength: all?.total_count ?? 0,
+						// Free — the cover lookup is already an image-only search,
+						// so its total_count is the photo count.
+						imageCount: firstImage?.total_count ?? 0,
 						updatedAt: all?.resources?.[0]?.created_at ?? null,
 					};
 				}),
