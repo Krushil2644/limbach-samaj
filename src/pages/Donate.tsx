@@ -9,7 +9,7 @@ export default function Donate() {
     <>
       <SEOHead
         title="Donate"
-        description="Support Limbach Samaj's mission to serve our community across Canada. Your donations help fund cultural events, youth programs, and community support initiatives."
+        description="Support Limbach Samaj of Canada. Your donations help fund cultural events, youth programs, and community support initiatives across Canada."
         path="/donate"
       />
 

@@ -120,7 +120,7 @@ export default function Contact() {
     <>
       <SEOHead
         title="Contact Us"
-        description="Get in touch with Limbach Samaj. Contact us for membership inquiries, event information, or general questions about our community organization."
+        description="Get in touch with Limbach Samaj of Canada for event registration, sponsorship, or general enquiries about our community organization."
         path="/contact"
       />
 
@@ -379,23 +379,6 @@ export default function Contact() {
           </div>
         </section>
       </main>
-
-      {/* Structured Data – email only */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: siteConfig.appName,
-          url: siteConfig.siteUrl,
-          contactPoint: {
-            "@type": "ContactPoint",
-            contactType: "Customer Service",
-            email: siteConfig.email,
-            areaServed: "CA",
-            availableLanguage: "English",
-          },
-        })}
-      </script>
     </>
   );
 }

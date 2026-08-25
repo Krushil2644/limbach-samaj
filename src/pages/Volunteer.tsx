@@ -10,6 +10,7 @@ export default function Volunteer() {
         title="Volunteer"
         description="Join our volunteer team and make a difference in the Limbach Samaj community. Discover volunteer opportunities and start giving back today."
         path="/volunteer"
+        noindex
       />
 
       <main>

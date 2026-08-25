@@ -128,7 +128,7 @@ export default function Gallery() {
     <>
       <SEOHead
         title="Gallery"
-        description="Browse photos from Limbach Samaj events, cultural celebrations, and community gatherings across Canada."
+        description="Browse photos from Limbach Samaj of Canada events, cultural celebrations, and community gatherings across Canada."
         path="/gallery"
       />
 

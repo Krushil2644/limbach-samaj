@@ -28,6 +28,7 @@ export default function Membership() {
         title="Membership"
         description="Join Limbach Samaj and become part of a vibrant community of Limbach families across Canada. Membership benefits include event access, networking, and community support."
         path="/membership"
+        noindex
       />
 
       <main>

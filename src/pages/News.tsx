@@ -20,6 +20,7 @@ export default function News() {
         title="News & Announcements"
         description="Stay updated with the latest news, announcements, and updates from Limbach Samaj. Read about community initiatives, upcoming events, and organizational news."
         path="/news"
+        noindex
       />
 
       <main>

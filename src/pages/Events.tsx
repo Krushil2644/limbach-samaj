@@ -37,7 +37,7 @@ export default function Events() {
     <>
       <SEOHead
         title="Events"
-        description="Discover upcoming community events and cultural celebrations hosted by Limbach Samaj across Canada. Join us for memorable gatherings and activities."
+        description="Upcoming events from Limbach Samaj of Canada: Navratri Garba on October 9, 2026 and Diwali Snehmilan on November 28, 2026, both in Mississauga, Ontario."
         path="/events"
       />
 

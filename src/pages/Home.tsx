@@ -22,7 +22,7 @@ export default function Home() {
     <>
       <SEOHead
         title="Home"
-        description="Limbach Samaj represents Limbach families and community members across Canada. Join us for cultural events, community support, and meaningful connections."
+        description="Limbach Samaj of Canada brings Limbach families together across Canada for Navratri Garba, Mataji Havan, Diwali Snehmilan, and community gatherings."
         path="/"
       />
 

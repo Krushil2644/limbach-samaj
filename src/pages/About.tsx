@@ -11,7 +11,7 @@ export default function About() {
     <>
       <SEOHead
         title="About Us"
-        description="Limbach Samaj of Canada — About our mission, vision, values, and community initiatives."
+        description="Limbach Samaj of Canada — our mission, vision, values, board of directors, and community initiatives."
         path="/about"
       />
 

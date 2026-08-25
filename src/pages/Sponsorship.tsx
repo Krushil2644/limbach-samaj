@@ -8,7 +8,7 @@ export default function Sponsorship() {
     <>
       <SEOHead
         title="Sponsorship"
-        description="Partner with Limbach Samaj through sponsorship and support our community initiatives across Canada."
+        description="Partner with Limbach Samaj of Canada through sponsorship and support our community initiatives across Canada."
         path="/sponsorship"
       />
 

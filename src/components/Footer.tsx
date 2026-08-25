@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Mail, MapPin } from "lucide-react";
 import { siteConfig } from '@/site-config';
 
 export default function Footer() {
@@ -132,20 +132,6 @@ export default function Footer() {
                   </div>
                 </div>
               </li>
-
-        {siteConfig.showFooterPhone && ( //temporary hidden
-              <li className="group relative bg-card/40 backdrop-blur-sm rounded-xl border border-border/40 p-3 hover:border-secondary/20 hover:bg-card/60 transition-all duration-300">
-                <div className="flex items-start gap-3">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-secondary/10 border border-secondary/20 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <Phone className="h-4 w-4 text-secondary" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs font-semibold text-muted-foreground mb-0.5">Phone</p>
-                    <p className="text-sm text-foreground">{siteConfig.phone}</p>
-                  </div>
-                </div>
-              </li>
-        )}
 
               <li className="group relative bg-card/40 backdrop-blur-sm rounded-xl border border-border/40 p-3 hover:border-accent/20 hover:bg-card/60 transition-all duration-300">
                 <div className="flex items-start gap-3">
