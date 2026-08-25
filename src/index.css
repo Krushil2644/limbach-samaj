@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./styles/motion.css";
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
+    --background: 18 16% 98%;
     --foreground: 20 25% 12%;
 
     --card: 0 0% 100%;
@@ -19,12 +21,16 @@ All colors MUST be HSL.
 
     --primary: 12 80% 50%;
     --primary-foreground: 0 0% 100%;
+    /* The brand terracotta reaches only 3.9:1 on the page background, which
+       fails AA for anything under 24px. This darker cut clears 4.5:1 and is
+       what body-sized links and labels use. */
+    --primary-ink: 12 80% 42%;
 
     --secondary: 190 50% 40%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 15% 94%;
-    --muted-foreground: 20 15% 40%;
+    --muted: 18 12% 95%;
+    --muted-foreground: 20 12% 36%;
 
     --accent: 35 90% 55%;
     --accent-foreground: 20 25% 12%;
@@ -32,8 +38,8 @@ All colors MUST be HSL.
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 20% 88%;
-    --input: 40 20% 90%;
+    --border: 18 14% 89%;
+    --input: 18 14% 90%;
     --ring: 12 80% 50%;
 
     --radius: 0.75rem;
@@ -57,6 +63,7 @@ All colors MUST be HSL.
 
     --primary: 12 80% 55%;
     --primary-foreground: 0 0% 100%;
+    --primary-ink: 12 80% 62%;
 
     --secondary: 190 50% 45%;
     --secondary-foreground: 0 0% 100%;
@@ -88,7 +95,10 @@ All colors MUST be HSL.
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+    @apply font-semibold;
+    /* -0.04em is the floor; tighter and the letters touch. */
+    letter-spacing: -0.022em;
+    text-wrap: balance;
   }
 
   h1 {
@@ -102,6 +112,10 @@ All colors MUST be HSL.
   h3 {
     @apply text-2xl md:text-3xl;
   }
+
+  p {
+    text-wrap: pretty;
+  }
 }
 
 @layer utilities {
@@ -111,6 +125,35 @@ All colors MUST be HSL.
 
   .container-custom {
     @apply container mx-auto px-4 md:px-6 lg:px-8;
+  }
+
+  /* Fluid display sizes. Ceiling stays under 6rem — above that the page is
+     shouting, not designing. */
+  .display-xl {
+    font-size: clamp(2.4rem, 1.5rem + 3.4vw, 4.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+
+  .display-lg {
+    font-size: clamp(2rem, 1.25rem + 3vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+
+  .display-md {
+    font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  /* Body copy never exceeds a comfortable measure. */
+  .measure {
+    max-width: 68ch;
+  }
+
+  .measure-tight {
+    max-width: 54ch;
   }
 
   .gradient-primary {

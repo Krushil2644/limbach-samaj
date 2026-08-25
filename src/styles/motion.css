@@ -1,0 +1,177 @@
+/*
+ * Motion system.
+ *
+ * Deliberately CSS-only. The site is prerendered to static HTML, so any
+ * reveal that starts at `opacity: 0` and depends on JavaScript would ship a
+ * blank page to crawlers, to headless renderers, and to anyone whose bundle
+ * fails. Scroll-driven animations are declared inside `@supports`, so a
+ * browser without support renders the finished state and simply doesn't
+ * animate. Content is never gated on motion.
+ */
+
+@layer utilities {
+  /* Exponential ease-out. No bounce, no elastic. */
+  :root {
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+    /* Semantic z-index scale. */
+    --z-base: 0;
+    --z-raised: 10;
+    --z-sticky: 100;
+    --z-header: 200;
+    --z-overlay: 300;
+    --z-modal: 400;
+    --z-toast: 500;
+  }
+
+  /* ---- Scroll-linked reveal ------------------------------------------ */
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        animation: reveal-rise linear both;
+        animation-timeline: view();
+        /* Finish well before the element centres, so reading is never
+           interrupted by something still moving. */
+        animation-range: entry 8% cover 26%;
+      }
+
+      .reveal-fade {
+        animation: reveal-fade linear both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 24%;
+      }
+
+      /* Slow, continuous drift for full-bleed imagery. */
+      .drift {
+        animation: drift linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
+    }
+  }
+
+  @keyframes reveal-rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 1.75rem, 0);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+  }
+
+  @keyframes reveal-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes drift {
+    from {
+      transform: scale(1.12) translate3d(0, -1.5%, 0);
+    }
+    to {
+      transform: scale(1) translate3d(0, 1.5%, 0);
+    }
+  }
+
+  /* ---- First-paint entrance (above the fold) -------------------------- */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .enter {
+      animation: enter-rise 0.9s var(--ease-out-expo) both;
+      animation-delay: calc(var(--enter-delay, 0) * 90ms);
+    }
+  }
+
+  @keyframes enter-rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 1.25rem, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* A slow settle on the hero photograph — the image arrives already
+     composed and relaxes into place rather than sliding in. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-settle {
+      animation: hero-settle 2.4s var(--ease-out-expo) both;
+    }
+  }
+
+  @keyframes hero-settle {
+    from {
+      transform: scale(1.08);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  /* ---- Interaction --------------------------------------------------- */
+
+  .lift {
+    transition:
+      transform 0.5s var(--ease-out-expo),
+      box-shadow 0.5s var(--ease-out-expo),
+      border-color 0.5s var(--ease-out-expo);
+  }
+
+  .lift:hover {
+    transform: translate3d(0, -3px, 0);
+  }
+
+  /* Underline that grows from the leading edge on hover/focus. */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    transition: background-size 0.45s var(--ease-out-expo);
+  }
+
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* ---- Reduced motion ------------------------------------------------- */
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-fade,
+    .drift,
+    .enter,
+    .hero-settle {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+
+    .lift:hover {
+      transform: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

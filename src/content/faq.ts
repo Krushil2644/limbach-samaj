@@ -60,6 +60,6 @@ export const faqContent: FaqItem[] = [
   {
     question: "How do I get in touch with Limbach Samaj of Canada?",
     answer:
-      "Email jaylimbach@gmail.com, or use the contact form on the website's contact page. The Samaj is based in Brampton, Ontario and holds its events across the Greater Toronto Area, most often in Mississauga.",
+      "Email support@limbachsamajcanada.ca, or use the contact form on the website's contact page. The Samaj is based in Brampton, Ontario and holds its events across the Greater Toronto Area, most often in Mississauga.",
   },
 ];

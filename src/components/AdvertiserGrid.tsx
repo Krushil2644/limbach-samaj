@@ -39,7 +39,7 @@ function AdvertiserCard({ advertiser }: { advertiser: Advertiser }) {
 }
 
 export default function AdvertiserGrid() {
-  const { badge, title, subtitle, items } = advertisersContent;
+  const { title, subtitle, items } = advertisersContent;
 
   if (items.length === 0) return null;
 
@@ -48,11 +48,6 @@ export default function AdvertiserGrid() {
       <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/20 to-muted/30" />
       <div className="container-custom relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <div className="inline-block mb-4">
-            <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-semibold tracking-wide uppercase">
-              {badge}
-            </span>
-          </div>
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
             {title}
           </h2>

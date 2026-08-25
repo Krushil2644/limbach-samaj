@@ -1,38 +1,54 @@
 export const homeContent = {
   hero: {
-    title: "Welcome to Limbach Samaj of Canada",
-    subtitle: "Celebrating our heritage, building our future together across Canada"
+    title: "Limbach Samaj of Canada",
+    subtitle:
+      "A community of Limbach families across Canada, gathering through the year for Navratri Garba, Mataji Havan, and Diwali Snehmilan.",
+    location: "Brampton, Ontario",
+    primaryAction: { text: "Upcoming gatherings", link: "/events" },
+    secondaryAction: { text: "About the Samaj", link: "/about" },
   },
+
   welcome: {
-    title: "Building Community, Preserving Heritage",
-    description: "Limbach Samaj is a registered Canadian not-for-profit organization dedicated to serving Limbach families and community members across the nation. We foster cultural connections, organize meaningful events, and create opportunities for our community to thrive together."
+    title: "What the Samaj does",
+    description:
+      "Limbach Samaj of Canada is a registered Canadian not-for-profit serving Limbach families across the country. We have been gathering since 2010 — for worship, for Garba, for picnics in the summer and Diwali in the winter.",
+    /** Concrete, checkable statements. No claims we cannot evidence. */
+    doings: [
+      {
+        title: "We gather",
+        body: "Navratri Garba, Mataji Havan, Diwali Snehmilan and a summer picnic, held across the Greater Toronto Area.",
+      },
+      {
+        title: "We welcome",
+        body: "Families new to Canada find people who share their language, their food, and their calendar.",
+      },
+      {
+        title: "We look after each other",
+        body: "Members support one another through births, weddings, illness and loss — quietly, and without being asked.",
+      },
+    ],
   },
-  features: [
-    {
-      icon: "Users",
-      title: "Strong Community",
-      description: "Connecting families across Canada with shared values and cultural heritage"
-    },
-    {
-      icon: "Calendar",
-      title: "Regular Events",
-      description: "Cultural celebrations, family gatherings, and community activities year-round"
-    },
-    {
-      icon: "Heart",
-      title: "Community Support",
-      description: "Supporting our members through life's journey with care and compassion"
-    }
-  ],
-  upcomingEvents: {
-    title: "Upcoming Events",
-    subtitle: "Join us at our upcoming cultural celebrations and community gatherings",
-    viewAllText: "View All Events"
+
+  nextGathering: {
+    label: "The next gathering",
+    emptyTitle: "The next gathering is being planned",
+    emptyBody:
+      "Dates for the coming season will be announced here and shared with members directly.",
+    action: "Event details and registration",
   },
+
+  community: {
+    title: "From our gatherings",
+    description:
+      "Every photograph here was taken at one of our own events, by someone who was there. The archive goes back to 2010.",
+    action: "Open the gallery",
+  },
+
   cta: {
-    title: "Join Our Community",
-    description: "Become part of the Limbach Samaj family. Connect with fellow community members, participate in cultural events, and help preserve our heritage for future generations.",
-    primaryButton: "Learn About Membership",
-    secondaryButton: "Contact Us"
-  }
+    title: "Come to the next one",
+    description:
+      "You do not need to be a member to attend. Bring your family, bring your parents. Registration for each event opens on the events page.",
+    primaryButton: "See upcoming events",
+    secondaryButton: "Get in touch",
+  },
 };
