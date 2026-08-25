@@ -47,6 +47,12 @@ export const siteConfig = {
       href: "/news",
       visible: false,
     },
+    faq: {
+      ordinal: 6.5,
+      name: "FAQ",
+      href: "/faq",
+      visible: true,
+    },
     contact: {
       ordinal: 7,
       name: "Contact Us",
@@ -85,6 +91,7 @@ export const siteConfig = {
     { name: "About Us", href: "/about", visible: true },
     { name: "Events", href: "/events", visible: true },
     { name: "Gallery", href: "/gallery", visible: true },
+    { name: "FAQ", href: "/faq", visible: true },
     { name: "Contact Us", href: "/contact", visible: true },
   ],
   footerGetInvolved: [
@@ -94,5 +101,12 @@ export const siteConfig = {
     { name: "Donate", href: "/donate", visible: true },
   ],
   email: "jaylimbach@gmail.com",
-  location: "Serving communities across Canada",
+  location: "Brampton, ON, Canada",
+  // Structured-data address. City-level only — the Samaj has no
+  // public street address.
+  address: {
+    addressLocality: "Brampton",
+    addressRegion: "ON",
+    addressCountry: "CA",
+  },
 };

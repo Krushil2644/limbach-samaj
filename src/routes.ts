@@ -21,6 +21,7 @@ export const routes: RouteDef[] = [
   { path: "/gallery", load: () => import("./pages/Gallery"), prerender: true },
   { path: "/sponsorship", load: () => import("./pages/Sponsorship"), prerender: true },
   { path: "/donate", load: () => import("./pages/Donate"), prerender: true },
+  { path: "/faq", load: () => import("./pages/FAQ"), prerender: true },
   { path: "/contact", load: () => import("./pages/Contact"), prerender: true },
   // Hidden from navigation and marked noindex, but still prerendered so the
   // routes resolve for anyone holding a direct link.

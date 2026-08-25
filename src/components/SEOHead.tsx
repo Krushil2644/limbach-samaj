@@ -9,8 +9,6 @@ interface SEOHeadProps {
   type?: string;
   /** Keep the page out of search results (hidden or placeholder content). */
   noindex?: boolean;
-  /** Extra JSON-LD to emit into the document head. */
-  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 /** Resolve a possibly-relative asset path to an absolute URL. */
@@ -26,7 +24,6 @@ export default function SEOHead({
   image = siteConfig.ogImage,
   type = "website",
   noindex = false,
-  jsonLd,
 }: SEOHeadProps) {
   // The home page reads better without a redundant "Home | " prefix.
   const fullTitle =
@@ -34,7 +31,6 @@ export default function SEOHead({
   const url = `${siteConfig.siteUrl}${path}`;
   // og:image must be absolute — relative paths are ignored by crawlers.
   const imageUrl = absoluteUrl(image);
-  const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
   return (
     <Helmet prioritizeSeoTags>
@@ -58,12 +54,6 @@ export default function SEOHead({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
-
-      {blocks.map((block, index) => (
-        <script key={index} type="application/ld+json">
-          {JSON.stringify(block)}
-        </script>
-      ))}
     </Helmet>
   );
 }
