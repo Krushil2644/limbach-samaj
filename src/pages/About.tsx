@@ -1,12 +1,13 @@
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
-import TeamCard from "@/components/TeamCard";
 import DirectorCard from "@/components/DirectorCard";
-import teamData from "@/content/team.json";
 import { aboutContent } from "@/content/about";
-
+import { siteConfig } from "@/site-config";
 
 export default function About() {
+  const { hero, motto, about, whatWeDo, mission, vision, values, directors } =
+    aboutContent;
+
   return (
     <>
       <SEOHead
@@ -16,444 +17,198 @@ export default function About() {
       />
 
       <main>
-        {/* Hero Section */}
-        <Hero
-          title="About Us"
-          subtitle="Limbach Samaj of Canada is a community-driven, non-profit organization supporting individuals and families from the Hindu community of Gujarat who have made Canada their home."
-          compact
-        />
+        <Hero title={hero.title} subtitle={hero.subtitle} compact />
 
-        {/* About Section with Integrated Motto */}
-        <section className="relative section-spacing overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/5 to-background" />
-
-          <div className="container-custom max-w-6xl relative z-10">
-            {/* About Us Content with Integrated Motto */}
-            <div className="relative bg-card/50 backdrop-blur-sm rounded-3xl border border-border/40 p-8 md:p-12 lg:p-16 shadow-lg">
-              {/* Decorative corner accents */}
-              <div className="absolute top-0 left-0 w-20 h-20 border-l-2 border-t-2 border-primary/20 rounded-tl-3xl" />
-              <div className="absolute bottom-0 right-0 w-20 h-20 border-r-2 border-b-2 border-primary/20 rounded-br-3xl" />
-
-              {/* Content */}
-              <div className="relative">
-                {/* Section badge */}
-                <div className="inline-block mb-6">
-                  <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide uppercase">
-                    Our Story
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-8 text-foreground">
-                  {aboutContent.about.title}
+        {/* Who we are, with the motto as the principle behind it */}
+        <section aria-labelledby="who" className="pb-16 pt-4 md:pb-20 md:pt-6">
+          <div className="container-custom">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-5">
+                <h2
+                  id="who"
+                  className="enter display-lg font-heading font-bold text-foreground"
+                  style={{ "--enter-delay": 0 } as React.CSSProperties}
+                >
+                  {about.title}
                 </h2>
 
-                {/* Decorative divider */}
-                <div className="flex items-center gap-3 mb-10">
-                  <div className="h-1 w-16 bg-gradient-to-r from-primary to-primary/40 rounded-full" />
-                  <div className="w-2 h-2 rounded-full bg-primary/60" />
-                  <div className="h-px flex-1 bg-gradient-to-r from-border/60 to-transparent" />
-                </div>
-
-                {/* Paragraphs with enhanced styling */}
-                <div className="space-y-6">
-                  {aboutContent.about.paragraphs.map((para, idx) => (
-                    <div key={idx} className="relative pl-6">
-                      {/* Side accent line */}
-                      <div className="absolute left-0 top-2 bottom-2 w-1 bg-gradient-to-b from-primary/40 via-primary/20 to-transparent rounded-full" />
-
-                      <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                        {para}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bottom decorative element */}
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-            </div>
-          </div>
-        </section>
-
-        {/* What We Do */}
-        <section className="relative section-spacing overflow-hidden">
-          {/* Background with pattern */}
-          <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/20 to-muted/30" />
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' }} />
-
-          <div className="container-custom relative z-10">
-            {/* Section header */}
-            <div className="text-center mb-16">
-              <div className="inline-block mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-semibold tracking-wide uppercase">
-                  Our Impact
-                </span>
-              </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6">
-                {aboutContent.whatWeDo.title}
-              </h2>
-              <div className="flex items-center justify-center gap-3">
-                <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
-                <div className="w-2 h-2 rounded-full bg-secondary/60" />
-                <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
-              </div>
-            </div>
-
-            {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
-              {aboutContent.whatWeDo.items.map((item, idx) => {
-                const colorSchemes = [
-                  {
-                    badge: "bg-primary/10 text-primary border-primary/20",
-                    accent: "bg-primary/40",
-                    hover: "group-hover:border-primary/30",
-                    glow: "group-hover:shadow-primary/10",
-                  },
-                  {
-                    badge: "bg-secondary/10 text-secondary border-secondary/20",
-                    accent: "bg-secondary/40",
-                    hover: "group-hover:border-secondary/30",
-                    glow: "group-hover:shadow-secondary/10",
-                  },
-                  {
-                    badge: "bg-brand/10 text-brand border-brand/20",
-                    accent: "bg-brand/40",
-                    hover: "group-hover:border-brand/30",
-                    glow: "group-hover:shadow-brand/10",
-                  },
-                ];
-
-                const scheme = colorSchemes[idx];
-
-                return (
-                  <div
-                    key={idx}
-                    className={`group relative bg-card/80 backdrop-blur-sm p-8 rounded-3xl border border-border/60 ${scheme.hover} transition-all duration-500 hover:shadow-2xl ${scheme.glow} hover:-translate-y-2`}
+                <div
+                  className="enter mt-7 border-t border-border pt-6"
+                  style={{ "--enter-delay": 1 } as React.CSSProperties}
+                >
+                  {/* Explicit line-height: leading-none clips the shirorekha. */}
+                  <p
+                    lang="sa"
+                    className="font-heading text-2xl font-semibold leading-[1.45] text-foreground"
                   >
-                    {/* Top decorative line */}
-                    <div className={`absolute top-0 left-8 right-8 h-1 ${scheme.accent} rounded-b-full transform origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500`} />
-
-                    {/* Number badge */}
-                    <div className="mb-6">
-                      <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl ${scheme.badge} border font-bold text-lg transition-all duration-300 group-hover:scale-110`}>
-                        {idx + 1}
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-xl md:text-2xl font-heading font-bold mb-4 text-foreground transition-colors duration-300 group-hover:text-foreground">
-                      {item.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-base text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/80">
-                      {item.description}
-                    </p>
-
-                    {/* Bottom right decorative element */}
-                    <div className={`absolute bottom-6 right-6 w-16 h-16 ${scheme.accent} opacity-5 rounded-full blur-2xl group-hover:opacity-20 transition-opacity duration-500`} />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Mission & Vision */}
-        <section className="relative section-spacing overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
-
-          <div className="container-custom relative z-10">
-            {/* Section header */}
-            <div className="text-center mb-16">
-              <div className="inline-block mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold tracking-wide uppercase">
-                  Our Direction
-                </span>
-              </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-4">
-                Mission & Vision
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Guiding principles that drive our community forward
-              </p>
-            </div>
-
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {/* Mission Card */}
-              <div className="group relative bg-card/80 backdrop-blur-sm rounded-3xl border border-border/60 p-8 md:p-10 lg:p-12 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/3 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500" />
-
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-primary/60 to-transparent rounded-t-3xl" />
-
-                <div className="relative z-10">
-                  {/* Icon badge */}
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 mb-6 transition-transform duration-300 group-hover:scale-110">
-                    <svg
-                      className="w-8 h-8 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Title */}
-                  <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6 text-foreground">
-                    {aboutContent.mission.title}
-                  </h2>
-
-                  {/* Divider */}
-                  <div className="flex items-center gap-2 mb-6">
-                    <div className="h-1 w-12 bg-primary/40 rounded-full" />
-                    <div className="h-px flex-1 bg-border/40" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="space-y-4">
-                    {aboutContent.mission.paragraphs.map((para, idx) => (
-                      <p
-                        key={idx}
-                        className="text-base md:text-lg text-muted-foreground leading-relaxed"
-                      >
-                        {para}
-                      </p>
-                    ))}
-                  </div>
+                    {motto.devanagari}
+                  </p>
+                  <p className="mt-1 font-heading text-base font-medium text-primary-ink">
+                    {motto.sanskrit}
+                  </p>
+                  <p className="measure-tight mt-3 text-base leading-relaxed text-muted-foreground">
+                    &ldquo;{motto.translation}&rdquo;
+                  </p>
                 </div>
-
-                {/* Bottom decorative element */}
-                <div className="absolute bottom-6 right-6 w-20 h-20 bg-primary/5 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* Vision Card */}
-              <div className="group relative bg-card/80 backdrop-blur-sm rounded-3xl border border-border/60 p-8 md:p-10 lg:p-12 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 via-secondary/3 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500" />
-
-                {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-secondary via-secondary/60 to-transparent rounded-t-3xl" />
-
-                <div className="relative z-10">
-                  {/* Icon badge */}
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-secondary/10 border border-secondary/20 mb-6 transition-transform duration-300 group-hover:scale-110">
-                    <svg
-                      className="w-8 h-8 text-secondary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Title */}
-                  <h2 className="text-2xl md:text-3xl font-heading font-bold mb-6 text-foreground">
-                    {aboutContent.vision.title}
-                  </h2>
-
-                  {/* Divider */}
-                  <div className="flex items-center gap-2 mb-6">
-                    <div className="h-1 w-12 bg-secondary/40 rounded-full" />
-                    <div className="h-px flex-1 bg-border/40" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="space-y-4">
-                    {aboutContent.vision.paragraphs.map((para, idx) => (
-                      <p
-                        key={idx}
-                        className="text-base md:text-lg text-muted-foreground leading-relaxed"
-                      >
-                        {para}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Bottom decorative element */}
-                <div className="absolute bottom-6 right-6 w-20 h-20 bg-secondary/5 rounded-full blur-2xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Core Values */}
-        <section className="relative section-spacing overflow-hidden">
-          {/* Background with subtle pattern */}
-          <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/20 to-muted/30" />
-          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
-
-          <div className="container-custom relative z-10">
-            <div className="text-center mb-20">
-              <div className="inline-block mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide uppercase">
-                  What Drives Us
-                </span>
-              </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                Our Core Values
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                The principles that guide our community and shape our actions every day
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
-              {aboutContent.values.map((value, idx) => {
-                const gradients = [
-                  "from-primary/10 via-primary/5 to-transparent",
-                  "from-secondary/10 via-secondary/5 to-transparent",
-                  "from-brand/10 via-brand/5 to-transparent",
-                  "from-primary/10 via-primary/5 to-transparent",
-                  "from-secondary/10 via-secondary/5 to-transparent",
-                ];
-
-                return (
-                  <div
-                    key={idx}
-                    className={`group relative bg-card/80 backdrop-blur-sm p-8 rounded-3xl border border-border/60 hover:border-border transition-all duration-500 hover:shadow-2xl hover:shadow-${value.colorClass.split('-')[1]}/5 hover:-translate-y-2`}
+              <div className="lg:col-span-7 lg:pt-2">
+                {about.paragraphs.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="enter measure mb-5 text-lg leading-relaxed text-muted-foreground last:mb-0"
+                    style={{ "--enter-delay": 1 + index } as React.CSSProperties}
                   >
-                    {/* Gradient overlay on hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${gradients[idx]} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500`} />
-
-                    {/* Top accent line */}
-                    <div className={`absolute top-0 left-8 right-8 h-1 ${value.colorClass.replace('text-', 'bg-')} rounded-b-full transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
-
-                    <div className="relative z-10">
-                      {/* Number badge with glow effect */}
-                      <div className="relative mb-6">
-                        <div className={`absolute inset-0 ${value.colorClass.replace('text-', 'bg-')}/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                        <div className={`relative inline-flex items-center justify-center w-14 h-14 rounded-2xl ${value.colorClass.replace('text-', 'bg-')}/10 border border-${value.colorClass.split('-')[1]}/20 group-hover:border-${value.colorClass.split('-')[1]}/40 transition-all duration-500 group-hover:scale-110`}>
-                          <span className={`text-2xl font-bold ${value.colorClass} transition-transform duration-500 group-hover:scale-110`}>
-                            {idx + 1}
-                          </span>
-                        </div>
-                      </div>
-
-                      <h3 className={`text-2xl md:text-3xl font-heading font-bold mb-4 ${value.colorClass} transition-colors duration-300`}>
-                        {value.title}
-                      </h3>
-
-                      <p className="text-base text-muted-foreground leading-relaxed transition-colors duration-300 group-hover:text-foreground/80">
-                        {value.description}
-                      </p>
-                    </div>
-
-                    {/* Bottom right decorative element */}
-                    <div className={`absolute bottom-4 right-4 w-20 h-20 ${value.colorClass.replace('text-', 'bg-')}/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Bottom decorative line */}
-            <div className="mt-20 flex justify-center">
-              <div className="w-32 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full" />
-            </div>
-          </div>
-        </section>
-
-        {/* Board of Directors */}
-        <section className="relative section-spacing overflow-hidden">
-          {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
-
-          <div className="container-custom relative z-10">
-            {/* Section header */}
-            <div className="text-center mb-16">
-              <div className="inline-block mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide uppercase">
-                  Our Leadership
-                </span>
-              </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 text-foreground">
-                {aboutContent.directors.title}
-              </h2>
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
-                <div className="w-2 h-2 rounded-full bg-primary/60" />
-                <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
-              </div>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                {aboutContent.directors.subtitle}
-              </p>
-            </div>
-
-            {/* Director Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
-              {aboutContent.directors.members.map((director, idx) => (
-                <DirectorCard
-                  key={director.name}
-                  name={director.name}
-                  initials={director.initials}
-                  location={director.location}
-                  phone={director.phone}
-                  colorIndex={idx}
-                  image={director.image || undefined}
-                />
-              ))}
-            </div>
-
-            {/* Footer note */}
-            <div className="mt-14 flex flex-col items-center gap-3">
-              <div className="w-32 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-              <p className="text-sm text-muted-foreground/70 text-center">
-                Limbach Samaj of Canada · Incorporated{" "}
-                <span className="text-muted-foreground font-medium">
-                  {aboutContent.directors.incorporatedDate}
-                </span>{" "}
-                · OCN:{" "}
-                <span className="text-muted-foreground font-medium">
-                  {aboutContent.directors.ocn}
-                </span>
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Committee */}
-        {false &&
-          <section className="section-spacing bg-muted/30">
-            <div className="container-custom">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-                {aboutContent.committee.title}
-              </h2>
-              <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-                {aboutContent.committee.subtitle}
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {teamData.map((member) => (
-                  <TeamCard key={member.id} {...member} />
+                    {paragraph}
+                  </p>
                 ))}
               </div>
             </div>
-          </section>
-        }
+          </div>
+        </section>
+
+        {/* What we do */}
+        <section
+          aria-labelledby="what-we-do"
+          className="border-t border-border py-16 md:py-20"
+        >
+          <div className="container-custom">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-4">
+                <h2
+                  id="what-we-do"
+                  className="reveal display-lg font-heading font-bold text-foreground"
+                >
+                  {whatWeDo.title}
+                </h2>
+              </div>
+
+              <div className="lg:col-span-8 lg:pt-2">
+                <dl>
+                  {whatWeDo.items.map((item) => (
+                    <div
+                      key={item.title}
+                      className="reveal border-t border-border py-7 first:border-t-0 first:pt-0"
+                    >
+                      <dt className="font-heading text-xl font-bold text-foreground md:text-2xl">
+                        {item.title}
+                      </dt>
+                      <dd className="measure mt-2.5 text-base leading-relaxed text-muted-foreground md:text-lg">
+                        {item.description}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Mission and vision, side by side — they are a pair */}
+        <section
+          aria-label="Mission and vision"
+          className="border-t border-border py-16 md:py-20"
+        >
+          <div className="container-custom">
+            <div className="grid gap-10 md:grid-cols-2 md:gap-14">
+              {[mission, vision].map((block) => (
+                <div key={block.title} className="reveal">
+                  <h2 className="display-md font-heading font-bold text-foreground">
+                    {block.title}
+                  </h2>
+                  {block.paragraphs.map((paragraph, index) => (
+                    <p
+                      key={index}
+                      className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Values */}
+        <section
+          aria-labelledby="values"
+          className="border-t border-border py-16 md:py-20"
+        >
+          <div className="container-custom">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+              <div className="lg:col-span-4">
+                <h2
+                  id="values"
+                  className="reveal display-lg font-heading font-bold text-foreground"
+                >
+                  Our values
+                </h2>
+              </div>
+
+              <div className="lg:col-span-8 lg:pt-2">
+                <dl className="grid gap-x-10 sm:grid-cols-2">
+                  {values.map((value) => (
+                    <div
+                      key={value.title}
+                      className="reveal border-t border-border py-6"
+                    >
+                      <dt className="font-heading text-lg font-bold text-foreground">
+                        {value.title}
+                      </dt>
+                      <dd className="mt-2 text-base leading-relaxed text-muted-foreground">
+                        {value.description}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Board of directors — real people, with the incorporation on record */}
+        <section
+          aria-labelledby="directors"
+          className="border-t border-border py-16 md:py-20"
+        >
+          <div className="container-custom">
+            <h2
+              id="directors"
+              className="reveal display-lg font-heading font-bold text-foreground"
+            >
+              {directors.title}
+            </h2>
+            <p className="reveal measure mt-4 text-lg leading-relaxed text-muted-foreground">
+              {directors.subtitle}
+            </p>
+
+            <dl className="reveal mt-7 flex flex-col gap-x-10 gap-y-3 border-t border-border pt-6 text-sm sm:flex-row">
+              <div className="flex gap-2">
+                <dt className="text-muted-foreground">Incorporated</dt>
+                <dd className="font-medium text-foreground">
+                  {directors.incorporatedDate}
+                </dd>
+              </div>
+              {siteConfig.corporationNumber && (
+                <div className="flex gap-2">
+                  <dt className="text-muted-foreground">
+                    Ontario Corporation No.
+                  </dt>
+                  <dd className="font-medium tabular-nums text-foreground">
+                    {siteConfig.corporationNumber}
+                  </dd>
+                </div>
+              )}
+            </dl>
+
+            <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:grid-cols-6 lg:gap-x-5">
+              {directors.members.map((member) => (
+                <DirectorCard key={member.name} {...member} />
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
     </>
   );

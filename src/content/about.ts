@@ -87,18 +87,11 @@ export const aboutContent = {
     },
   ],
 
-  committee: {
-    title: "Our Committee",
-    subtitle:
-      "Dedicated volunteers working to serve our community with passion and commitment.",
-  },
-
   directors: {
     title: "Board of Directors",
     subtitle:
       "The founding directors who established Limbach Samaj of Canada and guide our organization with dedication and vision.",
     incorporatedDate: "November 26, 2025",
-    ocn: "1001424948",
     members: [
       {
         name: "Paresh Limbachia",
