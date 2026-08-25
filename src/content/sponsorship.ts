@@ -1,123 +1,112 @@
-import { Users, Calendar, Award, Globe, Heart } from "lucide-react";
+import { Users, Globe, Heart } from "lucide-react";
 
 export const sponsorshipContent = {
   hero: {
-    title: "Partnership Opportunities",
+    title: "Sponsorship",
     subtitle:
-      "Support our community and make a meaningful impact through sponsorship",
+      "Support the gatherings that bring Limbach families together across Canada.",
   },
 
-  inProgressNotice: {
-    title: "Sponsorship Program In Development",
-    description: [
-      "We're currently finalizing our sponsorship packages and partnership opportunities to ensure we can offer meaningful value to our sponsors.",
-      "If you're interested in sponsoring Limbach Samaj and supporting our community, please reach out to us through our contact page. We'd love to discuss custom sponsorship opportunities that align with your organization's goals.",
-    ],
-  },
-
-  whySponsor: {
-    badge: "Make an Impact",
-    title: "Why Sponsor Limbach Samaj?",
-    subtitle:
-      "Your sponsorship helps us create meaningful programs and support our growing community",
-    impactAreas: [
-      {
-        icon: "Users",
-        title: "Community Programs",
-        description:
-          "Support senior engagement activities, cultural workshops, and community gatherings",
-      },
-      {
-        icon: "Heart",
-        title: "Newcomer Support",
-        description:
-          "Help new immigrants settle and integrate into Canadian life with confidence",
-      },
-      {
-        icon: "Globe",
-        title: "Cultural Preservation",
-        description:
-          "Preserve our heritage through events, education, and intergenerational connections",
-      },
-    ],
-  },
-
-  sponsorshipTiers: {
-    badge: "Sponsorship Levels",
-    title: "Partnership Tiers",
-    subtitle:
-      "Choose a sponsorship level that aligns with your organization's goals",
-    tiers: [
-      {
-        name: "Community Partner",
-        icon: "Users",
-        color: "primary",
-        description: "Support our day-to-day community activities and programs",
-        features: [
-          "Logo on website sponsors page",
-          "Social media recognition",
-          "Acknowledgment in quarterly newsletter",
-        ],
-      },
-      {
-        name: "Event Sponsor",
-        icon: "Calendar",
-        color: "secondary",
-        description: "Partner with us for specific events and celebrations",
-        features: [
-          "All Community Partner benefits",
-          "Logo on event promotional materials",
-          "Recognition at sponsored event",
-          "Event photo opportunities",
-        ],
-      },
-      {
-        name: "Platinum Sponsor",
-        icon: "Award",
-        color: "accent",
-        description: "Become a premier supporter of our community",
-        features: [
-          "All Event Sponsor benefits",
-          "Prominent logo placement on website",
-          "Speaking opportunity at annual event",
-          "Featured in annual report",
-          "Direct engagement with community leadership",
-        ],
-      },
-    ],
-  },
-
-  benefits: {
-    title: "Sponsorship Benefits",
-    subtitle: "All sponsors enjoy these valuable benefits",
+  /**
+   * Every figure here appears in a published event invitation and is
+   * cross-checked against src/content/events.json. Nothing on this page
+   * promises a benefit the Samaj does not currently provide — an earlier
+   * version advertised a quarterly newsletter, an annual report and a
+   * speaking slot, none of which exist.
+   */
+  offers: {
+    title: "What sponsorship costs",
+    intro:
+      "Amounts are set per event and confirmed in each invitation. These are the levels offered at our recent gatherings.",
     items: [
-      "Logo placement on our website and event materials",
-      "Recognition at community events and celebrations",
-      "Social media mentions and acknowledgments",
-      "Networking opportunities with community leaders",
-      "Opportunity to support meaningful community initiatives",
+      {
+        amount: "$151",
+        name: "Business advertisement",
+        description:
+          "Your banner or flyer displayed at the event venue, and your advertisement shown on this website.",
+        offeredAt: "Mataji Havan and Diwali Snehmilan",
+      },
+      {
+        amount: "$351",
+        name: "Event sponsorship",
+        description:
+          "Named on the Samaj website as a sponsor of the event you support.",
+        offeredAt: "Mataji Havan 2026",
+      },
+      {
+        amount: "$101",
+        name: "Grand Sponsorship",
+        description: "Named as a Grand Sponsor for the event.",
+        offeredAt: "Diwali Snehmilan 2026",
+      },
+      {
+        amount: "Any amount",
+        name: "Donation",
+        description:
+          "General donations are always welcome and go toward the cost of running our gatherings.",
+        offeredAt: "Any time",
+      },
     ],
+    howTo: {
+      title: "How to sponsor",
+      steps: [
+        "Send an e-transfer to the Samaj account, noting that the payment is for sponsorship or a business advertisement.",
+        "Include your name, your phone number, and the business name if you are advertising.",
+        "Message the contact listed on the event invitation to confirm, so your placement can be arranged before the event.",
+      ],
+    },
   },
 
-  cta: {
-    title: "Interested in Sponsoring?",
-    description:
-      "We'd love to discuss custom sponsorship opportunities that align with your organization's goals and values. Get in touch with us today!",
-    buttonText: "Contact Us About Sponsorship",
-  },
-
-  eventSponsorships: {
-    badge: "Event Sponsorship",
-    title: "Community Picnic 2026 Sponsors",
+  currentSponsors: {
+    title: "Our sponsors",
     subtitle:
-      "With heartfelt gratitude to our Grand Sponsors for the 2026 Community Picnic.",
-    sponsorsHeading: "Our 2026 Picnic Grand Sponsors",
+      "With gratitude to the members who supported our 2026 Community Picnic.",
+    heading: "2026 Picnic Grand Sponsors",
     sponsors: [
-      { name: "Nilkumar Sharma"},
+      { name: "Nilkumar Sharma" },
       { name: "Sandipbhai Limbachiya" },
       { name: "Jwalantbhai Mistry" },
       { name: "Priteshkumar V Sharma" },
     ] as PicnicSponsor[],
+  },
+
+  whySponsor: {
+    title: "Where the money goes",
+    subtitle:
+      "Sponsorship covers hall rental, food, and the cost of running events that are otherwise funded entirely by ticket sales and donations.",
+    impactAreas: [
+      {
+        icon: "Users",
+        title: "Community programs",
+        description:
+          "Senior engagement activities, cultural workshops, and community gatherings.",
+      },
+      {
+        icon: "Heart",
+        title: "Newcomer support",
+        description:
+          "Helping families new to Canada settle and find a community that shares their language and calendar.",
+      },
+      {
+        icon: "Globe",
+        title: "Cultural preservation",
+        description:
+          "Worship, Garba, and the festivals that carry our heritage to the next generation.",
+      },
+    ],
+  },
+
+  inDevelopment: {
+    title: "A formal sponsorship program is being prepared",
+    description:
+      "We are working on year-round partnership packages beyond individual events. If you would like to discuss something tailored to your organisation, please get in touch.",
+  },
+
+  cta: {
+    title: "Interested in sponsoring?",
+    description:
+      "Tell us which event you would like to support and we will confirm the details and the placement.",
+    buttonText: "Contact us about sponsorship",
   },
 };
 
@@ -126,11 +115,4 @@ export type PicnicSponsor = {
   note?: string;
 };
 
-// Icon map to convert string names to actual icon components
-export const iconMap = {
-  Users,
-  Calendar,
-  Award,
-  Globe,
-  Heart,
-} as const;
+export const iconMap = { Users, Globe, Heart } as const;
