@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import AdvertiserGrid from "@/components/AdvertiserGrid";
 import HomeHero from "@/components/home/HomeHero";
-import MottoBand from "@/components/home/MottoBand";
 import WhoWeAre from "@/components/home/WhoWeAre";
 import NextGathering from "@/components/home/NextGathering";
 import CommunityStrip from "@/components/home/CommunityStrip";
@@ -22,7 +21,6 @@ export default function Home() {
 
       <main>
         <HomeHero />
-        <MottoBand />
         <WhoWeAre />
         <NextGathering />
         <CommunityStrip />
@@ -42,17 +40,17 @@ export default function Home() {
               <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
                 <Link
                   to="/events"
-                  className="lift group inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl bg-primary px-6 text-base font-semibold text-primary-foreground hover:bg-primary/92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="lift press group inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl bg-primary px-6 text-base font-semibold text-primary-foreground hover:bg-primary/92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   {cta.primaryButton}
                   <ArrowRight
-                    className="h-4 w-4 transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:translate-x-1"
+                    className="nudge h-4 w-4"
                     aria-hidden
                   />
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex min-h-[3rem] items-center justify-center rounded-xl border border-border px-6 text-base font-semibold text-foreground transition-colors duration-300 hover:border-foreground/30 hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="press inline-flex min-h-[3rem] items-center justify-center rounded-xl border border-border px-6 text-base font-semibold text-foreground transition-colors duration-300 hover:border-foreground/30 hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   {cta.secondaryButton}
                 </Link>

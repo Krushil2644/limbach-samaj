@@ -12,8 +12,15 @@
 @layer utilities {
   /* Exponential ease-out. No bounce, no elastic. */
   :root {
+    /* Stronger than the built-in easings, which lack punch. */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+    /* UI motion stays under 300ms. Anything slower reads as lag at the
+       exact moment the user is watching most closely. */
+    --dur-press: 160ms;
+    --dur-hover: 200ms;
+    --dur-panel: 220ms;
 
     /* Semantic z-index scale. */
     --z-base: 0;
@@ -87,8 +94,15 @@
 
   @media (prefers-reduced-motion: no-preference) {
     .enter {
-      animation: enter-rise 0.9s var(--ease-out-expo) both;
-      animation-delay: calc(var(--enter-delay, 0) * 90ms);
+      animation: enter-rise 0.7s var(--ease-out-expo) both;
+      animation-delay: calc(var(--enter-delay, 0) * 70ms);
+    }
+
+    /* Panels open and close constantly — they get UI timing, not the
+       first-paint timing the hero uses. */
+    .enter-quick {
+      animation: enter-rise var(--dur-panel) var(--ease-out) both;
+      animation-delay: calc(var(--enter-delay, 0) * 35ms);
     }
   }
 
@@ -122,38 +136,77 @@
 
   /* ---- Interaction --------------------------------------------------- */
 
+  /* Press feedback is deliberately NOT gated behind a hover query — it
+     matters most on touch, where there is no hover to fall back on. */
+  .press {
+    transition: transform var(--dur-press) var(--ease-out);
+  }
+
+  .press:active {
+    transform: scale(0.97);
+  }
+
   .lift {
     transition:
-      transform 0.5s var(--ease-out-expo),
-      box-shadow 0.5s var(--ease-out-expo),
-      border-color 0.5s var(--ease-out-expo);
+      transform var(--dur-hover) var(--ease-out),
+      box-shadow var(--dur-hover) var(--ease-out),
+      border-color var(--dur-hover) var(--ease-out);
   }
 
-  .lift:hover {
-    transform: translate3d(0, -3px, 0);
+  .lift:active {
+    transform: scale(0.99);
   }
 
-  /* Underline that grows from the leading edge on hover/focus. */
+  /* Underline that grows from the leading edge. */
   .link-underline {
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
     background-position: 0 100%;
     background-size: 0% 1px;
-    transition: background-size 0.45s var(--ease-out-expo);
+    transition: background-size var(--dur-hover) var(--ease-out);
   }
 
-  .link-underline:hover,
   .link-underline:focus-visible {
     background-size: 100% 1px;
+  }
+
+  /* Hover effects only where hover actually exists. On touch, :hover
+     sticks after a tap and leaves the element in a lifted state. */
+  @media (hover: hover) and (pointer: fine) {
+    .lift:hover {
+      transform: translate3d(0, -3px, 0);
+    }
+
+    .link-underline:hover {
+      background-size: 100% 1px;
+    }
+  }
+
+  /* Nudge for arrows inside a hovered/focused group. */
+  .nudge {
+    transition: transform var(--dur-hover) var(--ease-out);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .group:hover .nudge {
+      transform: translate3d(0.25rem, 0, 0);
+    }
+  }
+
+  .group:focus-visible .nudge {
+    transform: translate3d(0.25rem, 0, 0);
   }
 
   /* ---- Reduced motion ------------------------------------------------- */
 
   @media (prefers-reduced-motion: reduce) {
+    /* Reduced motion means fewer and gentler animations, not none. Movement
+       and scale are removed; opacity and colour transitions stay, because
+       they aid comprehension rather than causing discomfort. */
     .reveal,
-    .reveal-fade,
     .drift,
     .enter,
+    .enter-quick,
     .hero-settle {
       animation: none !important;
       opacity: 1 !important;
@@ -161,17 +214,17 @@
       filter: none !important;
     }
 
-    .lift:hover {
-      transform: none;
+    .reveal-fade {
+      animation: reveal-fade 0.3s ease both;
+      animation-timeline: auto;
+      transform: none !important;
     }
 
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+    .lift:hover,
+    .lift:active,
+    .press:active,
+    .group:hover .nudge,
+    .group:focus-visible .nudge {
+      transform: none !important;
     }
   }
-}

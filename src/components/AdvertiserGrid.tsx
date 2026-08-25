@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { advertisersContent, type Advertiser } from "@/content/advertisers";
 
 /**
@@ -8,7 +10,7 @@ import { advertisersContent, type Advertiser } from "@/content/advertisers";
  */
 function AdvertiserCard({ advertiser }: { advertiser: Advertiser }) {
   const frame = (
-    <div className="aspect-[4/3] w-full bg-muted/40 p-4 md:p-6">
+    <div className="aspect-[4/3] w-full bg-muted/50 p-5 md:p-7">
       <img
         src={advertiser.imageSrc}
         alt={advertiser.imageAlt}
@@ -20,7 +22,7 @@ function AdvertiserCard({ advertiser }: { advertiser: Advertiser }) {
   );
 
   const cardClass =
-    "group relative block overflow-hidden rounded-3xl border border-border/50 bg-card shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl";
+    "reveal lift group relative block overflow-hidden rounded-2xl border border-border bg-card hover:border-foreground/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
   if (advertiser.href) {
     return (
@@ -39,24 +41,44 @@ function AdvertiserCard({ advertiser }: { advertiser: Advertiser }) {
 }
 
 export default function AdvertiserGrid() {
-  const { title, subtitle, items } = advertisersContent;
+  const { title, subtitle, cta, items } = advertisersContent;
 
   if (items.length === 0) return null;
 
   return (
-    <section className="relative section-spacing overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/20 to-muted/30" />
-      <div className="container-custom relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-            {title}
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground">
-            {subtitle}
-          </p>
+    <section
+      aria-labelledby="advertisers-heading"
+      className="border-t border-border pt-16 pb-16 md:pt-20 md:pb-24 lg:pt-24 lg:pb-28"
+    >
+      <div className="container-custom">
+        {/* Left-aligned header with the action opposite, matching the gallery
+            section rather than the old centred block on a decorative band. */}
+        <div className="reveal flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2
+              id="advertisers-heading"
+              className="display-lg font-heading font-bold text-foreground"
+            >
+              {title}
+            </h2>
+            <p className="measure mt-4 text-lg leading-relaxed text-muted-foreground">
+              {subtitle}
+            </p>
+          </div>
+
+          <Link
+            to={cta.link}
+            className="link-underline group inline-flex shrink-0 items-center gap-2 self-start text-base font-semibold text-primary-ink md:self-auto"
+          >
+            {cta.text}
+            <ArrowRight
+              className="nudge h-4 w-4"
+              aria-hidden
+            />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-12 md:gap-6">
           {items.map((advertiser) => (
             <AdvertiserCard key={advertiser.imageSrc} advertiser={advertiser} />
           ))}

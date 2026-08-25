@@ -1,174 +1,116 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram, Mail, MapPin } from "lucide-react";
-import { siteConfig } from '@/site-config';
+import { Facebook, Twitter, Instagram } from "lucide-react";
+import { siteConfig } from "@/site-config";
+
+type FooterLink = { name: string; href: string; visible: boolean };
+
+function LinkColumn({ heading, links }: { heading: string; links: FooterLink[] }) {
+  const visible = links.filter((link) => link.visible);
+  if (visible.length === 0) return null;
+
+  return (
+    <div>
+      <h3 className="font-heading text-sm font-bold text-foreground">{heading}</h3>
+      <ul className="mt-4 space-y-3">
+        {visible.map((link) => (
+          <li key={link.href}>
+            <Link
+              to={link.href}
+              className="link-underline text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground"
+            >
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const social = siteConfig.footeLinks;
 
   return (
-    <footer className="relative bg-gradient-to-b from-background via-muted/20 to-muted/30 border-t border-border/50 overflow-hidden">
-      {/* Decorative background pattern */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '32px 32px' }} />
+    <footer className="border-t border-border bg-muted/35">
+      <div className="container-custom py-14 md:py-16">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          {/* Identity */}
+          <div className="lg:col-span-4">
+            <h2 className="font-heading text-lg font-bold text-foreground">
+              {siteConfig.appName}
+            </h2>
+            <p className="measure-tight mt-3 text-sm leading-relaxed text-muted-foreground">
+              Representing Limbach families and community members across
+              Canada, fostering cultural heritage and community connections.
+            </p>
 
-      {/* Top accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-
-      <div className="container-custom relative z-10 py-12 md:py-14">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 mb-10">
-          {/* About Section */}
-          <div className="space-y-5">
-            <div>
-              <h3 className="text-xl font-heading font-bold mb-2.5 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                {siteConfig.appName}
-              </h3>
-              <div className="h-1 w-12 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-3" />
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Representing Limbach families and community members across Canada, fostering cultural heritage and community connections.
-              </p>
-            </div>
-
-            {/* Social Links with enhanced styling */}
-            {siteConfig.showFooterSocialLinks && (  //temporary hidden
-            <div>
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2.5">
-                Connect With Us
-              </p>
-              <div className="flex gap-3">
-                {siteConfig.footeLinks.facebook.visible && (
-                  <a
-                    href={siteConfig.footeLinks.facebook.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center h-10 w-10 rounded-xl bg-card/80 backdrop-blur-sm border border-border/60 hover:border-primary/30 hover:bg-primary/10 transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md"
-                  >
-                    <Facebook className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="sr-only">Facebook</span>
-                  </a>
-                )}
-                {siteConfig.footeLinks.twitter.visible && (
-                  <a
-                    href={siteConfig.footeLinks.twitter.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center h-10 w-10 rounded-xl bg-card/80 backdrop-blur-sm border border-border/60 hover:border-primary/30 hover:bg-primary/10 transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md"
-                  >
-                    <Twitter className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="sr-only">Twitter</span>
-                  </a>
-                )}
-                {siteConfig.footeLinks.instagram.visible && (
-                  <a
-                    href={siteConfig.footeLinks.instagram.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center h-10 w-10 rounded-xl bg-card/80 backdrop-blur-sm border border-border/60 hover:border-primary/30 hover:bg-primary/10 transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-md"
-                  >
-                    <Instagram className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    <span className="sr-only">Instagram</span>
-                  </a>
-                )}
+            {siteConfig.showFooterSocialLinks && (
+              <div className="mt-6 flex gap-2">
+                {[
+                  { key: "facebook", Icon: Facebook, config: social.facebook },
+                  { key: "twitter", Icon: Twitter, config: social.twitter },
+                  { key: "instagram", Icon: Instagram, config: social.instagram },
+                ]
+                  .filter(({ config }) => config.visible)
+                  .map(({ key, Icon, config }) => (
+                    <a
+                      key={key}
+                      href={config.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border text-muted-foreground press transition-colors duration-200 hover:border-foreground/25 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      <Icon className="h-[1.125rem] w-[1.125rem]" aria-hidden />
+                      <span className="sr-only">{key}</span>
+                    </a>
+                  ))}
               </div>
-            </div>
             )}
-            
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-base font-heading font-bold mb-1 text-foreground">Quick Links</h3>
-            <div className="h-0.5 w-8 bg-primary/60 rounded-full mb-4" />
-            <ul className="space-y-2.5">
-              {siteConfig.footerQuickLinks
-                .filter((link) => link.visible)
-                .map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      to={link.href}
-                      className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                    >
-                      <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+          <div className="lg:col-span-2 lg:col-start-6">
+            <LinkColumn heading="Explore" links={siteConfig.footerQuickLinks} />
           </div>
 
-          {/* Get Involved */}
-          <div>
-            <h3 className="text-base font-heading font-bold mb-1 text-foreground">Get Involved</h3>
-            <div className="h-0.5 w-8 bg-primary/60 rounded-full mb-4" />
-            <ul className="space-y-2.5">
-              {siteConfig.footerGetInvolved
-                .filter((link) => link.visible)
-                .map((link, index) => (
-                  <li key={index}>
-                    <Link
-                      to={link.href}
-                      className="group inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-all duration-300"
-                    >
-                      <span className="w-0 h-px bg-primary transition-all duration-300 group-hover:w-3 mr-0 group-hover:mr-2" />
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-            </ul>
+          <div className="lg:col-span-2">
+            <LinkColumn heading="Get involved" links={siteConfig.footerGetInvolved} />
           </div>
 
-          {/* Contact Section with enhanced cards */}
-          <div>
-            <h3 className="text-base font-heading font-bold mb-1 text-foreground">Get In Touch</h3>
-            <div className="h-0.5 w-8 bg-primary/60 rounded-full mb-4" />
-            <ul className="space-y-2.5">
-              <li className="group relative bg-card/40 backdrop-blur-sm rounded-xl border border-border/40 p-3 hover:border-primary/20 hover:bg-card/60 transition-all duration-300">
-                <div className="flex items-start gap-3">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <Mail className="h-4 w-4 text-primary" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs font-semibold text-muted-foreground mb-0.5">Email</p>
-                    <p className="text-sm text-foreground break-words">{siteConfig.email}</p>
-                  </div>
-                </div>
-              </li>
-
-              <li className="group relative bg-card/40 backdrop-blur-sm rounded-xl border border-border/40 p-3 hover:border-accent/20 hover:bg-card/60 transition-all duration-300">
-                <div className="flex items-start gap-3">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <MapPin className="h-4 w-4 text-accent" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs font-semibold text-muted-foreground mb-0.5">Location</p>
-                    <p className="text-sm text-foreground">{siteConfig.location}</p>
-                  </div>
-                </div>
-              </li>
-            </ul>
+          {/* Contact — plain rows. The previous version nested each item in a
+              card with an icon chip, which is heavier than the content. */}
+          <div className="lg:col-span-3">
+            <h3 className="font-heading text-sm font-bold text-foreground">
+              Get in touch
+            </h3>
+            <dl className="mt-4 space-y-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground">Email</dt>
+                <dd className="mt-1">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="link-underline break-words font-medium text-foreground"
+                  >
+                    {siteConfig.email}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground">Location</dt>
+                <dd className="mt-1 font-medium text-foreground">
+                  {siteConfig.location}
+                </dd>
+              </div>
+            </dl>
           </div>
         </div>
 
-        {/* Divider with decorative elements */}
-        <div className="relative mb-6">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-border/50" />
-          </div>
-          <div className="relative flex justify-center">
-            <div className="flex items-center gap-3 bg-background px-4">
-              <div className="w-2 h-2 rounded-full bg-primary/40" />
-              <div className="w-2 h-2 rounded-full bg-primary/60" />
-              <div className="w-2 h-2 rounded-full bg-primary/40" />
-            </div>
-          </div>
-        </div>
-
-        {/* Copyright Section - Enhanced */}
-        <div className="text-center space-y-2">
+        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-muted-foreground">
-            &copy; {currentYear} {siteConfig.appName}. All rights reserved.
+            &copy; {currentYear} {siteConfig.appName}
           </p>
-          <p className="text-xs text-muted-foreground/70">
-            Connecting communities, celebrating heritage.
+          <p className="text-sm text-muted-foreground">
+            Registered Canadian not-for-profit
           </p>
         </div>
       </div>

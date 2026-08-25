@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin } from "lucide-react";
 import { homeContent } from "@/content/home";
+import { aboutContent } from "@/content/about";
 import heroImage from "@/assets/hero-community.jpg";
 
 /**
@@ -13,6 +14,7 @@ import heroImage from "@/assets/hero-community.jpg";
 export default function HomeHero() {
   const { title, subtitle, location, primaryAction, secondaryAction } =
     homeContent.hero;
+  const { motto } = aboutContent;
 
   return (
     <section className="relative overflow-hidden">
@@ -42,31 +44,56 @@ export default function HomeHero() {
               {title}
             </h1>
 
-            <p
-              className="enter measure mt-6 text-lg leading-relaxed text-muted-foreground md:text-xl"
+            {/* The motto as a mark, the way it would sit on a crest —
+                identity, not message. The full statement with its
+                translation lives further down, beside the work it
+                describes. */}
+            <div
+              className="enter mt-7 border-t border-border pt-5"
               style={{ "--enter-delay": 2 } as React.CSSProperties}
+            >
+              <p
+                lang="sa"
+                className="font-heading text-xl font-semibold leading-[1.5] text-foreground"
+              >
+                {motto.devanagari}
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                <span className="font-medium text-primary-ink">
+                  {motto.sanskrit}
+                </span>
+                <span aria-hidden className="mx-2 text-border">
+                  &middot;
+                </span>
+                in service, always
+              </p>
+            </div>
+
+            <p
+              className="enter measure mt-7 text-lg leading-relaxed text-muted-foreground md:text-xl"
+              style={{ "--enter-delay": 3 } as React.CSSProperties}
             >
               {subtitle}
             </p>
 
             <div
               className="enter mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
-              style={{ "--enter-delay": 3 } as React.CSSProperties}
+              style={{ "--enter-delay": 4 } as React.CSSProperties}
             >
               <Link
                 to={primaryAction.link}
-                className="lift group inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl bg-primary px-6 text-base font-semibold text-primary-foreground shadow-sm hover:bg-primary/92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="lift press group inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-xl bg-primary px-6 text-base font-semibold text-primary-foreground shadow-sm hover:bg-primary/92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 {primaryAction.text}
                 <ArrowRight
-                  className="h-4 w-4 transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:translate-x-1"
+                  className="nudge h-4 w-4"
                   aria-hidden
                 />
               </Link>
 
               <Link
                 to={secondaryAction.link}
-                className="inline-flex min-h-[3rem] items-center justify-center rounded-xl border border-border px-6 text-base font-semibold text-foreground transition-colors duration-300 hover:border-foreground/30 hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="press inline-flex min-h-[3rem] items-center justify-center rounded-xl border border-border px-6 text-base font-semibold text-foreground transition-colors duration-300 hover:border-foreground/30 hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 {secondaryAction.text}
               </Link>

@@ -11,9 +11,14 @@ export type Advertiser = {
 };
 
 export const advertisersContent = {
-  badge: "Community Supporters",
-  title: "Our Valued Advertisers",
-  subtitle: "Proudly supporting local businesses that serve our community.",
+  title: "Our valued advertisers",
+  subtitle:
+    "Local businesses, run by members, whose support helps pay for the gatherings on this page.",
+  /** Business advertising is a published tier on the sponsorship page. */
+  cta: {
+    text: "Advertise with the Samaj",
+    link: "/sponsorship",
+  },
   items: [
     {
       imageSrc: "/images/advertisements/Ad1.jpg",

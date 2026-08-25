@@ -28,6 +28,8 @@ export const routes: RouteDef[] = [
   { path: "/membership", load: () => import("./pages/Membership"), prerender: true },
   { path: "/volunteer", load: () => import("./pages/Volunteer"), prerender: true },
   { path: "/news", load: () => import("./pages/News"), prerender: true },
+  // TEMPORARY — internal motto comparison; remove with the page.
+  { path: "/motto-variants", load: () => import("./pages/MottoVariants"), prerender: true },
   { path: "*", load: () => import("./pages/NotFound"), prerender: false },
 ];
 

@@ -92,7 +92,7 @@ export default function CommunityStrip() {
           >
             {action}
             <ArrowRight
-              className="h-4 w-4 transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:translate-x-1"
+              className="nudge h-4 w-4"
               aria-hidden
             />
           </Link>
@@ -116,7 +116,7 @@ export default function CommunityStrip() {
                 alt={`Photographs from ${frame.title}`}
                 loading="lazy"
                 decoding="async"
-                className="h-full w-full object-cover transition-transform [transition-duration:900ms] [transition-timing-function:var(--ease-out-expo)] group-hover:scale-[1.04]"
+                className="h-full w-full object-cover transition-transform [transition-duration:400ms] [transition-timing-function:var(--ease-out)] group-hover:scale-[1.04]"
               />
               <div
                 aria-hidden
