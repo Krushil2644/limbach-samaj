@@ -20,7 +20,12 @@ export type NavItemChildrens =
 
 export type NavItem =
   (typeof siteConfig.navLinks)[keyof typeof siteConfig.navLinks] & {
-    children?: { name: NavItemChildrens; href: string; visible: boolean }[];
+    children?: {
+      name: NavItemChildrens;
+      href: string;
+      visible: boolean;
+      description?: string;
+    }[];
   };
 
 const navigation = siteConfig.navLinks as Record<string, NavItem>;
@@ -103,12 +108,25 @@ export default function Header() {
                     aria-hidden
                   />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="min-w-44">
+                <DropdownMenuContent align="end" className="w-72">
                   {item.children
                     .filter((child) => child.visible)
                     .map((child) => (
-                      <DropdownMenuItem key={child.name} asChild>
-                        <Link to={child.href}>{child.name}</Link>
+                      <DropdownMenuItem
+                        key={child.name}
+                        asChild
+                        className="flex cursor-pointer flex-col items-start gap-0.5 rounded-lg px-3 py-2.5"
+                      >
+                        <Link to={child.href} className="flex w-full flex-col items-start gap-0.5">
+                          <span className="text-sm font-semibold text-foreground">
+                            {child.name}
+                          </span>
+                          {child.description && (
+                            <span className="text-xs leading-relaxed text-muted-foreground">
+                              {child.description}
+                            </span>
+                          )}
+                        </Link>
                       </DropdownMenuItem>
                     ))}
                 </DropdownMenuContent>
@@ -191,9 +209,16 @@ export default function Header() {
                     <Link
                       key={child.name}
                       to={child.href}
-                      className="flex min-h-[2.75rem] items-center rounded-lg pl-7 pr-3 text-[0.9375rem] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                      className="flex min-h-[2.75rem] flex-col justify-center rounded-lg py-2 pl-7 pr-3 transition-colors hover:bg-muted"
                     >
-                      {child.name}
+                      <span className="text-[0.9375rem] font-medium text-foreground">
+                        {child.name}
+                      </span>
+                      {child.description && (
+                        <span className="text-xs text-muted-foreground">
+                          {child.description}
+                        </span>
+                      )}
                     </Link>
                   ))}
               </div>
