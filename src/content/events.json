@@ -36,14 +36,48 @@
       "Priteshkumar V Sharma"
     ],
     "imageUrl": "/events/community-picnic.jpg",
+    "upcoming": false
+  },
+  {
+    "id": "22",
+    "title": "3rd Maa Limbach Garba 2026 – Navratri Celebration",
+    "date": "9th October, 2026 - Friday - 6PM ET to 10PM ET",
+    "startDateISO": "2026-10-09T18:00:00-04:00",
+    "endDateISO": "2026-10-09T22:00:00-04:00",
+    "location": "Vic Johnston Community Centre, 335 Church St, Mississauga, ON L5M 1N1",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Vic+Johnston+Community+Centre%2C+335+Church+St%2C+Mississauga%2C+ON+L5M+1N1",
+    "description": "Limbach Samaj warmly invites you and your family to join the auspicious occasion of Navratri at our 3rd Maa Limbach Garba. The evening begins with Aarti and Pooja, followed by Garba, a food break, and Raas Garba and Timli through the night. માતાજીના ગરબાના સૂર અને સંગીત સાથે ગરબે રમવા જરૂર પધારો!",
+    "additionalInfo": [
+      "REGISTRATION IS NOW OPEN",
+      "Garba Pass / Ticket: $15/- per person (age 6 & above). Kids 5 & under are FREE",
+      "Event schedule:\n6:15 PM – Aarti, Pooja, and Garba begins\n8:00 PM to 8:30 PM – Food break\n8:30 PM to 10:00 PM – Raas Garba and Timli",
+      "To register, please send money to our Samaj account by e-transfer on jaylimbach@gmail.com. In the e-transfer message, please note your name, phone number, and the number of people the payment covers",
+      "After sending money, please send a WhatsApp message to Ravibhai Parekh on 647-835-7377 with the number of people attending (age 6 & above as well as 5 & under) and the amount e-transferred",
+      "Registration deadline: September 30, 2026, or until capacity (130 people) is reached, whichever is earlier",
+      "Donations are always welcome and will be appreciated",
+      "For sponsorship / business advertisement at the event location, please contact Ravibhai on 647-835-7377"
+    ],
+    "imageUrl": "",
     "upcoming": true
   },
   {
     "id": "3",
-    "title": "Diwali 2026 Celebration",
-    "date": "To be announced(November 2026)",
-    "location": "To be announced",
-    "description": "An annual Diwali celebration bringing families, friends, and generations together to celebrate light, hope, and new beginnings. This event will include cultural programs and shared festive moments. Exact date and venue for Diwali 2026 will be announced closer to the festival.",
+    "title": "A Grand Limbach Samaj Diwali Snehmilan 2026",
+    "date": "28th November, 2026 - Saturday - 5:30PM ET onwards",
+    "startDateISO": "2026-11-28T17:30:00-05:00",
+    "location": "Marigold Banquet Hall, 6835 Professional Ct, Mississauga, ON L4V 1X6",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Marigold+Banquet+Hall%2C+6835+Professional+Ct%2C+Mississauga%2C+ON+L4V+1X6",
+    "description": "First of its kind — happening this year in Canada! Let's celebrate, connect and make Diwali 2026 memorable for our entire Limbach Samaj community. An evening of Garba, dance, fun and entertainment, with mouth-watering appetizers and delicious food. We look forward to seeing everyone for another memorable Samaj gathering!",
+    "additionalInfo": [
+      "REGISTRATION IS NOW OPEN",
+      "Registration fee: $21/- per person for adults and kids 6 years and older",
+      "Hall capacity is a maximum of 200 people. Please register as soon as possible — registration will close once we reach the 200 capacity or on the deadline, whichever is earlier",
+      "Registration deadline: Saturday, November 14th, 2026. Please complete your registration and payment by this date to help us manage final table arrangements and people counts accurately",
+      "Please send your e-transfer for registration, sponsorships, business ad or donations to jaylimbach@gmail.com",
+      "Important note for e-transfer: in the notes field, please include \"Diwali Snehmilan 2026 – Registration for [Number] people\" and/or \"Sponsorship/Donation\", along with your name and phone number",
+      "After payment, please send a WhatsApp message to Yogeshbhai Parekh on 416-841-9176 with your payment information, your name and phone number, and the number of people attending (age 6 & above as well as kids age 5 & under) for seating and food arrangements",
+      "Sponsorship & donations: any amount of general donation is highly appreciated. Grand Sponsorship is $101/-, and a business advertisement at the event location as well as on our Samaj website is $151/-"
+    ],
     "imageUrl": "",
     "upcoming": true
   },
