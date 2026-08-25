@@ -1,5 +1,6 @@
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
+import AdvertiserGrid from "@/components/AdvertiserGrid";
 import { Check, Building2, Award } from "lucide-react";
 import { sponsorshipContent, iconMap } from "@/content/sponsorship";
 
@@ -320,43 +321,7 @@ export default function Sponsorship() {
             </div>
           </div>
         </section>
-
-        {/* Community Advertisers */}
-        <section className="relative section-spacing overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/20 to-muted/30" />
-          <div className="container-custom relative z-10">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <div className="inline-block mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-semibold tracking-wide uppercase">
-                  Community Supporters
-                </span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-                Our Valued Advertisers
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground">
-                Proudly supporting local businesses that serve our community.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
-              <div className="group relative bg-card rounded-3xl border border-border/50 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-                <img
-                  src="/images/advertisements/Ad1.jpg"
-                  alt="Hitendra (Happy) Parekh – Financial & Connectivity Partner"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              <div className="group relative bg-card rounded-3xl border border-border/50 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-                <img
-                  src="/images/advertisements/Ad2.jpg"
-                  alt="Billyard Insurance Group Acton – Nilkumar Sharma"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <AdvertiserGrid />
 
         {/* Contact CTA */}
         <section className="relative section-spacing overflow-hidden">
