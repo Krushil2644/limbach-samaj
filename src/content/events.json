@@ -8,7 +8,6 @@
     "location": "Hindu Heritage Center (6300 Missisauga Road), Mississauga",
     "description": "Chaitri Navratri marks the beginning of the Hindu New Year and is dedicated to Goddess Durga. This special Mataji’s Havan is a spiritual gathering to seek the blessings of Maa Limbach, with traditional havan, limited Sah-Yajmaan seva , opportunities for Ahuti participation, and Maha-Prasad served after Aarti.",
     "additionalInfo": [
-      "WE ARE ENCOURAGING EVERYONE",
       "Take part in an event sponsorship program by donating $351/- and we will post on our Samaj website https://www.limbachsamajcanada.ca",
       "Do registration as YAJMAN with $251/- for Mataji Havan",
       "Do registration to attend Mataji Havan ASAP. Registration fee is $10/- for age 6 and above",
@@ -17,7 +16,8 @@
     ],
     "imageUrl": "/events/havan.jpg",
     "youtubeUrl": "https://www.youtube.com/embed/fnl_4xwPjcY",
-    "upcoming": false
+    "upcoming": false,
+    "status": "WE ARE ENCOURAGING EVERYONE"
   },
   {
     "id": "2",
@@ -48,9 +48,7 @@
     "mapUrl": "https://www.google.com/maps/search/?api=1&query=Vic+Johnston+Community+Centre%2C+335+Church+St%2C+Mississauga%2C+ON+L5M+1N1",
     "description": "Limbach Samaj warmly invites you and your family to join the auspicious occasion of Navratri at our 3rd Maa Limbach Garba. The evening begins with Aarti and Pooja, followed by Garba, a food break, and Raas Garba and Timli through the night. માતાજીના ગરબાના સૂર અને સંગીત સાથે ગરબે રમવા જરૂર પધારો!",
     "additionalInfo": [
-      "REGISTRATION IS NOW OPEN",
       "Garba Pass / Ticket: $15/- per person (age 6 & above). Kids 5 & under are FREE",
-      "Event schedule:\n6:15 PM – Aarti, Pooja, and Garba begins\n8:00 PM to 8:30 PM – Food break\n8:30 PM to 10:00 PM – Raas Garba and Timli",
       "To register, please send money to our Samaj account by e-transfer on jaylimbach@gmail.com. In the e-transfer message, please note your name, phone number, and the number of people the payment covers",
       "After sending money, please send a WhatsApp message to Ravibhai Parekh on 647-835-7377 with the number of people attending (age 6 & above as well as 5 & under) and the amount e-transferred",
       "Registration deadline: September 30, 2026, or until capacity (130 people) is reached, whichever is earlier",
@@ -62,7 +60,22 @@
     "price": 15,
     "priceCurrency": "CAD",
     "registrationDeadlineISO": "2026-09-30",
-    "capacity": 130
+    "capacity": 130,
+    "status": "REGISTRATION IS NOW OPEN",
+    "schedule": [
+      {
+        "time": "6:15 PM",
+        "activity": "Aarti, Pooja, and Garba begins"
+      },
+      {
+        "time": "8:00 PM to 8:30 PM",
+        "activity": "Food break"
+      },
+      {
+        "time": "8:30 PM to 10:00 PM",
+        "activity": "Raas Garba and Timli"
+      }
+    ]
   },
   {
     "id": "3",
@@ -73,7 +86,6 @@
     "mapUrl": "https://www.google.com/maps/search/?api=1&query=Marigold+Banquet+Hall%2C+6835+Professional+Ct%2C+Mississauga%2C+ON+L4V+1X6",
     "description": "First of its kind — happening this year in Canada! Let's celebrate, connect and make Diwali 2026 memorable for our entire Limbach Samaj community. An evening of Garba, dance, fun and entertainment, with mouth-watering appetizers and delicious food. We look forward to seeing everyone for another memorable Samaj gathering!",
     "additionalInfo": [
-      "REGISTRATION IS NOW OPEN",
       "Registration fee: $21/- per person for adults and kids 6 years and older",
       "Hall capacity is a maximum of 200 people. Please register as soon as possible — registration will close once we reach the 200 capacity or on the deadline, whichever is earlier",
       "Registration deadline: Saturday, November 14th, 2026. Please complete your registration and payment by this date to help us manage final table arrangements and people counts accurately",
@@ -87,7 +99,8 @@
     "price": 21,
     "priceCurrency": "CAD",
     "registrationDeadlineISO": "2026-11-14",
-    "capacity": 200
+    "capacity": 200,
+    "status": "REGISTRATION IS NOW OPEN"
   },
   {
     "id": "4",

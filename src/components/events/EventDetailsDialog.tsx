@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { CalendarDays, MapPin, Ticket, X } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { CalendarDays, Clock, MapPin, Ticket, Users, X } from "lucide-react";
 
 export type EventRecord = {
   id: string;
@@ -16,12 +16,27 @@ export type EventRecord = {
   priceCurrency?: string;
   registrationDeadlineISO?: string;
   capacity?: number;
+  status?: string;
+  schedule?: { time: string; activity: string }[];
   upcoming: boolean;
 };
 
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+/** Formats from the ISO parts, not through the local timezone. */
+function formatDeadline(iso: string) {
+  const [y, m, d] = iso.split("T")[0].split("-").map(Number);
+  return `${MONTHS[m - 1]} ${d}, ${y}`;
+}
+
 /** True when there is anything worth opening a dialog for. */
 export function hasDetails(event: EventRecord) {
-  return Boolean(event.description || event.additionalInfo?.length);
+  return Boolean(
+    event.description || event.additionalInfo?.length || event.schedule?.length,
+  );
 }
 
 /**
@@ -74,16 +89,50 @@ export default function EventDetailsDialog({
   event: EventRecord;
   onClose: () => void;
 }) {
+  const panelRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    const previous = document.body.style.overflow;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
+    const focusable = () =>
+      Array.from(
+        panelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      );
+
+    focusable()[0]?.focus();
+
+    // Without a trap, Tab walks straight out of the dialog into the page
+    // behind it, which is still visible and still scrollable.
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab") return;
+
+      const items = focusable();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
     document.addEventListener("keydown", onKeyDown);
     return () => {
-      document.body.style.overflow = previous;
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
+      previouslyFocused?.focus();
     };
   }, [onClose]);
 
@@ -99,6 +148,7 @@ export default function EventDetailsDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby="event-dialog-title"
+        ref={panelRef}
         onClick={(e) => e.stopPropagation()}
         className="enter relative my-auto w-full max-w-2xl rounded-2xl border border-border bg-card shadow-2xl"
       >
@@ -112,9 +162,16 @@ export default function EventDetailsDialog({
         </button>
 
         <div className="p-6 md:p-9">
-          <p className="text-sm font-medium text-primary-ink">
-            {event.upcoming ? "Upcoming" : "Past event"}
-          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <p className="text-sm font-medium text-primary-ink">
+              {event.upcoming ? "Upcoming" : "Past event"}
+            </p>
+            {event.status && (
+              <p className="rounded-full bg-primary/12 px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-ink">
+                {event.status}
+              </p>
+            )}
+          </div>
 
           <h2
             id="event-dialog-title"
@@ -151,10 +208,62 @@ export default function EventDetailsDialog({
             )}
           </ul>
 
+          {(event.registrationDeadlineISO || event.capacity) && (
+            <dl className="mt-6 flex flex-col gap-4 rounded-xl bg-muted/60 p-4 sm:flex-row sm:gap-8 sm:px-5">
+              {event.registrationDeadlineISO && (
+                <div className="flex items-start gap-2.5">
+                  <Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                  <div>
+                    <dt className="text-sm text-muted-foreground">Registration closes</dt>
+                    <dd className="font-heading text-base font-bold text-foreground">
+                      {formatDeadline(event.registrationDeadlineISO)}
+                    </dd>
+                  </div>
+                </div>
+              )}
+              {event.capacity && (
+                <div className="flex items-start gap-2.5">
+                  <Users className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+                  <div>
+                    <dt className="text-sm text-muted-foreground">Capacity</dt>
+                    <dd className="font-heading text-base font-bold text-foreground">
+                      {event.capacity} people
+                    </dd>
+                  </div>
+                </div>
+              )}
+            </dl>
+          )}
+
           {event.description && (
             <p className="measure mt-6 border-t border-border pt-6 text-base leading-relaxed text-muted-foreground">
               {event.description}
             </p>
+          )}
+
+          {event.schedule && event.schedule.length > 0 && (
+            <div className="mt-6 border-t border-border pt-6">
+              <h3 className="font-heading text-base font-bold text-foreground">
+                Schedule
+              </h3>
+              {/* Genuinely tabular — it was previously one paragraph of
+                  line-broken text. */}
+              <dl className="mt-4">
+                {event.schedule.map((row) => (
+                  <div
+                    key={row.time}
+                    className="flex flex-col gap-0.5 border-t border-border/70 py-3 first:border-t-0 first:pt-0 sm:flex-row sm:gap-6"
+                  >
+                    <dt className="font-heading text-sm font-bold tabular-nums text-foreground sm:w-48 sm:shrink-0">
+                      {row.time}
+                    </dt>
+                    <dd className="text-base text-muted-foreground">
+                      {row.activity}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           )}
 
           {event.additionalInfo && event.additionalInfo.length > 0 && (
@@ -168,13 +277,7 @@ export default function EventDetailsDialog({
                     key={index}
                     className="border-t border-border/70 pt-3 text-base leading-relaxed text-muted-foreground first:border-t-0 first:pt-0"
                   >
-                    {index === 0 ? (
-                      <strong className="font-semibold text-foreground">
-                        {renderEmphasis(info)}
-                      </strong>
-                    ) : (
-                      renderEmphasis(info)
-                    )}
+                    {renderEmphasis(info)}
                   </li>
                 ))}
               </ul>
