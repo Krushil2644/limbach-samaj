@@ -139,7 +139,7 @@ export default function Membership() {
               </div>
 
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand/10 text-brand mb-4">
                   <Heart className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-heading font-semibold mb-3">

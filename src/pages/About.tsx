@@ -118,10 +118,10 @@ export default function About() {
                     glow: "group-hover:shadow-secondary/10",
                   },
                   {
-                    badge: "bg-accent/10 text-accent border-accent/20",
-                    accent: "bg-accent/40",
-                    hover: "group-hover:border-accent/30",
-                    glow: "group-hover:shadow-accent/10",
+                    badge: "bg-brand/10 text-brand border-brand/20",
+                    accent: "bg-brand/40",
+                    hover: "group-hover:border-brand/30",
+                    glow: "group-hover:shadow-brand/10",
                   },
                 ];
 
@@ -170,7 +170,7 @@ export default function About() {
             {/* Section header */}
             <div className="text-center mb-16">
               <div className="inline-block mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold tracking-wide uppercase">
+                <span className="inline-block px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold tracking-wide uppercase">
                   Our Direction
                 </span>
               </div>
@@ -327,7 +327,7 @@ export default function About() {
                 const gradients = [
                   "from-primary/10 via-primary/5 to-transparent",
                   "from-secondary/10 via-secondary/5 to-transparent",
-                  "from-accent/10 via-accent/5 to-transparent",
+                  "from-brand/10 via-brand/5 to-transparent",
                   "from-primary/10 via-primary/5 to-transparent",
                   "from-secondary/10 via-secondary/5 to-transparent",
                 ];

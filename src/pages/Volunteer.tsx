@@ -90,10 +90,10 @@ export default function Volunteer() {
                     glow: "group-hover:shadow-secondary/10",
                   },
                   {
-                    badge: "bg-accent/10 text-accent border-accent/20",
-                    accent: "bg-accent/40",
-                    hover: "group-hover:border-accent/30",
-                    glow: "group-hover:shadow-accent/10",
+                    badge: "bg-brand/10 text-brand border-brand/20",
+                    accent: "bg-brand/40",
+                    hover: "group-hover:border-brand/30",
+                    glow: "group-hover:shadow-brand/10",
                   },
                   {
                     badge: "bg-primary/10 text-primary border-primary/20",
@@ -108,10 +108,10 @@ export default function Volunteer() {
                     glow: "group-hover:shadow-secondary/10",
                   },
                   {
-                    badge: "bg-accent/10 text-accent border-accent/20",
-                    accent: "bg-accent/40",
-                    hover: "group-hover:border-accent/30",
-                    glow: "group-hover:shadow-accent/10",
+                    badge: "bg-brand/10 text-brand border-brand/20",
+                    accent: "bg-brand/40",
+                    hover: "group-hover:border-brand/30",
+                    glow: "group-hover:shadow-brand/10",
                   },
                 ];
                 const scheme = colorSchemes[idx];
@@ -155,7 +155,7 @@ export default function Volunteer() {
           <div className="container-custom relative z-10">
             <div className="text-center mb-16">
               <div className="inline-block mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold tracking-wide uppercase">
+                <span className="inline-block px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold tracking-wide uppercase">
                   {volunteerContent.benefits.badge}
                 </span>
               </div>
@@ -164,7 +164,7 @@ export default function Volunteer() {
               </h2>
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
-                <div className="w-2 h-2 rounded-full bg-accent/60" />
+                <div className="w-2 h-2 rounded-full bg-brand/60" />
                 <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
               </div>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

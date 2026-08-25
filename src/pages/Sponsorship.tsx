@@ -115,10 +115,10 @@ export default function Sponsorship() {
                     glow: "group-hover:shadow-secondary/10",
                   },
                   {
-                    badge: "bg-accent/10 text-accent border-accent/20",
-                    accent: "bg-accent/40",
-                    hover: "group-hover:border-accent/30",
-                    glow: "group-hover:shadow-accent/10",
+                    badge: "bg-brand/10 text-brand border-brand/20",
+                    accent: "bg-brand/40",
+                    hover: "group-hover:border-brand/30",
+                    glow: "group-hover:shadow-brand/10",
                   },
                 ];
 
@@ -198,7 +198,7 @@ export default function Sponsorship() {
                 const colorMap: Record<string, string> = {
                   primary: "from-primary/10 via-primary/5",
                   secondary: "from-secondary/10 via-secondary/5",
-                  accent: "from-accent/10 via-accent/5",
+                  accent: "from-brand/10 via-brand/5",
                 };
 
                 return (
@@ -283,7 +283,7 @@ export default function Sponsorship() {
           <div className="container-custom relative z-10">
             <div className="text-center mb-16">
               <div className="inline-block mb-4">
-                <span className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold tracking-wide uppercase">
+                <span className="inline-block px-4 py-2 rounded-full bg-brand/10 text-brand text-sm font-semibold tracking-wide uppercase">
                   Your Benefits
                 </span>
               </div>
@@ -292,7 +292,7 @@ export default function Sponsorship() {
               </h2>
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="h-px w-16 bg-gradient-to-r from-transparent to-border" />
-                <div className="w-2 h-2 rounded-full bg-accent/60" />
+                <div className="w-2 h-2 rounded-full bg-brand/60" />
                 <div className="h-px w-16 bg-gradient-to-l from-transparent to-border" />
               </div>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

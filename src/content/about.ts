@@ -71,7 +71,7 @@ export const aboutContent = {
       title: "Community",
       description:
         "Creating a sense of belonging and togetherness that strengthens our shared Canadian and cultural identity.",
-      colorClass: "text-accent",
+      colorClass: "text-brand",
     },
     {
       title: "Empowerment",

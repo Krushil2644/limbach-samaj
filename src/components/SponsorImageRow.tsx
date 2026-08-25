@@ -24,10 +24,10 @@ export default function SponsorImageRow({ items, className = "" }: SponsorImageR
       {items.map((item, index) => (
         <div key={`${item.imageSrc}-${index}`} className="relative">
           {item.variant === "memorial" ? (
-            <div className="pointer-events-none absolute inset-0 rounded-[28px] border border-accent/20" />
+            <div className="pointer-events-none absolute inset-0 rounded-[28px] border border-brand/20" />
           ) : null}
         <div
-          className={`flex flex-col md:flex-row items-center gap-6 rounded-3xl border border-border/50 bg-card/80 backdrop-blur-sm p-6 md:p-8 shadow-lg ${item.variant === "memorial" ? "bg-gradient-to-br from-accent/5 via-card/80 to-card/80" : ""}`}
+          className={`flex flex-col md:flex-row items-center gap-6 rounded-3xl border border-border/50 bg-card/80 backdrop-blur-sm p-6 md:p-8 shadow-lg ${item.variant === "memorial" ? "bg-gradient-to-br from-brand/5 via-card/80 to-card/80" : ""}`}
         >
           <div className="w-full md:w-56 lg:w-64 shrink-0">
             <img
@@ -48,7 +48,7 @@ export default function SponsorImageRow({ items, className = "" }: SponsorImageR
               </p>
             ) : null}
             {item.variant === "memorial" ? (
-              <div className="mx-auto md:mx-0 h-px w-24 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+              <div className="mx-auto md:mx-0 h-px w-24 bg-gradient-to-r from-transparent via-brand/50 to-transparent" />
             ) : null}
             {item.donorName ? (
               <p className="text-lg md:text-xl font-heading font-bold text-foreground">
@@ -63,7 +63,7 @@ export default function SponsorImageRow({ items, className = "" }: SponsorImageR
             {item.donationAmount ? (
               <p className="text-base md:text-lg text-foreground">
                 {item.donationPrefix ? `${item.donationPrefix} ` : ""}
-                <span className="font-semibold text-accent">{item.donationAmount}</span>
+                <span className="font-semibold text-brand">{item.donationAmount}</span>
               </p>
             ) : null}
             {item.title ? (

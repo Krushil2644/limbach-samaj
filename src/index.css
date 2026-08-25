@@ -34,8 +34,14 @@ All colors MUST be HSL.
     --muted: 18 12% 95%;
     --muted-foreground: 20 12% 36%;
 
-    --accent: 35 90% 55%;
+    /* shadcn treats --accent as the subtle surface behind hovered menu
+       items and ghost buttons, NOT as a brand colour. The Samaj amber
+       lives in --brand. */
+    --accent: 18 14% 94%;
     --accent-foreground: 20 25% 12%;
+
+    --brand: 35 90% 55%;
+    --brand-foreground: 20 25% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
@@ -73,8 +79,11 @@ All colors MUST be HSL.
     --muted: 222 25% 18%;
     --muted-foreground: 40 15% 70%;
 
-    --accent: 35 90% 60%;
-    --accent-foreground: 222 35% 8%;
+    --accent: 222 25% 21%;
+    --accent-foreground: 40 20% 95%;
+
+    --brand: 35 90% 60%;
+    --brand-foreground: 222 35% 8%;
 
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 100%;
