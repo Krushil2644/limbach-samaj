@@ -30,6 +30,15 @@ interface AlbumLightboxProps {
   onClose: () => void;
 }
 
+/** "41 photos · 1 video", matching the album card's label. */
+function summarise(items: { resource_type?: string }[]): string {
+  const videos = items.filter((item) => item.resource_type === "video").length;
+  const photos = items.length - videos;
+  const photoLabel = `${photos} ${photos === 1 ? "photo" : "photos"}`;
+  if (videos === 0) return photoLabel;
+  return `${photoLabel} · ${videos} ${videos === 1 ? "video" : "videos"}`;
+}
+
 export function AlbumLightbox({
   selectedAlbum,
   albumImages,
