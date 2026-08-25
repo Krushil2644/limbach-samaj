@@ -1,20 +1,19 @@
+import { Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
-import { HelpCircle, Mail } from "lucide-react";
-import { faqContent } from "@/content/faq";
+import { ArrowRight } from "lucide-react";
+import { faqContent, faqGroups } from "@/content/faq";
 import { siteConfig } from "@/site-config";
 
 export default function FAQ() {
+  // Presentation is grouped; the schema stays a flat list of all questions.
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqContent.map((item) => ({
       "@type": "Question",
       name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
     })),
   };
 
@@ -28,58 +27,134 @@ export default function FAQ() {
 
       <main>
         <Hero
-          title="Frequently Asked Questions"
-          subtitle="Everything you need to know about our events, registration, and how to get involved."
+          title="Frequently asked questions"
+          subtitle="Events, tickets, registration, and how to support the Samaj."
           compact
         />
 
-        <section className="relative section-spacing overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
-
-          <div className="container-custom relative z-10">
-            <div className="max-w-3xl mx-auto space-y-6">
-              {faqContent.map((item) => (
-                <article
-                  key={item.question}
-                  className="bg-card/80 backdrop-blur-sm rounded-2xl border border-border/50 p-6 md:p-8 shadow-md"
-                >
-                  <h2 className="text-lg md:text-xl font-heading font-bold text-foreground mb-3 flex items-start gap-3">
-                    <HelpCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                    <span>{item.question}</span>
-                  </h2>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed md:pl-8">
-                    {item.answer}
+        <section className="pb-20 pt-4 md:pb-28 md:pt-6">
+          <div className="container-custom">
+            <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+              {/* Aside. Sticky on desktop so the way out stays reachable
+                  while reading a long list. */}
+              <aside className="lg:col-span-4">
+                <div className="lg:sticky lg:top-28">
+                  <p
+                    className="enter measure-tight text-lg leading-relaxed text-muted-foreground"
+                    style={{ "--enter-delay": 0 } as React.CSSProperties}
+                  >
+                    Most questions about our gatherings are answered here. If
+                    yours isn&rsquo;t, we&rsquo;re happy to help directly.
                   </p>
-                </article>
-              ))}
-            </div>
 
-            {/* Still have questions */}
-            <div className="max-w-3xl mx-auto mt-12">
-              <div className="relative bg-primary/5 border border-primary/20 rounded-2xl p-8 text-center">
-                <h2 className="text-xl md:text-2xl font-heading font-bold mb-3">
-                  Still have a question?
-                </h2>
-                <p className="text-sm md:text-base text-muted-foreground mb-6">
-                  We&apos;re happy to help. Reach out and someone from the Samaj
-                  will get back to you.
-                </p>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary font-semibold transition-all duration-300 hover:scale-105"
-                >
-                  <Mail className="h-5 w-5" />
-                  {siteConfig.email}
-                </a>
+                  <div
+                    className="enter mt-8 border-t border-border pt-7"
+                    style={{ "--enter-delay": 1 } as React.CSSProperties}
+                  >
+                    <h2 className="font-heading text-base font-bold text-foreground">
+                      Still have a question?
+                    </h2>
+                    <p className="measure-tight mt-2 text-base leading-relaxed text-muted-foreground">
+                      Email us and someone from the Samaj will get back to you.
+                    </p>
+                    <a
+                      href={`mailto:${siteConfig.email}`}
+                      className="link-underline mt-4 inline-block break-words text-base font-semibold text-primary-ink"
+                    >
+                      {siteConfig.email}
+                    </a>
+                  </div>
+
+                  <div
+                    className="enter mt-8 border-t border-border pt-7"
+                    style={{ "--enter-delay": 2 } as React.CSSProperties}
+                  >
+                    <h2 className="font-heading text-base font-bold text-foreground">
+                      Ready to attend?
+                    </h2>
+                    <p className="measure-tight mt-2 text-base leading-relaxed text-muted-foreground">
+                      Dates, venues and registration steps for every upcoming
+                      gathering.
+                    </p>
+                    <Link
+                      to="/events"
+                      className="link-underline group mt-4 inline-flex items-center gap-2 text-base font-semibold text-primary-ink"
+                    >
+                      See upcoming events
+                      <ArrowRight className="nudge h-4 w-4" aria-hidden />
+                    </Link>
+                  </div>
+                </div>
+              </aside>
+
+              {/* Questions, grouped by topic. Hairline separators rather than
+                  a card per question — ten identical rounded boxes with an
+                  icon on each is template grammar, not hierarchy. */}
+              <div className="lg:col-span-8">
+                {faqGroups.map((group, groupIndex) => {
+                  const items = faqContent.filter(
+                    (item) => item.group === group,
+                  );
+                  if (items.length === 0) return null;
+
+                  return (
+                    <section
+                      key={group}
+                      className={groupIndex > 0 ? "mt-14" : ""}
+                      aria-labelledby={`faq-${groupIndex}`}
+                    >
+                      <h2
+                        id={`faq-${groupIndex}`}
+                        // The first group is above the fold on most screens,
+                        // where a scroll-linked reveal would never fire.
+                        className={`font-heading text-sm font-bold uppercase tracking-wider text-primary-ink ${
+                          groupIndex === 0 ? "enter" : "reveal"
+                        }`}
+                        style={
+                          groupIndex === 0
+                            ? ({ "--enter-delay": 1 } as React.CSSProperties)
+                            : undefined
+                        }
+                      >
+                        {group}
+                      </h2>
+
+                      <dl className="mt-5">
+                        {items.map((item, index) => (
+                          <div
+                            key={item.question}
+                            className={`border-t border-border py-7 first:border-t-0 first:pt-0 ${
+                              groupIndex === 0 ? "enter" : "reveal"
+                            }`}
+                            style={
+                              groupIndex === 0
+                                ? ({
+                                    "--enter-delay": 2 + index,
+                                  } as React.CSSProperties)
+                                : undefined
+                            }
+                          >
+                            <dt className="font-heading text-lg font-bold text-foreground md:text-xl">
+                              {item.question}
+                            </dt>
+                            <dd className="measure mt-2.5 text-base leading-relaxed text-muted-foreground md:text-lg">
+                              {item.answer}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </section>
+                  );
+                })}
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      {/* FAQPage structured data. Uses dangerouslySetInnerHTML because React
-          HTML-escapes <script> children, which produces invalid JSON-LD once
-          the page is prerendered. */}
+      {/* FAQPage structured data. dangerouslySetInnerHTML because React
+          HTML-escapes <script> children, which produces invalid JSON-LD
+          once the page is prerendered. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

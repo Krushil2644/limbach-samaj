@@ -141,11 +141,17 @@ export default function Contact() {
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
               {/* Ways to reach us */}
               <div className="lg:col-span-4">
-                <h2 className="reveal display-md font-heading font-bold text-foreground">
+                <h2
+                  className="enter display-md font-heading font-bold text-foreground"
+                  style={{ "--enter-delay": 0 } as React.CSSProperties}
+                >
                   Reach us directly
                 </h2>
 
-                <dl className="reveal mt-8 space-y-7">
+                <dl
+                  className="enter mt-8 space-y-7"
+                  style={{ "--enter-delay": 1 } as React.CSSProperties}
+                >
                   <div>
                     <dt className="text-sm text-muted-foreground">Email</dt>
                     <dd className="mt-1.5">
@@ -173,7 +179,10 @@ export default function Contact() {
                     through this form at all — point people at the real path
                     before they write a message that only gets a reply
                     telling them to e-transfer. */}
-                <div className="reveal mt-10 border-t border-border pt-7">
+                <div
+                  className="enter mt-10 border-t border-border pt-7"
+                  style={{ "--enter-delay": 2 } as React.CSSProperties}
+                >
                   <h3 className="font-heading text-base font-bold text-foreground">
                     Registering for an event?
                   </h3>
@@ -191,7 +200,10 @@ export default function Contact() {
                   </Link>
                 </div>
 
-                <div className="reveal mt-8 border-t border-border pt-7">
+                <div
+                  className="enter mt-8 border-t border-border pt-7"
+                  style={{ "--enter-delay": 3 } as React.CSSProperties}
+                >
                   <h3 className="font-heading text-base font-bold text-foreground">
                     Already answered?
                   </h3>
@@ -211,7 +223,10 @@ export default function Contact() {
 
               {/* Message form */}
               <div className="lg:col-span-8">
-                <div className="reveal rounded-2xl border border-border bg-card p-6 md:p-9">
+                <div
+                  className="enter rounded-2xl border border-border bg-card p-6 md:p-9"
+                  style={{ "--enter-delay": 2 } as React.CSSProperties}
+                >
                   <h2 className="display-md font-heading font-bold text-foreground">
                     Send a message
                   </h2>
