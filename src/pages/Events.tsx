@@ -9,6 +9,7 @@ type EventItem = {
   id: string;
   title: string;
   date: string;
+  startDateISO?: string;
   location: string;
   description: string;
   imageUrl: string;
@@ -128,18 +129,24 @@ export default function Events() {
               <TabsContent value="past" className="mt-0">
                 {pastEvents.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    {pastEvents.sort((a, b) => {
-                      const parseDate = (dateStr: string): Date => {
-                        const cleaned = dateStr.replace(/(\d+)(st|nd|rd|th)/, '$1');
+                    {[...pastEvents].sort((a, b) => {
+                      const parseDate = (event: EventItem): Date => {
+                        // Prefer the exact ISO timestamp when an event has one;
+                        // the free-form `date` string is only parseable for the
+                        // simple "5th July, 2025" entries.
+                        if (event.startDateISO) {
+                          return new Date(event.startDateISO);
+                        }
+                        const cleaned = event.date.replace(/(\d+)(st|nd|rd|th)/, '$1');
                         const noComma = cleaned.replace(',', '');
                         const parts = noComma.split(' ');
                         if (parts.length === 3) {
                           return new Date(`${parts[1]} ${parts[0]}, ${parts[2]}`);
                         }
-                        return new Date(dateStr);
+                        return new Date(event.date);
                       };
-                      const dateA = parseDate(a.date);
-                      const dateB = parseDate(b.date);
+                      const dateA = parseDate(a);
+                      const dateB = parseDate(b);
                       return dateB.getTime() - dateA.getTime();
                     }).map((event) => (
                       <EventCard key={event.id} {...event} />
