@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Instagram } from "lucide-react";
+import { ArrowUpRight, Facebook, Twitter, Instagram } from "lucide-react";
 import { siteConfig } from "@/site-config";
 
 type FooterLink = { name: string; href: string; visible: boolean };
@@ -121,6 +121,24 @@ export default function Footer() {
               </>
             )}
           </p>
+        </div>
+
+        {/* Studio credit — its own row so it reads as a signature, not as
+            part of the Samaj's legal line. */}
+        <div className="mt-6 flex justify-center">
+          <a
+            href="https://tuwarcorp.com"
+            target="_blank"
+            rel="noopener"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-border px-3.5 py-1.5 text-xs text-muted-foreground transition-colors duration-200 hover:border-foreground/25 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Designed &amp; developed by
+            <span className="font-semibold text-foreground">Tuwar Corp</span>
+            <ArrowUpRight
+              className="h-3 w-3 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              aria-hidden
+            />
+          </a>
         </div>
       </div>
     </footer>
