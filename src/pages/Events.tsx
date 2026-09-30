@@ -1,24 +1,16 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
 import Hero from "@/components/Hero";
 import UpcomingEvent from "@/components/events/UpcomingEvent";
-import EventDetailsDialog, {
-  hasDetails,
+import {
+  events as eventsData,
+  eventPath,
+  MONTHS,
   type EventRecord,
-} from "@/components/events/EventDetailsDialog";
-import rawEventsData from "@/content/events.json";
+} from "@/lib/events";
 import { siteConfig } from "@/site-config";
-
-const eventsData: EventRecord[] = Array.isArray(rawEventsData)
-  ? (rawEventsData as EventRecord[])
-  : [];
-
-const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
 
 /**
  * Prefers the exact ISO timestamp; the free-form `date` string only parses
@@ -43,8 +35,6 @@ function monthOnly(event: EventRecord): string {
 }
 
 export default function Events() {
-  const [openEvent, setOpenEvent] = useState<EventRecord | null>(null);
-
   const upcoming = useMemo(
     () =>
       eventsData
@@ -101,11 +91,7 @@ export default function Events() {
             {upcoming.length > 0 ? (
               <div className="mt-10 space-y-6 md:space-y-8">
                 {upcoming.map((event) => (
-                  <UpcomingEvent
-                    key={event.id}
-                    event={event}
-                    onOpen={() => setOpenEvent(event)}
-                  />
+                  <UpcomingEvent key={event.id} event={event} />
                 ))}
               </div>
             ) : (
@@ -162,14 +148,13 @@ export default function Events() {
                           {event.location}
                         </span>
                         <span className="order-4 md:order-none md:col-span-1 md:text-right">
-                          {hasDetails(event) && (
-                            <button
-                              type="button"
-                              onClick={() => setOpenEvent(event)}
+                          {eventPath(event) && (
+                            <Link
+                              to={eventPath(event)!}
                               className="link-underline text-sm font-semibold text-primary-ink"
                             >
                               Details
-                            </button>
+                            </Link>
                           )}
                         </span>
                       </li>
@@ -214,13 +199,6 @@ export default function Events() {
         </section>
       </main>
 
-      {openEvent && (
-        <EventDetailsDialog
-          event={openEvent}
-          onClose={() => setOpenEvent(null)}
-        />
-      )}
-
       {/* Upcoming events as structured data. Only entries with a real
           timestamp qualify. */}
       <script
@@ -242,7 +220,7 @@ export default function Events() {
                   eventStatus: "https://schema.org/EventScheduled",
                   eventAttendanceMode:
                     "https://schema.org/OfflineEventAttendanceMode",
-                  url: `${siteConfig.siteUrl}/events`,
+                  url: `${siteConfig.siteUrl}${eventPath(event) ?? "/events"}`,
                   image: `${siteConfig.siteUrl}${siteConfig.ogImage}`,
                   description: event.description,
                   location: {
@@ -257,7 +235,7 @@ export default function Events() {
                           price: event.price,
                           priceCurrency: event.priceCurrency ?? "CAD",
                           availability: "https://schema.org/InStock",
-                          url: `${siteConfig.siteUrl}/events`,
+                          url: `${siteConfig.siteUrl}${eventPath(event) ?? "/events"}`,
                           validFrom: event.startDateISO,
                         },
                       }

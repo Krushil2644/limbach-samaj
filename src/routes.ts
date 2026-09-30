@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import { events } from "@/lib/events";
 
 export type RouteDef = {
   path: string;
@@ -18,6 +19,8 @@ export const routes: RouteDef[] = [
   { path: "/", load: () => import("./pages/Home"), prerender: true },
   { path: "/about", load: () => import("./pages/About"), prerender: true },
   { path: "/events", load: () => import("./pages/Events"), prerender: true },
+  // Concrete /events/<slug> paths are prerendered below.
+  { path: "/events/:slug", load: () => import("./pages/EventPage"), prerender: false },
   { path: "/gallery", load: () => import("./pages/Gallery"), prerender: true },
   { path: "/sponsorship", load: () => import("./pages/Sponsorship"), prerender: true },
   { path: "/donate", load: () => import("./pages/Donate"), prerender: true },
@@ -33,6 +36,7 @@ export const routes: RouteDef[] = [
   { path: "*", load: () => import("./pages/NotFound"), prerender: false },
 ];
 
-export const prerenderPaths = routes
-  .filter((route) => route.prerender)
-  .map((route) => route.path);
+export const prerenderPaths = [
+  ...routes.filter((route) => route.prerender).map((route) => route.path),
+  ...events.filter((event) => event.slug).map((event) => `/events/${event.slug}`),
+];

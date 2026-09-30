@@ -21,6 +21,17 @@ function AdvertiserCard({ advertiser }: { advertiser: Advertiser }) {
     </div>
   );
 
+  const content = (
+    <>
+      {frame}
+      {advertiser.label && (
+        <p className="border-t border-border px-5 py-3 text-sm font-semibold text-foreground">
+          {advertiser.label}
+        </p>
+      )}
+    </>
+  );
+
   const cardClass =
     "reveal lift group relative block overflow-hidden rounded-2xl border border-border bg-card hover:border-foreground/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
@@ -32,12 +43,12 @@ function AdvertiserCard({ advertiser }: { advertiser: Advertiser }) {
         rel="noreferrer noopener"
         className={cardClass}
       >
-        {frame}
+        {content}
       </a>
     );
   }
 
-  return <div className={cardClass}>{frame}</div>;
+  return <div className={cardClass}>{content}</div>;
 }
 
 export default function AdvertiserGrid() {

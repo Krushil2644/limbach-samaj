@@ -8,6 +8,7 @@ type EventRecord = {
   title: string;
   date: string;
   startDateISO?: string;
+  slug?: string;
   location: string;
   price?: number;
   priceCurrency?: string;
@@ -108,7 +109,7 @@ export default function NextGathering() {
               </ul>
 
               <Link
-                to="/events"
+                to={event.slug ? `/events/${event.slug}` : "/events"}
                 className="press group mt-7 inline-flex min-h-[3rem] items-center gap-2 rounded-xl bg-primary px-6 text-base font-semibold text-primary-foreground transition-colors duration-300 hover:bg-primary/92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 {action}

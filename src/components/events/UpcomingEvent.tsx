@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import { ArrowRight, Clock, MapPin, Ticket, Users } from "lucide-react";
-import type { EventRecord } from "./EventDetailsDialog";
-import { hasDetails } from "./EventDetailsDialog";
+import { eventPath, type EventRecord } from "@/lib/events";
+import EventSponsors from "./EventSponsors";
 
 const MONTHS_SHORT = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -36,11 +37,10 @@ function timeOnly(date: string) {
  */
 export default function UpcomingEvent({
   event,
-  onOpen,
 }: {
   event: EventRecord;
-  onOpen: () => void;
 }) {
+  const path = eventPath(event);
   const date = event.startDateISO ? parts(event.startDateISO) : null;
   const deadline = event.registrationDeadlineISO
     ? parts(event.registrationDeadlineISO)
@@ -147,15 +147,20 @@ export default function UpcomingEvent({
             </dl>
           )}
 
-          {hasDetails(event) && (
-            <button
-              type="button"
-              onClick={onOpen}
+          {path && (
+            <Link
+              to={path}
               className="press group mt-6 inline-flex min-h-[3rem] items-center gap-2 rounded-xl bg-primary px-6 text-base font-semibold text-primary-foreground transition-colors duration-200 hover:bg-primary/92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Details and registration
               <ArrowRight className="nudge h-4 w-4" aria-hidden />
-            </button>
+            </Link>
+          )}
+
+          {event.sponsors && event.sponsors.length > 0 && (
+            <div className="mt-8 border-t border-border pt-6">
+              <EventSponsors sponsors={event.sponsors} />
+            </div>
           )}
         </div>
       </div>

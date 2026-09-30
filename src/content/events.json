@@ -1,6 +1,7 @@
 [
   {
     "id": "1",
+    "slug": "havan-2026",
     "title": "Mataji’s Havan 2026 – Chaitri Navratri Celebration",
     "date": "28th March, 2026 - Saturday - 1:30PM ET to 8PM ET",
     "startDateISO": "2026-03-28T13:30:00-04:00",
@@ -21,6 +22,7 @@
   },
   {
     "id": "2",
+    "slug": "picnic-2026",
     "title": "Community Picnic & Family Day",
     "date": "Sunday, July 19, 2026 - 9:30 AM to 5:00 PM ET",
     "startDateISO": "2026-07-19T09:30:00-04:00",
@@ -28,18 +30,18 @@
     "location": "Coronation Park, Oakville – Picnic Area 2 (with Shelter)",
     "mapUrl": "https://maps.app.goo.gl/Fs7CGkaaADeMzUTV8",
     "description": "A relaxed outdoor gathering for families and friends to enjoy games, traditional sports, team activities, and delicious picnic-style food. A perfect opportunity to connect, celebrate, and create lasting memories together. Join us at Coronation Park, Oakville – Picnic Area 2 (with Shelter).",
-    "additionalInfo": [
-      "Our 2026 Picnic Grand Sponsors",
-      "Nilkumar Sharma",
-      "Sandipbhai Limbachiya",
-      "Jwalantbhai Mistry",
-      "Priteshkumar V Sharma"
+    "sponsors": [
+      { "name": "Nilkumar Sharma", "tier": "Grand Sponsor" },
+      { "name": "Sandipbhai Limbachiya", "tier": "Grand Sponsor" },
+      { "name": "Jwalantbhai Mistry", "tier": "Grand Sponsor" },
+      { "name": "Priteshkumar V Sharma", "tier": "Grand Sponsor" }
     ],
     "imageUrl": "/events/community-picnic.jpg",
     "upcoming": false
   },
   {
     "id": "22",
+    "slug": "garba-2026",
     "title": "3rd Maa Limbach Garba 2026 – Navratri Celebration",
     "date": "9th October, 2026 - Friday - 6PM ET to 10PM ET",
     "startDateISO": "2026-10-09T18:00:00-04:00",
@@ -54,6 +56,15 @@
       "Registration deadline: September 30, 2026, or until capacity (130 people) is reached, whichever is earlier",
       "Donations are always welcome and will be appreciated",
       "For sponsorship / business advertisement at the event location, please contact Ravibhai on 647-835-7377"
+    ],
+    "sponsors": [
+      {
+        "name": "Aakash Nayi",
+        "tier": "Platinum Sponsor",
+        "business": "Co-operators, McNaughton Agency Inc",
+        "imageSrc": "/images/advertisements/Ad3.jpg",
+        "href": "https://local.cooperators.ca/mcnaughton-agency-en/our-team"
+      }
     ],
     "imageUrl": "",
     "upcoming": true,
@@ -79,6 +90,7 @@
   },
   {
     "id": "3",
+    "slug": "diwali-snehmilan-2026",
     "title": "A Grand Limbach Samaj Diwali Snehmilan 2026",
     "date": "28th November, 2026 - Saturday - 5:30PM ET onwards",
     "startDateISO": "2026-11-28T17:30:00-05:00",

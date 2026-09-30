@@ -8,6 +8,8 @@ export type Advertiser = {
    * so URLs can be added here later without touching the component.
    */
   href?: string;
+  /** Optional visible caption under the artwork, e.g. a sponsorship tier. */
+  label?: string;
 };
 
 export const advertisersContent = {
@@ -20,6 +22,13 @@ export const advertisersContent = {
     link: "/sponsorship",
   },
   items: [
+    {
+      imageSrc: "/images/advertisements/Ad3.jpg",
+      imageAlt:
+        "Aakash Nayi, Associate Financial Advisor, McNaughton Agency Inc, Co-operators – investments, insurance and advice. 647-866-2954",
+      href: "https://local.cooperators.ca/mcnaughton-agency-en/our-team",
+      label: "Platinum Event Sponsor · Maa Limbach Garba 2026",
+    },
     {
       imageSrc: "/images/advertisements/Ad1.jpg",
       imageAlt: "Hitendra (Happy) Parekh – Financial & Connectivity Partner",
