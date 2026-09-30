@@ -60,7 +60,7 @@
     "sponsors": [
       {
         "name": "Aakash Nayi",
-        "tier": "Platinum Sponsor",
+        "tier": "Platinum Sponsor · Garba & Diwali Snehmilan 2026",
         "business": "Co-operators, McNaughton Agency Inc",
         "imageSrc": "/images/advertisements/Ad3.jpg",
         "href": "https://local.cooperators.ca/mcnaughton-agency-en/our-team"
@@ -105,6 +105,15 @@
       "Important note for e-transfer: in the notes field, please include \"Diwali Snehmilan 2026 – Registration for [Number] people\" and/or \"Sponsorship/Donation\", along with your name and phone number",
       "After payment, please send a WhatsApp message to Yogeshbhai Parekh on 416-841-9176 with your payment information, your name and phone number, and the number of people attending (age 6 & above as well as kids age 5 & under) for seating and food arrangements",
       "Sponsorship & donations: any amount of general donation is highly appreciated. Grand Sponsorship is $101/-, and a business advertisement at the event location as well as on our Samaj website is $151/-"
+    ],
+    "sponsors": [
+      {
+        "name": "Aakash Nayi",
+        "tier": "Platinum Sponsor · Garba & Diwali Snehmilan 2026",
+        "business": "Co-operators, McNaughton Agency Inc",
+        "imageSrc": "/images/advertisements/Ad3.jpg",
+        "href": "https://local.cooperators.ca/mcnaughton-agency-en/our-team"
+      }
     ],
     "imageUrl": "",
     "upcoming": true,

@@ -27,7 +27,7 @@ export const advertisersContent = {
       imageAlt:
         "Aakash Nayi, Associate Financial Advisor, McNaughton Agency Inc, Co-operators – investments, insurance and advice. 647-866-2954",
       href: "https://local.cooperators.ca/mcnaughton-agency-en/our-team",
-      label: "Platinum Event Sponsor · Maa Limbach Garba 2026",
+      label: "Platinum Sponsor · Garba & Diwali Snehmilan 2026",
     },
     {
       imageSrc: "/images/advertisements/Ad1.jpg",
