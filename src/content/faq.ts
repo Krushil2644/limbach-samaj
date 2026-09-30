@@ -74,7 +74,7 @@ export const faqContent: FaqItem[] = [
     question: "Can I sponsor an event or advertise my business?",
     group: "Supporting the Samaj",
     answer:
-      "Yes. For Diwali Snehmilan 2026, Grand Sponsorship is $101 and a business advertisement at the event venue and on the Samaj website is $151. Event sponsorship amounts are set per event and listed in each invitation. Send an e-transfer to jaylimbach@gmail.com noting that it is for sponsorship.",
+      "Yes. For Diwali Snehmilan 2026, Grand Sponsorship is $101 and a business advertisement at the event venue and on the Samaj website is $151. Platinum Sponsorship amounts are set per event and listed in each invitation. Send an e-transfer to jaylimbach@gmail.com noting that it is for sponsorship.",
   },
   {
     question: "How can I donate to Limbach Samaj of Canada?",

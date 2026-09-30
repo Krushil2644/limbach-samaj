@@ -28,10 +28,10 @@ export const sponsorshipContent = {
       },
       {
         amount: "$351",
-        name: "Event sponsorship",
+        name: "Platinum Sponsorship",
         description:
-          "Named on the Samaj website as a sponsor of the event you support.",
-        offeredAt: "Mataji Havan 2026",
+          "Named as a Platinum Sponsor on the Samaj website, on the page of the event you support.",
+        offeredAt: "Mataji Havan, Garba and Diwali Snehmilan 2026",
       },
       {
         amount: "$101",
