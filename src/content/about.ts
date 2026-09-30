@@ -94,14 +94,14 @@ export const aboutContent = {
     incorporatedDate: "November 26, 2025",
     members: [
       {
-        name: "Paresh Limbachia",
+        name: "Paresh Limbachiya",
         initials: "PL",
         location: "Brampton, Ontario",
         phone: "647-801-0395",
         image: "/images/directors/D1.jpg",
       },
       {
-        name: "Sandeep Limbchiya",
+        name: "Sandeep Limbachiya",
         initials: "SL",
         location: "Whitby, Ontario",
         phone: "647-513-8478",
@@ -110,7 +110,7 @@ export const aboutContent = {
       {
         name: "Nailesh Parekh",
         initials: "NP",
-        location: "Hamilton, Ontario",
+        location: "Mississauga, Ontario",
         phone: "416-710-3459",
         image: "/images/directors/D2.jpg",
       },
