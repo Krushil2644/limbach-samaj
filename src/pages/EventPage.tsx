@@ -9,9 +9,10 @@ import {
   Users,
 } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
+import EventVideo from "@/components/events/EventVideo";
 import EventSponsors from "@/components/events/EventSponsors";
 import NotFound from "@/pages/NotFound";
-import { events, eventPath, formatISODate } from "@/lib/events";
+import { events, eventPath, formatISODate, isPast, useNow } from "@/lib/events";
 import { sponsorshipContent } from "@/content/sponsorship";
 import { siteConfig } from "@/site-config";
 
@@ -66,8 +67,10 @@ function renderEmphasis(text: string) {
 export default function EventPage() {
   const { slug } = useParams();
   const event = events.find((e) => e.slug === slug);
+  const now = useNow();
 
   if (!event) return <NotFound />;
+  const open = !isPast(event, now);
 
   const venue = event.location.split(",")[0];
   const address = event.location.split(",").slice(1).join(",").trim();
@@ -100,9 +103,9 @@ export default function EventPage() {
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <p className="text-sm font-medium text-primary-ink">
-                {event.upcoming ? "Upcoming" : "Past event"}
+                {open ? "Upcoming" : "Past event"}
               </p>
-              {event.upcoming && event.status && (
+              {open && event.status && (
                 <p className="rounded-full bg-primary/12 px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-ink">
                   {event.status}
                 </p>
@@ -142,6 +145,15 @@ export default function EventPage() {
                 </p>
               )}
 
+              {event.videoSrc && (
+                <EventVideo
+                src={event.videoSrc}
+                poster={event.videoPoster}
+                title={event.title}
+                className="mt-8"
+              />
+              )}
+
               {event.schedule && event.schedule.length > 0 && (
                 <div className="mt-10 border-t border-border pt-8">
                   <h2 className="font-heading text-2xl font-bold text-foreground">
@@ -165,7 +177,13 @@ export default function EventPage() {
                 </div>
               )}
 
-              {event.additionalInfo && event.additionalInfo.length > 0 && (
+              {!open && (
+                <p className="mt-10 border-t border-border pt-8 text-base font-semibold text-foreground">
+                  This event has taken place. Registration for this event is closed.
+                </p>
+              )}
+
+              {open && event.additionalInfo && event.additionalInfo.length > 0 && (
                 <div className="mt-10 border-t border-border pt-8">
                   <h2 className="font-heading text-2xl font-bold text-foreground">
                     Details and registration
@@ -248,7 +266,7 @@ export default function EventPage() {
                       </div>
                     </div>
                   )}
-                  {event.upcoming && event.registrationDeadlineISO && (
+                  {open && event.registrationDeadlineISO && (
                     <div className="flex items-start gap-3">
                       <Clock className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
                       <div>
@@ -300,7 +318,7 @@ export default function EventPage() {
         )}
 
         {/* Become a sponsor — only while there is still an event to sponsor */}
-        {event.upcoming && (
+        {open && (
           <section
             aria-labelledby="sponsor-cta"
             className="border-t border-border bg-muted/40 py-16 md:py-20"

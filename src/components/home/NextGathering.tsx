@@ -1,24 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CalendarDays, MapPin, Ticket } from "lucide-react";
-import eventsData from "@/content/events.json";
+import { events, isPast, useNow, type EventRecord } from "@/lib/events";
 import { homeContent } from "@/content/home";
 
-type EventRecord = {
-  id: string;
-  title: string;
-  date: string;
-  startDateISO?: string;
-  slug?: string;
-  location: string;
-  price?: number;
-  priceCurrency?: string;
-  upcoming: boolean;
-};
-
 /** The soonest upcoming event that carries a real timestamp. */
-function nextEvent(): EventRecord | null {
-  const dated = (eventsData as EventRecord[])
-    .filter((event) => event.upcoming && event.startDateISO)
+function nextEvent(now: number | null): EventRecord | null {
+  const dated = events
+    .filter((event) => !isPast(event, now) && event.startDateISO)
     .sort((a, b) => a.startDateISO!.localeCompare(b.startDateISO!));
   return dated[0] ?? null;
 }
@@ -40,7 +28,7 @@ function dateParts(iso: string) {
 }
 
 export default function NextGathering() {
-  const event = nextEvent();
+  const event = nextEvent(useNow());
   const { label, emptyTitle, emptyBody, action } = homeContent.nextGathering;
 
   if (!event) {

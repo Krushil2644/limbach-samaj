@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Clock, MapPin, Ticket, Users } from "lucide-react";
 import { eventPath, type EventRecord } from "@/lib/events";
 import EventSponsors from "./EventSponsors";
+import EventVideo from "./EventVideo";
 
 const MONTHS_SHORT = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -113,6 +114,15 @@ export default function UpcomingEvent({
             <p className="measure mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">
               {event.description}
             </p>
+          )}
+
+          {event.videoSrc && (
+            <EventVideo
+                src={event.videoSrc}
+                poster={event.videoPoster}
+                title={event.title}
+                className="mt-6"
+              />
           )}
 
           {/* The deciding facts, previously buried in the dialog */}

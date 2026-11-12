@@ -7,6 +7,8 @@ import UpcomingEvent from "@/components/events/UpcomingEvent";
 import {
   events as eventsData,
   eventPath,
+  isPast,
+  useNow,
   MONTHS,
   type EventRecord,
 } from "@/lib/events";
@@ -35,20 +37,21 @@ function monthOnly(event: EventRecord): string {
 }
 
 export default function Events() {
+  const now = useNow();
   const upcoming = useMemo(
     () =>
       eventsData
-        .filter((event) => event.upcoming)
+        .filter((event) => !isPast(event, now))
         .sort((a, b) => eventDate(a).getTime() - eventDate(b).getTime()),
-    [],
+    [now],
   );
 
   const past = useMemo(
     () =>
       [...eventsData]
-        .filter((event) => !event.upcoming)
+        .filter((event) => isPast(event, now))
         .sort((a, b) => eventDate(b).getTime() - eventDate(a).getTime()),
-    [],
+    [now],
   );
 
   /** Newest year first, preserving the sorted order within each year. */
