@@ -154,6 +154,24 @@ export default function EventPage() {
               />
               )}
 
+              {event.highlights && event.highlights.length > 0 && (
+                <div className="mt-10 border-t border-border pt-8">
+                  <h2 className="font-heading text-2xl font-bold text-foreground">
+                    What to expect
+                  </h2>
+                  <ul className="mt-5 flex flex-wrap gap-2.5">
+                    {event.highlights.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary-ink"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {event.schedule && event.schedule.length > 0 && (
                 <div className="mt-10 border-t border-border pt-8">
                   <h2 className="font-heading text-2xl font-bold text-foreground">
@@ -198,6 +216,17 @@ export default function EventPage() {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {open && event.closing && (
+                <div className="mt-10 border-t border-border pt-8">
+                  <h2 className="font-heading text-2xl font-bold text-foreground">
+                    {event.closing.heading}
+                  </h2>
+                  <p className="measure mt-4 text-lg leading-relaxed text-muted-foreground">
+                    {event.closing.body}
+                  </p>
                 </div>
               )}
 

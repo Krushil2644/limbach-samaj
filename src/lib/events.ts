@@ -14,6 +14,10 @@ export type EventRecord = {
   mapUrl?: string;
   description: string;
   additionalInfo?: string[];
+  /** "What to expect" list on the event page. */
+  highlights?: string[];
+  /** Sign-off shown at the end of the event page. */
+  closing?: { heading: string; body: string };
   youtubeUrl?: string;
   /** Self-hosted clip (H.264 MP4 in /public) shown inline with a poster frame. */
   videoSrc?: string;
